@@ -19,7 +19,7 @@ class LostItemsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('lostItems.create')->with('lostItems', new Post());
 	}
 
 	/**

@@ -19,7 +19,7 @@ class FoundItemsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('foundItems.create')->with('foundItems', new Post());
 	}
 
 	/**
