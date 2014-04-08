@@ -16,3 +16,8 @@ Route::get('/', 'HomeController@showWelcome');
 Route::resource('foundItems', 'FoundItemsController');
 
 Route::resource('lostItems', 'LostItemsController');
+
+Route::get('/map', function()
+{
+		return View::make('map');
+});
