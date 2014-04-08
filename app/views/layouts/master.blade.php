@@ -10,13 +10,10 @@
     <title>VIND IT!</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="/css/vindit.css">
 <!-- Latest compiled and minified JavaScript -->
-=======
-    <link rel="stylesheet" type="text/css" href="css/vindit.css">
+    <link rel="stylesheet" type="text/css" href="/css/vindit.css">
     @yield('topscript')
->>>>>>> master
   </head>
 
   <body>
