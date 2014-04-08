@@ -19,11 +19,6 @@
         		    <p>{{{ $foundItem->created_at->format('l, F jS Y') }}}</p>
         		    <br>
         		    <hr>
-        		  <h2><a href="{{{ action('FoundItemsController@show', $foundItem->id) }}}">{{{ $foundItem->title }}}</a></h2>
-                  <p><img src="{{{ $foundItem->image_path }}}"></p>
-        		  <p>{{{ $foundItem->created_at->format('l, F jS Y') }}}</p>
-        		  <br>
-        		  <hr>        		
         		@endforeach
 		  		
         		<p>
