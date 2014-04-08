@@ -7,16 +7,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-
     <title>VIND IT!</title>
-
-   
-
-    <!-- Custom styles for this template -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/vindit.css">
-<!-- Latest compiled and minified JavaScript -->
+    @yield('topscript')
   </head>
 
   <body>

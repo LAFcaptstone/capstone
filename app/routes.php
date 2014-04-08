@@ -17,4 +17,11 @@ Route::resource('foundItems', 'FoundItemsController');
 
 Route::resource('lostItems', 'LostItemsController');
 
+<<<<<<< HEAD
+Route::get('/map', function()
+{
+		return View::make('map');
+});
+=======
 
+>>>>>>> master
