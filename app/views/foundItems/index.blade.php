@@ -13,6 +13,7 @@
 
         		@foreach ($foundItems as $foundItem)
         		  <h2>{{{ $foundItem->title }}}</h2>
+                  <p><img src="{{{ $foundItem->image_path }}}"></p>
         		  <p>{{{ $foundItem->created_at->format('l, F jS Y') }}}</p>
         		  <br>
         		  <hr>

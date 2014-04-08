@@ -49,6 +49,11 @@ class LostItemsController extends BaseController {
 			$lostItem->body = Input::get('body');
 			$lostItem->location = Input::get('location');
 			$lostItem->email = Input::get('email');
+			if (Input::hasFile('image'))
+			{
+				$image = Input::file('image');
+				$lostItem->image_path = LostItems::upload_image($image);
+			}
 			$lostItem->save();
 			Session::flash('successMessage', 'Post created succesfully');
 			return Redirect::action('LostItemsController@index');
