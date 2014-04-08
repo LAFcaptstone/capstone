@@ -7,20 +7,26 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-
     <title>VIND IT!</title>
-
-   
-
-    <!-- Custom styles for this template -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="/css/vindit.css">
 <!-- Latest compiled and minified JavaScript -->
+=======
+    <link rel="stylesheet" type="text/css" href="css/vindit.css">
+    @yield('topscript')
+>>>>>>> master
   </head>
 
   <body>
   	<div class="container">
+        @if (Session::has('successMessage'))
+            <div class="alert alert-success">{{{ Session::get('successMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
+        @endif
+        @if (Session::has('errorMessage'))
+            <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
+        @endif
 	<!-- yeilding content from blades -->
 @yield('content')
 <footer>
