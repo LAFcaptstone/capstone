@@ -20,20 +20,18 @@ class Base extends Eloquent {
     	$utc = Carbon::createFromFormat($this->getDateFormat(), $value);
     	return $utc->setTimezone('America/Chicago');
 	}
-	public function uploadImage()
+	 /*
+    * Helper to assign images to posts and handle uploads
+    */
+	public static function upload_image($image)
 	{
-		$file = Input::file('file'); // your file upload input field in the form should be named 'file'
-
-		$destinationPath = 'uploads/img';
-		$filename = $file->getClientOriginalName();
-		$uploadSuccess = Input::file('file')->move($destinationPath, $filename);
-		 
-		if( $uploadSuccess ) {
-		   Session::flash('successMessage', 'Image uploaded successfully');
-	        return Redirect::back()->withInput();
-		} else {
-		   Session::flash('errorMessage', 'Image could not be uploaded.');
-	        return Redirect::back()->withInput()->withErrors($validator);
-		}
+	
+		$destinaion_path = public_path() .'/uploads/';
+		$extension = $image->getClientOriginalExtension();
+		$filename = uniqid() . '.' . $extension;
+		$image->move($destinaion_path, $filename);
+		$image_path = '/uploads/' . $filename;
+		return $image_path;
+		
 	}
 }
