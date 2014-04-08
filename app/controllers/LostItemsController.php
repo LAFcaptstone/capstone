@@ -9,7 +9,8 @@ class LostItemsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$lostItems = LostItem::all();
+		return View::make('lostItems.index')->with(array('lostItems' => $lostItems));
 	}
 
 	/**
@@ -19,7 +20,7 @@ class LostItemsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('lostItems.create')->with('lostItems', new Post());
+		return View::make('lostItems.create')->with('lostItems', new LostItem());
 	}
 
 	/**
@@ -29,7 +30,27 @@ class LostItemsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// create the validator
+    	$validator = Validator::make(Input::all(), LostItem::$rules);
+	
+    	// attempt validation
+    	if ($validator->fails())
+    	{
+    		Session::flash('errorMessage', 'Post could not be created');
+    	    // validation failed, redirect to the post create page with validation errors and old inputs
+    	    return Redirect::back()->withInput()->withErrors($validator);
+    	}
+
+    	else
+    	{
+    		// validation succeeded, create and save the post
+			$lostItem = new LostItem();
+			$lostItem->title = Input::get('title');
+			$lostItem->body = Input::get('body');
+			$lostItem->save();
+			Session::flash('successMessage', 'Post created succesfully');
+			return Redirect::action('PostsController@index');
+		}
 	}
 
 	/**

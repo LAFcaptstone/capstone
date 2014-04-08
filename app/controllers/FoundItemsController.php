@@ -9,7 +9,8 @@ class FoundItemsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$foundItems = FoundItem::all();
+		return View::make('foundItems.index')->with(array('foundItems' => $foundItems));
 	}
 
 	/**
@@ -19,7 +20,7 @@ class FoundItemsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('foundItems.create')->with('foundItems', new Post());
+		return View::make('foundItems.create')->with('foundItems', new FoundItem());
 	}
 
 	/**
@@ -29,7 +30,27 @@ class FoundItemsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// create the validator
+    	$validator = Validator::make(Input::all(), FoundItem::$rules);
+	
+    	// attempt validation
+    	if ($validator->fails())
+    	{
+    		Session::flash('errorMessage', 'Post could not be created');
+    	    // validation failed, redirect to the post create page with validation errors and old inputs
+    	    return Redirect::back()->withInput()->withErrors($validator);
+    	}
+
+    	else
+    	{
+    		// validation succeeded, create and save the post
+			$foundItem = new FoundItem();
+			$foundItem->title = Input::get('title');
+			$foundItem->body = Input::get('body');
+			$foundItem->save();
+			Session::flash('successMessage', 'Post created succesfully');
+			return Redirect::action('PostsController@index');
+		}
 	}
 
 	/**
