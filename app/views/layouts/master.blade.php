@@ -14,21 +14,26 @@
 
     <!-- Custom styles for this template -->
     <!-- Latest compiled and minified CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link href="/bootstrap/css/signin.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/vindit.css">
 <!-- Latest compiled and minified JavaScript -->
   </head>
 
   <body>
+  	<div class="container">
 	<!-- yeilding content from blades -->
 @yield('content')
-</body>
-<!-- contact email -->
 <footer>
-	<div>
-		<a href="mailto:support@findit.us?Subject=Hello%20again" target="_top"><p class="col-md-6 col-md-offset-3 text3">CONTACT US</p></a>
+	
+	<div class="row">
+		<div class="col-md-6 col-md-offset-5 text3">
+			<!-- contact email -->
+			<a href="mailto:support@findit.us?Subject=Hello%20again" target="_top"><p>CONTACT US</p></a>
+		</div>
 	</div>
+</div>
 </footer>
+</div>
+</body>
+@yield('bottomscript')
 </html>
