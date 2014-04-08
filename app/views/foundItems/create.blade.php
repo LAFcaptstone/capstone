@@ -4,7 +4,7 @@
 <div class="container">
 	<h1 style="margin-left:120px;">Post Found Item</h1>
 
-	{{ Form::open(array('action' => 'PostsController@store', 'class' => 'form-horizontal')) }}
+	{{ Form::open(array('action' => 'FoundItemsController@store', 'class' => 'form-horizontal')) }}
 	  <div class="form-group">
 	    {{ Form::label('title', 'Title', array('class' => 'col-sm-2 control-label')) }}
 	    <div class="col-sm-10">
