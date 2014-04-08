@@ -68,7 +68,7 @@ class FoundItemsController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$foundItem = LostItem::findOrFail($id);
+		$foundItem = FoundItem::findOrFail($id);
 		return View::make('foundItems.show')->with('foundItem', $foundItem);
 	}
 
