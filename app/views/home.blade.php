@@ -3,12 +3,12 @@
 @section('content')
     
         <div class="row ">
-            <a href="#"><div class=" col-md-6 col-md-offset-5 bttn1">
+            <a href="{{{ action('FoundItemsController@index')}}}"><div class=" col-md-6 col-md-offset-5 bttn1">
                 <p class="text1">FOUND IT!</p>
             </div></a>
         </div>
         <div class="row">
-            <a href="#"><div class="col-md-6 col-md-offset-5 bttn2">
+            <a href="{{{ action('LostItemsController@index')}}}"><div class="col-md-6 col-md-offset-5 bttn2">
                  <p class="text1">LOST IT!</p>
             </div></a>
         </div>
