@@ -12,3 +12,7 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
+
+Route::resource('foundItems', 'FoundItemsController');
+
+Route::resource('lostItems', 'LostItemsController');
