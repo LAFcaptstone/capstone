@@ -16,7 +16,7 @@ class CreatePostLostTable extends Migration {
         {
             $table->increments('id');
             $table->string('title', 100);
-            $table->string('body', 400);
+            $table->text('body');
             $table->string('location', 10);
             $table->string('email', 100);
             $table->string('image_path',200)->unique()->nullable();
