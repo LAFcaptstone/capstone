@@ -12,11 +12,13 @@
           		{{ Form::close() }}
 
         		@foreach ($foundItems as $foundItem)
-        		  <h2>{{{ $foundItem->title }}}</h2>
-                  <p><img src="{{{ $foundItem->image_path }}}"></p>
-        		  <p>{{{ $foundItem->created_at->format('l, F jS Y') }}}</p>
-        		  <br>
-        		  <hr>
+        		    <h2><a href="{{{ action('FoundItemsController@show', $foundItem->id) }}}">{{{ $foundItem->title }}}</a></h2>
+                    @if (!is_null($foundItem->image_path)) 
+                        <p><img src="{{{ $foundItem->image_path }}}"></p>
+                    @endif
+        		    <p>{{{ $foundItem->created_at->format('l, F jS Y') }}}</p>
+        		    <br>
+        		    <hr>
         		
         		@endforeach
 		  		
