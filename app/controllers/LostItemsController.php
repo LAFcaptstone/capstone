@@ -1,6 +1,6 @@
 <?php
 
-class LostItemsController extends \BaseController {
+class LostItemsController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.

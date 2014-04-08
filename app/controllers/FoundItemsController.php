@@ -1,6 +1,6 @@
 <?php
 
-class FoundItemsController extends \BaseController {
+class FoundItemsController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -10,7 +10,7 @@ class FoundItemsController extends \BaseController {
 	public function index()
 	{
 		$foundItems = FoundItem::all();
-		return View::make('foundItems.index')->with(array('foundItems' => $foundItems));
+		return View::make('foundItems.index')->with('foundItems', $foundItems);
 	}
 
 	/**
@@ -36,7 +36,7 @@ class FoundItemsController extends \BaseController {
     	// attempt validation
     	if ($validator->fails())
     	{
-    		Session::flash('errorMessage', 'Post could not be created');
+    		//Session::flash('errorMessage', 'Post could not be created');
     	    // validation failed, redirect to the post create page with validation errors and old inputs
     	    return Redirect::back()->withInput()->withErrors($validator);
     	}
@@ -50,7 +50,7 @@ class FoundItemsController extends \BaseController {
 			$foundItem->location = Input::get('location');
 			$foundItem->email = Input::get('email');
 			$foundItem->save();
-			Session::flash('successMessage', 'Post created succesfully');
+			//Session::flash('successMessage', 'Post created succesfully');
 			return Redirect::action('FoundItemsController@index');
 		}
 	}
