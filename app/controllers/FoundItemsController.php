@@ -51,7 +51,7 @@ class FoundItemsController extends \BaseController {
 			$foundItem->email = Input::get('email');
 			$foundItem->save();
 			Session::flash('successMessage', 'Post created succesfully');
-			return Redirect::action('PostsController@index');
+			return Redirect::action('FoundItemsController@index');
 		}
 	}
 

@@ -51,7 +51,7 @@ class LostItemsController extends \BaseController {
 			$lostItem->email = Input::get('email');
 			$lostItem->save();
 			Session::flash('successMessage', 'Post created succesfully');
-			return Redirect::action('PostsController@index');
+			return Redirect::action('LostItemsController@index');
 		}
 	}
 
