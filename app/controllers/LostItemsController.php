@@ -52,7 +52,7 @@ class LostItemsController extends BaseController {
 			if (Input::hasFile('image'))
 			{
 				$image = Input::file('image');
-				$lostItem->image_path = LostItems::upload_image($image);
+				$lostItem->image_path = LostItem::upload_image($image);
 			}
 			$lostItem->save();
 			Session::flash('successMessage', 'Post created succesfully');
