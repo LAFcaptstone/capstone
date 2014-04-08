@@ -52,7 +52,7 @@ class FoundItemsController extends BaseController {
 			if (Input::hasFile('image'))
 			{
 				$image = Input::file('image');
-				$foundItem->image_path = FoundItems::upload_image($image);
+				$foundItem->image_path = FoundItem::upload_image($image);
 			}
 			$foundItem->save();
 			//Session::flash('successMessage', 'Post created succesfully');
@@ -68,7 +68,8 @@ class FoundItemsController extends BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$foundItem = LostItem::findOrFail($id);
+		return View::make('foundItems.show')->with('foundItem', $foundItem);
 	}
 
 	/**
