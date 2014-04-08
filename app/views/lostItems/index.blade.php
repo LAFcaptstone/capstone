@@ -12,15 +12,12 @@
           		{{ Form::close() }}
 
         		@foreach ($lostItems as $lostItem)
-<<<<<<< HEAD
         		  <h2><a href="{{{ action('LostItemsController@show', $lostItem->id) }}}">{{{ $lostItem->title }}}</h2>
                     @if (!is_null($foundItem->image_path)) 
                       <p><img src="{{{ $lostItem->image_path }}}"></p>
                     @endif
-=======
         		  <h2><a href="{{{ action('LostItemsController@show', $lostItem->id) }}}">{{{ $lostItem->title }}}</a></h2>
                   <p><img src="{{{ $lostItem->image_path }}}"></p>
->>>>>>> master
         		  <p>{{{ $lostItem->created_at->format('l, F jS Y') }}}</p>
         		  <br>
         		  <hr>
