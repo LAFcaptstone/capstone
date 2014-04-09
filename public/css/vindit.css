@@ -43,14 +43,24 @@
         box-shadow: 0px 0px 20px #a3a3a3;
         margin-top: 20px;
         padding-left: 10px;
-   
-        
-        
+ 
     }
+      .bttn4 {
+        height: 85px;
+        width: 150px;
+        background-color: #FFF;
+        box-shadow: 0px 0px 20px #a3a3a3;
+        margin-top: 20px;
+        padding-left: 14px;
+        padding-top:9px;
+    }
+
+
     .text1 {
         padding: 0px;
         width: 145px;
         padding-top: 50px;
+        font-size:25px;
         
 
     }
