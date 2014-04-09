@@ -9,10 +9,16 @@
 @endif
 
 <hr>
-<p><a href="mailto:support@findit.us?Subject=Hello%20again" target="_top" id="btnNotify">Notify</a></p>		
-<p><a href="{{{action('FoundItemsController@index') }}}">Return to Found Items</a></p>
-<a href="{{{ action('FoundItemsController@edit', $foundItem->id) }}}">Edit Post</a> |
-<a href="{{{ action('FoundItemsController@destroy', $foundItem->id) }}}" id="btnDeletePost">Delete Post</a>
+<p><a href="mailto:support@findit.us?Subject=Hello%20again" target="_top" id="btnNotify">Notify</a></p>	
+<p>	
+	<a href="{{{action('FoundItemsController@index') }}}">Return to Found Items</a> |
+	<a href="#">Flag Post</a>
+</p>
+<p>
+	<a href="{{{ action('FoundItemsController@edit', $foundItem->id) }}}">Edit Post</a> |
+	<a href="{{{ action('FoundItemsController@destroy', $foundItem->id) }}}" id="btnDeletePost">Delete Post</a>
+</p>
+
 {{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItem->id), 'method' => 'delete', 'id' => 'deleteFormPost')) }}
 {{ Form::close() }}
 
