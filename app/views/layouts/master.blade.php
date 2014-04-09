@@ -32,6 +32,7 @@
 		<div class="col-md-6 col-md-offset-5 text3">
 			<!-- contact email -->
 			<a href="mailto:support@findit.us?Subject=Hello%20again" target="_top"><p>CONTACT US</p></a>
+			<a href="#"><p>LOG IN</p></a>
 		</div>
 	</div>
 </div>

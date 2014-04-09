@@ -1,7 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-    
+        <div class="row ">
+            <a href="#"><div class=" col-md-6 col-md-offset-5 logo">
+                <img class="img-responsive" src="/img/vindit_logo_main.png">
+            </div></a>
+        </div>
         <div class="row ">
             <a href="{{{ action('FoundItemsController@create')}}}"><div class=" col-md-6 col-md-offset-5 bttn1">
                 <p class="text1">FOUND IT!</p>
