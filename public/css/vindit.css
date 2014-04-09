@@ -1,18 +1,40 @@
 
 
 
+
    /* .center-block {
       display: block;
       margin-left: auto;
       margin-right: auto;
     }
 */
+    html { height: 100% }
+    body { height: 100%; margin: 0; padding: 0 }
+    #map-canvas { height: 100%; width:100%; margin-left: 30% }
+    #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+
+   .logo {
+    width: 200px;
+    height: 200px;
+    margin-top: 40px;
+    margin-left: 460px;
+
+   }
+
 
     a {
     	text-decoration: none;
     }
 
-
+   
     .bttn1 {
         height: 150px;
         width: 150px;
@@ -21,7 +43,7 @@
         font-size: 28px;
         box-shadow: 0px 0px 20px #a3a3a3;
         border-radius: 10px;
-        margin-top: 150px;
+        margin-top: 25px;
         padding-left: 8px;
     }
     .bttn2 {
@@ -70,7 +92,7 @@
     }
 
     .text3 {
-        margin-top: 220px;
+        margin-top: 120px;
         font-size: 20px;
         margin-right: 20px;
 

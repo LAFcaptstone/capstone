@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
 <h1>{{{ $lostItem->title }}}</h1>
 <p> {{ $lostItem->body }}</p>
 <p> {{ $lostItem->location }}</p>
