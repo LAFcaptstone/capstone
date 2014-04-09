@@ -17,7 +17,17 @@ class LostItemsController extends BaseController {
 	 */
 	public function index()
 	{
-		$lostItems = LostItem::all();
+		//show lists of all posts
+		$search = Input::get('search');
+		$query = LostItem::orderBy('created_at', 'desc');
+		if (is_null($search)) {
+			$lostItems = $query->paginate(10);
+		} 
+		else {
+			$lostItems = $query->where('title', 'LIKE', "%{$search}%")
+						   	   ->orWhere('body', 'LIKE', "%{$search}%")
+						   	   ->paginate(10);
+		}
 		return View::make('lostItems.index')->with(array('lostItems' => $lostItems));
 	}
 
@@ -28,7 +38,7 @@ class LostItemsController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('lostItems.create')->with('lostItems', new LostItem());
+		return View::make('lostItems.create-edit')->with('lostItems', new LostItem());
 	}
 
 	/**
@@ -45,6 +55,7 @@ class LostItemsController extends BaseController {
     	if ($validator->fails())
     	{
     		Session::flash('errorMessage', 'Post could not be created');
+
     	    // validation failed, redirect to the post create page with validation errors and old inputs
     	    return Redirect::back()->withInput()->withErrors($validator);
     	}
@@ -88,7 +99,8 @@ class LostItemsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$lostItem = LostItem::findOrFail($id);
+		return View::make('lostitems.create-edit')->with('lostItem', $lostItem);
 	}
 
 	/**
@@ -99,7 +111,34 @@ class LostItemsController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$lostItem = LostItem::findOrFail($id);
+		// create the validator
+    	$validator = Validator::make(Input::all(), LostItem::$rules);
+	
+    	// attempt validation
+    	if ($validator->fails())
+    	{
+			Session::flash('errorMessage', 'Post could not be updated');
+    	    // validation failed, redirect to the post create page with validation errors and old inputs
+    	    return Redirect::back()->withInput()->withErrors($validator);
+    	}
+
+    	else
+    	{
+    		// validation succeeded, create and save the post
+			$lostItem->title = Input::get('title');
+			$lostItem->body = Input::get('body');
+			$lostItem->location = Input::get('location');
+			$lostItem->email = Input::get('email');
+			if (Input::hasFile('image'))
+			{
+				$image = Input::file('image');
+				$lostItem->image_path = LostItem::upload_image($image);
+			}
+			$lostItem->save();
+			Session::flash('successMessage', 'Post updated succesfully');
+			return Redirect::action('LostItemsController@show', $lostItem->id);
+		}
 	}
 
 	/**
@@ -110,7 +149,9 @@ class LostItemsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		LostItem::findOrFail($id)->delete();
+
+		return Redirect::action('LostItemsController@index');
 	}
 
 }

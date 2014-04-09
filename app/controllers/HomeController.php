@@ -22,6 +22,19 @@ class HomeController extends BaseController {
 		return View::make('home')->with('data', $data);
 	}
 
+	// admin dashboard route
+	public function showDashboard()
+	{
+		$foundItems = FoundItem::all();
+		return View::make('dashboard')->with(array('foundItems' => $foundItems));
+	}
+
+	public function showMap()
+	{
+		$foundItems = FoundItem::all();
+		return View::make('map')->with(array('foundItems' => $foundItems));
+	}
+
 
 	public function showLogin ()
 	{

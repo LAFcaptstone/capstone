@@ -13,7 +13,10 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
+Route::get('/dashboard', 'HomeController@showDashboard');
+
 Route::get('/login', 'HomeController@showLogin');
+
 Route::post('/login', 'HomeController@doLogin');
 
 Route::get('/logout', 'HomeController@logout');
@@ -22,8 +25,5 @@ Route::resource('foundItems', 'FoundItemsController');
 
 Route::resource('lostItems', 'LostItemsController');
 
-Route::get('/map', function()
-{
-		return View::make('map');
-});
+Route::get('/map', 'HomeController@showMap');
 
