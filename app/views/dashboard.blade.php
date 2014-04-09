@@ -37,14 +37,33 @@
 				<td>{{{ $foundItem->image_path }}}</td>
 				<td>{{{ $foundItem->created_at->format('l, F jS Y') }}}</td>
 				<td>{{{ $foundItem->updated_at->format('l, F jS Y') }}}</td>
-				<!-- <td><a href="{{{ action('FoundItemsController@edit', $foundItem->id) }}}">Edit</a> | -->
-				<!-- <td><a href="{{{ action('FoundItemsController@destroy', $foundItem->id) }}}" id="btnDeletePost">Delete</a></td> -->
+				<td><a href="{{{ action('FoundItemsController@edit', $foundItem->id) }}}">Edit</a> |
+				<td><a href="{{{ action('FoundItemsController@destroy', $foundItem->id) }}}" id="btnDeletePost">Delete</a></td>
 			</tr>
 		</tbody>
-		
+
 	@endforeach
 
 	</table>
 </div>
+
+{{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItem->id), 'method' => 'delete', 'id' => 'deleteFormPost')) }}
+{{ Form::close() }}
+
+@stop
+
+@section('bottomscript')	
+	<script>
+
+	$('#btnDeletePost').on('click', function (e) {
+		e.preventDefault();
+		if (confirm('Are you sure you want to delete this post?')) {
+			$('#deleteFormPost').submit();
+		}
+	});
+
+	</script>
+
+@stop
 
 @stop
