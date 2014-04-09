@@ -17,7 +17,10 @@ class HomeController extends BaseController {
 	// home view route
 	public function showWelcome()
 	{
-		return View::make('home');
+		$data = Input::all();
+
+		return View::make('home')->with('data', $data);
 	}
+
 
 }
