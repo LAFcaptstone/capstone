@@ -19,8 +19,8 @@
 		</div>
 		<div class="row" id='browse' name='browse' style='display:none;'>
 			<div class="col-md-6 col-md-offset-5 bttn4">
-				{{ Form::open(array('url' => '')) }}
-				{{ Form::select('dataset', array('F' => 'Found', 'L' => 'Lost'), 'F', array('class' => 'form-control')) }}
+				{{ Form::open(array('action' => 'HomeController@showIndex')) }}
+				{{ Form::select('dataset', array('F' => 'Found Items', 'L' => 'Lost Items'), 'F', array('class' => 'form-control')) }}
 				{{ Form::submit('Click Me!', array('class' => 'form-control')) }}
 				{{ Form::close() }}
 			</div>
