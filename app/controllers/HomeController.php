@@ -29,6 +29,38 @@ class HomeController extends BaseController {
 		return View::make('dashboard')->with(array('foundItems' => $foundItems));
 	}
 
+	public function showMap()
+	{
+		$foundItems = FoundItem::all();
+		return View::make('map')->with(array('foundItems' => $foundItems));
+	}
+
+
+	public function showLogin ()
+	{
+		return View::make('login');
+	}
+
+	public function doLogin ()
+	{
+		// var_dump(Input::all());
+		// die();
+			if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
+			{
+			    return Redirect::intended('/');
+			}
+			else
+			{
+				Session::flash('errorMessage', 'NO!');
+			    return Redirect::back()->withInput();
+			}
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+		return Redirect::action('PostsController@index');
+	}
 
 
 }
