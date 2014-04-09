@@ -30,12 +30,15 @@ class HomeController extends BaseController {
 
 	public function doLogin ()
 	{
+		// var_dump(Input::all());
+		// die();
 			if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
 			{
-			    return Redirect::intended('/posts');
+			    return Redirect::intended('/');
 			}
 			else
 			{
+				Session::flash('errorMessage', 'NO!');
 			    return Redirect::back()->withInput();
 			}
 	}

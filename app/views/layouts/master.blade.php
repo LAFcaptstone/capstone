@@ -24,22 +24,24 @@
 		@endif
 	
 
-	<div class="row">
-		<div class="col-md-6 col-md-offset-5 text3">
-			<!-- contact email -->
-			<a href="mailto:support@findit.us?Subject=Hello%20again" target="_top"><p>CONTACT US</p></a>
-			<a href="#"><p>LOG IN</p></a>
-		</div>
+
 
 	   <!-- yeilding content from blades -->
 		@yield('content')
 		<footer>
-		   <div class="row">
+		   	<div class="row">
 				<div class="col-md-6 col-md-offset-5 text3">
-					<!-- contact email -->
-					<a href="mailto:support@findit.us?Subject=Hello%20again" target="_top"><p>CONTACT US</p></a>
-				</div>
+			<!-- contact email -->
+				<a href="mailto:support@findit.us?Subject=Hello%20again" target="_top"><p>CONTACT US</p></a>
+				@if(Auth::check())
+        			
+                		<a href="{{{ action('HomeController@logout') }}}"><p> Log Out </a></p>
+        		@else
+        			
+                		<a href="{{{ action('HomeController@showLogin') }}}"><p> Log In</a></p>
+        		@endif
 			</div>
+		</div>
 		</footer>
 
 	</div>
