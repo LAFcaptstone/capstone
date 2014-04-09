@@ -17,8 +17,18 @@ class FoundItemsController extends BaseController {
 	 */
 	public function index()
 	{
-		$foundItems = FoundItem::all();
-		return View::make('foundItems.index')->with('foundItems', $foundItems);
+		//show lists of all posts
+		$search = Input::get('search');
+		$query = FoundItem::orderBy('created_at', 'desc');
+		if (is_null($search)) {
+			$foundItems = $query->paginate(10);
+		} 
+		else {
+			$foundItems = $query->where('title', 'LIKE', "%{$search}%")
+						   		->orWhere('body', 'LIKE', "%{$search}%")
+						   		->paginate(10);
+		}
+		return View::make('foundItems.index')->with(array('foundItems' => $foundItems));
 	}
 
 	/**
@@ -28,7 +38,7 @@ class FoundItemsController extends BaseController {
 	 */
 	public function create()
 	{
-		return View::make('foundItems.create')->with('foundItems', new FoundItem());
+		return View::make('foundItems.create-edit')->with('foundItems', new FoundItem());
 	}
 
 	/**
@@ -44,7 +54,8 @@ class FoundItemsController extends BaseController {
     	// attempt validation
     	if ($validator->fails())
     	{
-    		//Session::flash('errorMessage', 'Post could not be created');
+    		Session::flash('errorMessage', 'Post could not be created');
+
     	    // validation failed, redirect to the post create page with validation errors and old inputs
     	    return Redirect::back()->withInput()->withErrors($validator);
     	}
@@ -63,7 +74,7 @@ class FoundItemsController extends BaseController {
 				$foundItem->image_path = FoundItem::upload_image($image);
 			}
 			$foundItem->save();
-			//Session::flash('successMessage', 'Post created succesfully');
+			Session::flash('successMessage', 'Post created succesfully');
 			return Redirect::action('FoundItemsController@index');
 		}
 	}
@@ -88,7 +99,8 @@ class FoundItemsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$foundItem = FoundItem::findOrFail($id);
+		return View::make('foundItems.create-edit')->with('foundItems', $foundItem);
 	}
 
 	/**
@@ -99,7 +111,34 @@ class FoundItemsController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$foundItem = FoundItem::findOrFail($id);
+		// create the validator
+    	$validator = Validator::make(Input::all(), FoundItem::$rules);
+	
+    	// attempt validation
+    	if ($validator->fails())
+    	{
+			Session::flash('errorMessage', 'Post could not be updated');
+    	    // validation failed, redirect to the post create page with validation errors and old inputs
+    	    return Redirect::back()->withInput()->withErrors($validator);
+    	}
+
+    	else
+    	{
+    		// validation succeeded, create and save the post
+			$foundItem->title = Input::get('title');
+			$foundItem->body = Input::get('body');
+			$foundItem->location = Input::get('location');
+			$foundItem->email = Input::get('email');
+			if (Input::hasFile('image'))
+			{
+				$image = Input::file('image');
+				$foundItem->image_path = FoundItem::upload_image($image);
+			}
+			$foundItem->save();
+			Session::flash('successMessage', 'Post updated succesfully');
+			return Redirect::action('FoundItemsController@show', $foundItem->id);
+		}
 	}
 
 	/**
@@ -110,7 +149,9 @@ class FoundItemsController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		FoundItem::findOrFail($id)->delete();
+
+		return Redirect::action('FoundItemsController@index');
 	}
 
 }
