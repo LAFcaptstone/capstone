@@ -9,6 +9,10 @@
         	<div>
           		<hr>
           		{{ Form::open(array('action' => array('FoundItemsController@index'), 'method' => 'GET')) }}
+                {{ Form::label('search', 'Search Found Items') }}
+                {{ Form::text('search') }}
+                {{ Form::submit('Search', array('class'=> 'btn btn-default')) }}
+                <a href="{{{ action('FoundItemsController@create') }}}">Post Found Item</a>
           		{{ Form::close() }}
 
         		@foreach ($foundItems as $foundItem)
@@ -20,10 +24,9 @@
         		    <br>
         		    <hr>
         		@endforeach
+
+                {{ $foundItems->appends(array('search' => Input::get('search')))->links() }}
 		  		
-        		<p>
-        		  <a href="{{{ action('FoundItemsController@create') }}}">Post Found Item</a>
-        		</p>
           </div>
         </div>
     </div><!-- /.row -->
