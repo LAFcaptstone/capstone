@@ -22,5 +22,11 @@ class HomeController extends BaseController {
 		return View::make('home')->with('data', $data);
 	}
 
+	public function showMap()
+	{
+		$foundItems = FoundItem::all();
+		return View::make('map')->with(array('foundItems' => $foundItems));
+	}
+
 
 }
