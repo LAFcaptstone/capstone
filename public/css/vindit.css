@@ -1,6 +1,7 @@
 
 
 
+
    /* .center-block {
       display: block;
       margin-left: auto;
@@ -20,6 +21,15 @@
         border: 1px solid #999;
       }
 
+   .logo {
+    width: 200px;
+    height: 200px;
+    margin-top: 40px;
+    margin-left: 460px;
+
+   }
+
+
     a {
     	text-decoration: none;
     }
@@ -33,7 +43,7 @@
         font-size: 28px;
         box-shadow: 0px 0px 20px #a3a3a3;
         border-radius: 10px;
-        margin-top: 150px;
+        margin-top: 25px;
         padding-left: 8px;
     }
     .bttn2 {
@@ -82,7 +92,7 @@
     }
 
     .text3 {
-        margin-top: 220px;
+        margin-top: 120px;
         font-size: 20px;
         margin-right: 20px;
 

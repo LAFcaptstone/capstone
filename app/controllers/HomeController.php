@@ -29,4 +29,31 @@ class HomeController extends BaseController {
 	}
 
 
+	public function showLogin ()
+	{
+		return View::make('login');
+	}
+
+	public function doLogin ()
+	{
+		// var_dump(Input::all());
+		// die();
+			if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
+			{
+			    return Redirect::intended('/');
+			}
+			else
+			{
+				Session::flash('errorMessage', 'NO!');
+			    return Redirect::back()->withInput();
+			}
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+		return Redirect::action('PostsController@index');
+	}
+
+
 }
