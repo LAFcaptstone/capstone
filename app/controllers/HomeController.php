@@ -56,6 +56,37 @@ class HomeController extends BaseController {
 			}
 	}
 
+	public function showSignup ()
+	{
+		return View::make('signup');
+	}
+
+	public function doSignup ()
+	{
+			// create the validator
+			$validator = Validator::make(Input::all(), User::$rules);
+
+			// attempt validation
+    		if ($validator->fails())
+    		{
+    		Session::flash('errorMessage', 'Please Sign In.');
+
+    	    // validation failed, redirect to the post create page with validation errors and old inputs
+    	    return Redirect::back()->withInput()->withErrors($validator);
+    		}
+			else
+			{	
+				$newUser = new User();
+				$newUser->first_name = Input::get('first name');
+				$newUser->last_name = Input::get('last name');
+				$newUser->email = Input::get('email');
+				$newUser->password = Input::get('password');
+				$lostItem->save();
+				Session::flash('successMessage', 'Welcome!');
+				return Redirect::action('HomeController@showWelcome');
+			}
+	}
+
 	public function logout()
 	{
 		Auth::logout();
