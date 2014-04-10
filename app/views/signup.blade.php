@@ -39,7 +39,7 @@
 		    <div class="col-sm-offset-2 col-sm-10">
 				<br>
 		      	<button type="submit" class="btn btn-default">Submit</button>
-		      	<a href="{{{action('HomeController@doSignup') }}}">Cancel</a>
+		      	<!-- <a href="{{{action('HomeController@doSignup') }}}">Cancel</a> -->
 		    </div>
 		</div>
 
