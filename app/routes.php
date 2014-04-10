@@ -21,11 +21,11 @@ Route::post('/login', 'HomeController@doLogin');
 
 Route::get('/logout', 'HomeController@logout');
 
-Route::get('/signup', 'HomeController@showSignup');
+Route::get('/signup', 'UserController@create');
 
-Route::post('/signup', 'HomeController@doSignup');
+Route::post('/signup', 'UserController@store');
 
-Route::get('/signout', 'HomeController@signout');
+Route::resource('users', 'UserController');
 
 Route::resource('foundItems', 'FoundItemsController');
 
