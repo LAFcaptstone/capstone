@@ -8,7 +8,7 @@ class FoundItemsController extends BaseController {
 	    parent::__construct();
 	
 	    // run auth filter before all methods on this controller except index and show
-	    $this->beforeFilter('auth.basic', array('except' => array('index', 'show')));
+	    $this->beforeFilter('auth', array('except' => array('index', 'show')));
 	}
 	/**
 	 * Display a listing of the resource.
@@ -100,7 +100,7 @@ class FoundItemsController extends BaseController {
 	public function edit($id)
 	{
 		$foundItem = FoundItem::findOrFail($id);
-		return View::make('foundItems.create-edit')->with('foundItems', $foundItem);
+		return View::make('foundItems.create-edit')->with('foundItem', $foundItem);
 	}
 
 	/**
