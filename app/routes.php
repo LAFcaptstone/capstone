@@ -27,3 +27,7 @@ Route::resource('lostItems', 'LostItemsController');
 
 Route::get('/map', 'HomeController@showMap');
 
+Route::get('/test', function(){
+	return View::make('newhome');
+});
+
