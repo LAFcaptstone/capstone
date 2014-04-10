@@ -1,48 +1,42 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-	<title>VIND IT!</title>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="/css/vindit.css">
-	@yield('topscript')
-  </head>
-
-<body>
-	<div class="container">
-		@if (Session::has('successMessage'))
-			<div class="alert alert-success">{{{ Session::get('successMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
-		@endif
-		@if (Session::has('errorMessage'))
-			<div class="alert alert-danger">{{{ Session::get('errorMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
-		@endif
-	
-
-
-
-	   <!-- yeilding content from blades -->
-		@yield('content')
-		<footer>
-		   	<div class="row">
-				<div class="col-md-6 col-md-offset-5 text3">
-			<!-- contact email -->
-				<a href="mailto:support@findit.us?Subject=Hello%20again" target="_top"><p>CONTACT US</p></a>
-				@if(Auth::check())
-        			
-                		<a href="{{{ action('HomeController@logout') }}}"><p> Log Out </a></p>
-        		@else
-        			
-                		<a href="{{{ action('HomeController@showLogin') }}}"><p> Log In</a></p>
-        		@endif
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+		<meta charset="utf-8">
+		<title>Vind iT</title
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
+		<link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x11png">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+		<link href='css/base.css' rel='stylesheet'>
+		@yield('topscript')
+	</head>	
+		<body>	
+			<div class="container">
+				@if (Session::has('successMessage'))
+					<div class="alert alert-success">{{{ Session::get('successMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
+				@endif
+				@if (Session::has('errorMessage'))
+					<div class="alert alert-danger">{{{ Session::get('errorMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
+				@endif
 			</div>
-		</div>
-		</footer>
+	   
+	   		<!-- yeilding content from blades -->
+			@yield('content')
+		
+			<footer>
+				<br>
+				<div class='row'>
+					<div class='col-lg-12'>
+						<h5 class='text-center'><small>Small Logo &copy;2014</small></h5>
+					</div>
+				</div>
+				<div style='margin-top:10px'/>
+			</footer>
 
 	</div>
   

@@ -2,7 +2,28 @@
 
 
 
-   /* .center-block {
+
+/*Important CSS for the 
+Google Maps API*/
+
+html { height: 100% }
+body { height: 100%; margin: 0; padding: 0 }
+
+#map-canvas { height: 100%; width:100%; margin-left: 30% }
+
+#panel {
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	z-index: 5;
+	background-color: #fff;
+	padding: 5px;
+	border: 1px solid #999;
+}
+
+/*HomePage*/
+
+  /* .center-block {
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -92,7 +113,7 @@
     }
 
     .text3 {
-        margin-top: 120px;
+        margin-top: 25px;
         font-size: 20px;
         margin-right: 20px;
 

@@ -14,6 +14,12 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
+
+	public function __construct()
+	{
+	    // require auth check to access dashboard page
+	    $this->beforeFilter('auth', array('only' => 'showDashboard'));
+	}
 	// home view route
 	public function showWelcome()
 	{
