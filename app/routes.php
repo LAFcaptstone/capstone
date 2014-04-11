@@ -21,9 +21,9 @@ Route::post('/login', 'HomeController@doLogin');
 
 Route::get('/logout', 'HomeController@logout');
 
-Route::get('/signup', 'UserController@create');
+// Route::resource('signup', 'UserController@create');
 
-Route::post('/signup', 'UserController@store');
+// Route::post('/signup', 'UserController@store');
 
 Route::resource('users', 'UserController');
 
