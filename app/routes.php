@@ -27,8 +27,6 @@ Route::post('/lostItems/{id}/flag', 'LostItemsController@flag');
 
 Route::get('/signup', 'UserController@create');
 
-Route::post('/signup', 'UserController@store');
-
 Route::resource('users', 'UserController');
 
 Route::resource('foundItems', 'FoundItemsController');
