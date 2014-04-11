@@ -34,17 +34,15 @@
                     <div style="margin-top:10px" class="form-group">
                     <!-- Button -->
                     	<div class="col-sm-12 controls">
-                            <a id="btn-login" href="{{{action('HomeController@doLogin') }}}" class="btn btn-success">Login  </a>
+                            <input type="submit" value="Log in" class="btn btn-success">
                             <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
                         </div>
                     </div>
 					<div class="form-group">
                         <div class="col-md-12 control">
                             <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                Don't have an account! 
-                                <a href="#">
-                                    Sign Up Here
-                                </a>
+                                Don't have an account? 
+                                <a href="{{action('UserController@create')}}">Sign Up Here</a>
                             </div>
                         </div>
                     </div>    
