@@ -20,6 +20,14 @@ class User extends Base implements UserInterface, RemindableInterface {
 		array('id' => 2, 'name' => 'Stadnard User')
 	);
 
+
+	public static $rules = array(
+    	'first_name'      => 'required|max:50',
+    	'last_name'       => 'required|max:50',
+    	'email'		 => 'required|max:50',
+    	'password'   => 'required|max:10',
+	
+	);
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
