@@ -30,7 +30,7 @@
             <p><img src="{{{ $lostItem->image_path }}}"></p>
         @endif
 
-        <p>{{{ $lostItem->created_at->format('l, F jS Y') }}}</p>
+        <p>{{{ $lostItem->created_at->format('l, F jS Y @ h:i:s A') }}}</p>
         <br>
         <hr>
       
