@@ -27,11 +27,15 @@
         <button type="submit" class="btn btn-default">Submit</button>
     {{ Form::close() }} 
       <ul class="nav navbar-right navbar-nav">
-        <li>
-          <a href="#">Create New Post</a>
+         <li>
+          <a href="{{{ action('FoundItemsController@create') }}}">Create New Post</a>
         </li>
         <li>
-          <a href="#">Login</a>
+            @if(Auth::check())
+            <a href="{{{ action('HomeController@logout') }}}">Log Out</a>
+            @else
+            <a href="{{{ action('HomeController@showLogin') }}}">Log In</a>
+            @endif
         </li>
         <li>
           <a href="#">About Vind iT</a>
@@ -39,7 +43,6 @@
         <li>
           <a href="#">Contact Us</a>
         </li>
-        
       </ul>
     </nav>
   </div>
