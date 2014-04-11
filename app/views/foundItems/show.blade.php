@@ -2,13 +2,6 @@
 
 @section('content')
 
-<h1>{{{ $foundItem->title }}}</h1>
-<p> {{ $foundItem->body }}</p>
-<p> {{ $foundItem->location }}</p>
-@if (!is_null($foundItem->image_path))
-	<img src="{{{ $foundItem->image_path }}}">
-@endif
-
 <div class='row'>
 	<div class='col-sm-12'>
 		<h1>{{{ $foundItem->title }}}</h1>
@@ -36,7 +29,9 @@
 <p><a href="mailto:support@findit.us?Subject=Hello%20again" target="_top" id="btnNotify">Notify</a></p>	
 <p>	
 	<a href="{{{action('FoundItemsController@index') }}}">Return to Found Items</a> |
-	<a href="#">Flag Post</a>
+	{{ Form::open(array('action' => array('FoundItemsController@flag', $foundItem->id))) }}
+	{{ Form::submit('Flag Post', array('class' => 'btn btn-primary')) }}
+	{{ Form::close() }}
 </p>
 <p>
 	@if (Auth::check())

@@ -7,7 +7,11 @@
         <div class="panel panel-info" >
             <div class="panel-heading">
                 <div class="panel-title">Sign In</div>
+<<<<<<< HEAD
                 <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="">Forgot password?</a></div>
+=======
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="{{ action('RemindersController@getRemind') }}">Forgot password?</a></div>
+>>>>>>> master
             </div>     
 
         <div style="padding-top:30px" class="panel-body" >
@@ -32,7 +36,7 @@
                     <div style="margin-top:10px" class="form-group">
                     <!-- Button -->
                     	<div class="col-sm-12 controls">
-                            <a id="btn-login" href="#" class="btn btn-success">Login  </a>
+                            <a id="btn-login" href="{{{action('HomeController@doLogin') }}}" class="btn btn-success">Login  </a>
                             <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
                         </div>
                     </div>
