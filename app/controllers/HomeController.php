@@ -32,7 +32,12 @@ class HomeController extends BaseController {
 	public function showDashboard()
 	{
 		$foundItems = FoundItem::all();
-		return View::make('dashboard')->with(array('foundItems' => $foundItems));
+		$lostItems = LostItem::all();
+		$data = array(
+			'foundItems' => $foundItems,
+			'lostItems' => $lostItems
+		);
+		return View::make('dashboard')->with($data);
 	}
 
 	public function showMap()
