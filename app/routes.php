@@ -37,9 +37,11 @@ Route::resource('lostItems', 'LostItemsController');
 
 Route::get('/map', 'HomeController@showMap');
 
+
 Route::controller('password', 'RemindersController');
 
 Route::get('/test', function(){
 	return View::make('newhome');
 });
+
 
