@@ -44,6 +44,7 @@
 			<table class="table table-responsive">
 				<thead>
         		    <tr>
+        		    	<th>Flag Count</th>
         		       	<th>Id</th>
         		       	<th>Title</th>
         		       	<th>Location</th>
@@ -57,14 +58,14 @@
 				<tbody>
 				@foreach ($foundItems as $foundItem)
        			    <tr>
-       			    	<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span></td>
+       			    	<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $foundItem->flag_count }}}</td>
 						<td>{{{ $foundItem->id }}}</td>
 						<td>{{{ $foundItem->title }}}</td>
 						<td>{{{ $foundItem->location }}}</td>
 						<td>{{{ $foundItem->email }}}</td>
 						<td>{{{ $foundItem->image_path }}}</td>
-						<td>{{{ $foundItem->created_at->format('l, F jS Y') }}}</td>
-						<td>{{{ $foundItem->updated_at->format('l, F jS Y') }}}</td>
+						<td>{{{ $foundItem->created_at->format('l, F jS Y @ h:i:s A') }}}</td>
+						<td>{{{ $foundItem->updated_at->format('l, F jS Y @ h:i:s A') }}}</td>
 						<td><a href="{{{ action('FoundItemsController@edit', $foundItem->id) }}}">Edit</a>
 						<td>
 							{{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItem->id), 'method' => 'delete')) }}
@@ -80,11 +81,13 @@
 			<table class="table table-responsive">
 				<thead>
 	    	        <tr>
+	    	        	<th>Flag Count</th>
 	    	           	<th>Id</th>
 	    	           	<th>Title</th>
 	    	           	<th>Location</th>
 	    	           	<th>Email</th>
 	    	           	<th>Image</th>
+	    	           	<th>Reward</th>
 	    	           	<th>Date Created</th>
 						<th>Date Updated</th>
 	    	        </tr>
@@ -93,15 +96,16 @@
 				<tbody>
 				@foreach ($lostItems as $lostItem) 
 	    	   	    <tr>
-	  	    	   		<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span></td>
+	  	    	   		<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
 						<td>{{{ $lostItem->id }}}</td>
 						<td>{{{ $lostItem->title }}}</td>
 						<td>{{{ $lostItem->location }}}</td>
 						<td>{{{ $lostItem->email }}}</td>
 						<td>{{{ $lostItem->image_path }}}</td>
-						<td>{{{ $lostItem->created_at->format('l, F jS Y') }}}</td>
-						<td>{{{ $lostItem->updated_at->format('l, F jS Y') }}}</td>
-						<td><a href="{{{ action('LostItemsController@edit', $lostItem->id) }}}">Edit</a> |
+						<td>{{{ $lostItem->reward }}}</td>
+						<td>{{{ $lostItem->created_at->format('l, F jS Y @ h:i:s A') }}}</td>
+						<td>{{{ $lostItem->updated_at->format('l, F jS Y @ h:i:s A') }}}</td>
+						<td><a href="{{{ action('LostItemsController@edit', $lostItem->id) }}}">Edit</a>
 						<td>
 							{{ Form::open(array('action' => array('LostItemsController@destroy', $lostItem->id), 'method' => 'delete')) }}
 							{{ Form::submit('Delete', array('class' => 'btnDelete')) }}

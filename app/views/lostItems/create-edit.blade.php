@@ -33,9 +33,14 @@
 
 		<div class="form-group">
 		    {{ Form::label('location', 'Zip Code', array('class' => 'col-sm-2 control-label')) }}
-		    <div class="col-sm-10">
+		    <div class="col-sm-4">
 				{{ Form::text('location', null, array('class' => 'form-control', 'placeholder' => 'Zip Code')) }}
 		    	{{ $errors->has('location') ? $errors->first('location', '<p><span class="help-block">:message</span></p>') : " " }}
+		    </div>
+		    {{ Form::label('reward', 'Reward', array('class' => 'col-sm-2 control-label')) }}
+		    <div class="col-sm-4">
+				{{ Form::text('reward', null, array('class' => 'form-control', 'placeholder' => 'Optional')) }}
+		    	{{ $errors->has('reward') ? $errors->first('reward', '<p><span class="help-block">:message</span></p>') : " " }}
 		    </div>
 		</div>
 
