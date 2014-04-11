@@ -29,7 +29,9 @@
 <p><a href="mailto:support@findit.us?Subject=Hello%20again" target="_top" id="btnNotify">Notify</a></p>	
 <p>	
 	<a href="{{{action('FoundItemsController@index') }}}">Return to Found Items</a> |
-	<a href="#" id="flagPost">Flag Post</a>
+	{{ Form::open(array('action' => array('FoundItemsController@flag', $foundItem->id))) }}
+	{{ Form::submit('Flag Post', array('class' => 'btn btn-primary')) }}
+	{{ Form::close() }}
 </p>
 <p>
 	<a href="{{{ action('FoundItemsController@edit', $foundItem->id) }}}">Edit Post</a> |
