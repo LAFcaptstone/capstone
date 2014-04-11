@@ -34,8 +34,12 @@
 	{{ Form::close() }}
 </p>
 <p>
+	@if (Auth::check())
+	@if (Auth::user()->is_admin || Auth::user()->id === $post->user_id)
 	<a href="{{{ action('FoundItemsController@edit', $foundItem->id) }}}">Edit Post</a> |
 	<a href="{{{ action('FoundItemsController@destroy', $foundItem->id) }}}" id="btnDeletePost">Delete Post</a>
+	@endif
+	@endif
 </p>
 
 {{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItem->id), 'method' => 'delete', 'id' => 'deleteFormPost')) }}
