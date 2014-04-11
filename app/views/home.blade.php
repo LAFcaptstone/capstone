@@ -9,10 +9,10 @@
 				<br>
 			</div>
 			<div class="col-lg-12">
-				<a href="{{{ action('LostItemsController@index')}}}" class="button center-block">
+				<a href="{{{ action('FoundItemsController@index')}}}" class="button center-block">
 					I Lost A...
 				</a>
-				<a href="{{{ action('FoundItemsController@index')}}}" class="button center-block">
+				<a href="{{{ action('LostItemsController@index')}}}" class="button center-block">
 					I Found A...
 				</a>
 			</div>	
