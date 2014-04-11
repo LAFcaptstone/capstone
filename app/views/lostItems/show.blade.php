@@ -16,8 +16,12 @@
 	<a href="#">Flag Post</a>
 </p>
 <p>
+	@if (Auth::check())
+	@if (Auth::user()->is_admin || Auth::user()->id === $post->user_id)
 	<a href="{{{ action('LostItemsController@edit', $lostItem->id) }}}">Edit Post</a> |
 	<a href="{{{ action('LostItemsController@destroy', $lostItem->id) }}}" id="btnDeletePost">Delete Post</a>
+	@endif
+	@endif
 </p>
 
 {{ Form::open(array('action' => array('LostItemsController@destroy', $lostItem->id), 'method' => 'delete', 'id' => 'deleteFormPost')) }}

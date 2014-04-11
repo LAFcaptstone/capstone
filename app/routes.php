@@ -21,6 +21,12 @@ Route::post('/login', 'HomeController@doLogin');
 
 Route::get('/logout', 'HomeController@logout');
 
+Route::get('/signup', 'UserController@create');
+
+Route::post('/signup', 'UserController@store');
+
+Route::resource('users', 'UserController');
+
 Route::resource('foundItems', 'FoundItemsController');
 
 Route::resource('lostItems', 'LostItemsController');
