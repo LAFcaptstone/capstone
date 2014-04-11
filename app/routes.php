@@ -21,6 +21,10 @@ Route::post('/login', 'HomeController@doLogin');
 
 Route::get('/logout', 'HomeController@logout');
 
+Route::post('/foundItems/{id}/flag', 'FoundItemsController@flag');
+
+Route::post('/lostItems/{id}/flag', 'LostItemsController@flag');
+
 Route::get('/signup', 'UserController@create');
 
 Route::post('/signup', 'UserController@store');
@@ -32,6 +36,8 @@ Route::resource('foundItems', 'FoundItemsController');
 Route::resource('lostItems', 'LostItemsController');
 
 Route::get('/map', 'HomeController@showMap');
+
+Route::controller('password', 'RemindersController');
 
 Route::get('/test', function(){
 	return View::make('newhome');
