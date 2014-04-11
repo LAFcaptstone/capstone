@@ -8,7 +8,7 @@ class LostItemsController extends BaseController {
 	    parent::__construct();
 	
 	    // run auth filter before all methods on this controller except index and show
-	    $this->beforeFilter('auth.basic', array('except' => array('index', 'show')));
+	    $this->beforeFilter('auth', array('except' => array('index', 'show')));
 	}
 	/**
 	 * Display a listing of the resource.
@@ -152,6 +152,15 @@ class LostItemsController extends BaseController {
 		LostItem::findOrFail($id)->delete();
 
 		return Redirect::action('LostItemsController@index');
+	}
+
+	public function flag($id)
+	{
+		$lostItem = LostItem::findOrFail($id);
+		$lostItem->flag_count ++;
+		$lostItem->save();
+		Session::flash('successMessage', 'Post flagged succesfully');
+		return Redirect::action('LostItemsController@show', $lostItem->id);
 	}
 
 }
