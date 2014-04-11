@@ -154,4 +154,13 @@ class LostItemsController extends BaseController {
 		return Redirect::action('LostItemsController@index');
 	}
 
+	public function flag($id)
+	{
+		$lostItem = LostItem::findOrFail($id);
+		$lostItem->flag_count ++;
+		$lostItem->save();
+		Session::flash('successMessage', 'Post flagged succesfully');
+		return Redirect::action('LostItemsController@show', $lostItem->id);
+	}
+
 }

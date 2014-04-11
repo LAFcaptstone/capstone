@@ -154,4 +154,13 @@ class FoundItemsController extends BaseController {
 		return Redirect::action('FoundItemsController@index');
 	}
 
+	public function flag($id)
+	{
+		$foundItem = FoundItem::findOrFail($id);
+		$foundItem->flag_count ++;
+		$foundItem->save();
+		Session::flash('successMessage', 'Post flagged succesfully');
+		return Redirect::action('FoundItemsController@show', $foundItem->id);
+	}
+
 }
