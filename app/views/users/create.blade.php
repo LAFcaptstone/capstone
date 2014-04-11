@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
+<div class='container-full'>
+<div class="container"> 
     <div style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
     <div class="panel panel-info">
         <div class="panel-heading">
@@ -9,13 +10,12 @@
             <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="{{ action('HomeController@doLogin')}}">Sign In</a></div>
         </div>  
         <div class="panel-body" >
-            <form id="signupform" class="form-horizontal" role="form">
                 
                 <div id="signupalert" style="display:none" class="alert alert-danger">
                     <p>Error:</p>
                     <span></span>
                 </div>
-                {{ Form::open(array('action' => 'UserController@store', 'class' => 'form-signup')) }}
+                {{ Form::open(array('action' => 'UserController@store', 'class' => 'form-horizontal', 'id' =>'signupform')) }}
                 <div class="form-group">
                     {{ Form::label('first_name', 'First Name', array('class' => 'col-sm-3 control-label')) }}
                     <div class="col-md-9">
@@ -47,7 +47,7 @@
                 <div class="form-group">
                     <!-- Button -->                                        
                     <div class="col-md-offset-3 col-md-9">
-                        <a href="{{action('UserController@store')}}">{{ Form::submit('Sign Up', array('id' => 'btn-signup', 'type' => 'button', 'class' => 'btn btn-info', 'icon-hand-right'))}}</a>
+                        {{ Form::submit('Sign Up', array('id' => 'btn-signup', 'type' => 'button', 'class' => 'btn btn-info', 'icon-hand-right'))}}
                         <span style="margin-left:8px; margin-right:8px;">or </span>
                         <a href="{{action('UserController@store')}}">{{ Form::submit('Sign Up with Facebook', array('id' => 'btn-fbsignup', 'type' => 'button', 'class' => 'btn btn-primary', 'icon-facebook'))}}</a>
                     </div>
@@ -57,7 +57,7 @@
         </div>
     </div>
     </div>
-
+</div>
 </div>  
 
   {{ Form::close() }}

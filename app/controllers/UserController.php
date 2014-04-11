@@ -9,7 +9,7 @@ class UserController extends BaseController {
 	 */
 	public function index()
 	{
-		return View::make('showWelcome');
+		return View::make('users.show');
 	}
 
 	/**
@@ -28,6 +28,63 @@ class UserController extends BaseController {
 	 * @return Response
 	 */
 	public function store()
+	{
+
+		// create the validator
+		$validator = Validator::make(Input::all(), User::$rules);
+		// attempt validation
+    	if ($validator->fails())
+    	{
+    	Session::flash('errorMessage', 'Please Sign In.');
+        // validation failed, redirect to the post create page with validation errors and old inputs
+        return Redirect::back()->withInput()->withErrors($validator);
+    	}
+		else
+		{	
+			$newUser = new User();
+			// $newUser->user_id = Auth::user()->id;
+			$newUser->first_name = Input::get('first_name');
+			$newUser->last_name = Input::get('last_name');
+			$newUser->email = Input::get('email');
+			$newUser->password = Input::get('password');
+			$newUser->save();
+			Session::flash('successMessage', 'Welcome!');
+			return Redirect::action('HomeController@showWelcome');
+		}
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($id)
+	{
+		
+		$newUser = User::findOrFail($id);
+		return View::make('users.show')->with('user', $newUser);
+	}
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($id)
+	{
+		$newUser = User::findOrFail($id);
+		return View::make('users.edit')->with('user', $newUser);
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($id)
 	{
 		// create the validator
 		$validator = Validator::make(Input::all(), User::$rules);
@@ -52,39 +109,6 @@ class UserController extends BaseController {
 	}
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id
@@ -92,7 +116,11 @@ class UserController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Post::find($id)->delete();
+    		Session::flash('successMessage', 'Post Deleted successfully');
+    	    
+
+			return Redirect::action('HomeController@showWelcome');
 	}
 
 }
