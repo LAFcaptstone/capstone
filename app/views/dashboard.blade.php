@@ -44,7 +44,6 @@
 			<table class="table table-responsive">
 				<thead>
         		    <tr>
-        		       	<th>Flag</th>
         		       	<th>Id</th>
         		       	<th>Title</th>
         		       	<th>Location</th>
@@ -58,7 +57,7 @@
 				<tbody>
 				@foreach ($foundItems as $foundItem)
        			    <tr>
-       			    	<td style="color:red;" id="flag"><span class="glyphicon glyphicon-flag"></span></td>
+       			    	<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span></td>
 						<td>{{{ $foundItem->id }}}</td>
 						<td>{{{ $foundItem->title }}}</td>
 						<td>{{{ $foundItem->location }}}</td>
@@ -69,6 +68,42 @@
 						<td><a href="{{{ action('FoundItemsController@edit', $foundItem->id) }}}">Edit</a>
 						<td>
 							{{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItem->id), 'method' => 'delete')) }}
+							{{ Form::submit('Delete', array('class' => 'btnDelete')) }}
+							{{ Form::close() }}
+						</td>
+					</tr>
+				@endforeach
+				</tbody>
+			</table>
+
+			<h3>Lost Items Posts</h3>
+			<table class="table table-responsive">
+				<thead>
+	    	        <tr>
+	    	           	<th>Id</th>
+	    	           	<th>Title</th>
+	    	           	<th>Location</th>
+	    	           	<th>Email</th>
+	    	           	<th>Image</th>
+	    	           	<th>Date Created</th>
+						<th>Date Updated</th>
+	    	        </tr>
+	    	    </thead>
+	  	
+				<tbody>
+				@foreach ($lostItems as $lostItem) 
+	    	   	    <tr>
+	  	    	   		<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span></td>
+						<td>{{{ $lostItem->id }}}</td>
+						<td>{{{ $lostItem->title }}}</td>
+						<td>{{{ $lostItem->location }}}</td>
+						<td>{{{ $lostItem->email }}}</td>
+						<td>{{{ $lostItem->image_path }}}</td>
+						<td>{{{ $lostItem->created_at->format('l, F jS Y') }}}</td>
+						<td>{{{ $lostItem->updated_at->format('l, F jS Y') }}}</td>
+						<td><a href="{{{ action('LostItemsController@edit', $lostItem->id) }}}">Edit</a> |
+						<td>
+							{{ Form::open(array('action' => array('LostItemsController@destroy', $lostItem->id), 'method' => 'delete')) }}
 							{{ Form::submit('Delete', array('class' => 'btnDelete')) }}
 							{{ Form::close() }}
 						</td>
@@ -87,10 +122,10 @@
 
 <script>
 	// $('document').ready(function() {
-		// $('#flag').hide();
-        // $('#flagPost').click(function() {
-            // $('#flag').hide();
-        // });
+		// $('.flag').hide();
+      	// $('#flagPost').click(function() {
+      		// $('.flag').show();
+      	// });
     // });
  
 	$('.btnDelete').on('click', function (e) {
