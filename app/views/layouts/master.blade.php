@@ -12,7 +12,7 @@
 		<link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
 		<link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x11png">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-		<link href='css/base.css' rel='stylesheet'>
+		<link href='/css/base.css' rel='stylesheet'>
 		@yield('topscript')
 	</head>	
 		<body>	

@@ -8,7 +8,7 @@ class FoundItemsController extends BaseController {
 	    parent::__construct();
 	
 	    // run auth filter before all methods on this controller except index and show
-	    $this->beforeFilter('auth', array('except' => array('index', 'show')));
+	    $this->beforeFilter('auth', array('except' => array('index', 'show', 'create', 'store', 'flag')));
 	}
 	/**
 	 * Display a listing of the resource.
