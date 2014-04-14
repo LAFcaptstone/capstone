@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'support@vindit.us', 'name' => 'VindIT'),
+	'from' => array('address' => 'support@vindit.us', 'name' => 'VIND.IT'),
 
 	/*
 	|--------------------------------------------------------------------------
