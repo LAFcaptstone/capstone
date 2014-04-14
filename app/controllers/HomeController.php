@@ -78,17 +78,7 @@ class HomeController extends BaseController {
 
 	public function showTest()
 	{
-		$search = Input::get('search');
-		$query = FoundItem::orderBy('created_at', 'desc');
-		if (is_null($search)) {
-			$foundItems = $query->paginate(10);
-		} 
-		else {
-			$foundItems = $query->where('title', 'LIKE', "%{$search}%")
-						   		->orWhere('body', 'LIKE', "%{$search}%")
-						   		->paginate(10);
-		}
-		return View::make('newindex')->with(array('foundItems' => $foundItems));
+		return View::make('newhome');
 	}
 
 

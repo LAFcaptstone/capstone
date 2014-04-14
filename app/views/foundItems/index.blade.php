@@ -1,10 +1,5 @@
 @extends('layouts.master')
 
-@section('topscript')
-<link href='css/listview.css' rel='stylesheet'>
-@stop
-
-
 @section('content')
 
 <!-- NavBar -->
@@ -51,7 +46,6 @@
 </header>
 <!-- NavBar -->
 
-
 <div class="container">
   <div class="row">
     
@@ -61,7 +55,7 @@
         <div class="panel-body">
           
           
-          <h1 style='margin-bottom:75px; margin-top:30px;'>Whats been found...</h1>
+          <h3 style='margin-bottom:25px; margin-top:10px;'>Whats been found...</h3>
           <!--/stories-->
           @foreach ($foundItems as $foundItem)
           <div class="row">    
@@ -83,7 +77,6 @@
               <br><br>
             </div>
           </div>
-          <hr>
           <hr>
           @endforeach
           <!--/stories-->
