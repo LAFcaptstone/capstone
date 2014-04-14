@@ -21,10 +21,12 @@
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
     {{ Form::open(array('action' => array('FoundItemsController@index'), 'method' => 'GET', 'class' => 'navbar-form navbar-left')) }}
-    <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-    </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+    <!-- <div class="form-group"> -->
+        <!-- <input type="text" class="form-control" placeholder="Search"> -->
+    <!-- </div> -->
+    <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+        {{ Form::text('search') }}
+        {{ Form::submit('Search', array('class'=> 'btn btn-default')) }}
     {{ Form::close() }} 
       <ul class="nav navbar-right navbar-nav">
         <li>
@@ -67,7 +69,7 @@
             <br>
             <div class="col-md-2 col-sm-3 text-center">
             @if (!is_null($lostItem->image_path)) 
-              <a class="story-title" href="{{{ action('LostItemsController@show', $foundItem->id) }}}"><img alt="Post specific image" src="{{ $lostItem->image_path }}" style="width:100px;height:100px" class="img-circle"></a>
+              <a class="story-title" href="{{{ action('LostItemsController@show', $lostItem->id) }}}"><img alt="Post specific image" src="{{ $lostItem->image_path }}" style="width:100px;height:100px" class="img-circle"></a>
             @endif
             </div>
             <div class="col-md-10 col-sm-9">

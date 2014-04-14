@@ -21,10 +21,12 @@
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
     {{ Form::open(array('action' => array('FoundItemsController@index'), 'method' => 'GET', 'class' => 'navbar-form navbar-left')) }}
-    <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-    </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+    <!-- <div class="form-group"> -->
+        <!-- <input type="text" class="form-control" placeholder="Search"> -->
+    <!-- </div> -->
+    <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+        {{ Form::text('search') }}
+        {{ Form::submit('Search', array('class'=> 'btn btn-default')) }}
     {{ Form::close() }} 
       <ul class="nav navbar-right navbar-nav">
          <li>
