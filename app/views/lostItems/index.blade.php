@@ -67,7 +67,7 @@
             <br>
             <div class="col-md-2 col-sm-3 text-center">
             @if (!is_null($lostItem->image_path)) 
-              <a class="story-title" href="{{{ action('LostItemsController@show', $foundItem->id) }}}"><img alt="Post specific image" src="{{ $lostItem->image_path }}" style="width:100px;height:100px" class="img-circle"></a>
+              <a class="story-title" href="{{{ action('LostItemsController@show', $lostItem->id) }}}"><img alt="Post specific image" src="{{ $lostItem->image_path }}" style="width:100px;height:100px" class="img-circle"></a>
             @endif
             </div>
             <div class="col-md-10 col-sm-9">
