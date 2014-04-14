@@ -24,9 +24,14 @@ class LostItemsController extends BaseController {
 			$lostItems = $query->paginate(10);
 		} 
 		else {
-			$lostItems = $query->where('title', 'LIKE', "%{$search}%")
-						   	   ->orWhere('body', 'LIKE', "%{$search}%")
-						   	   ->paginate(10);
+			$keywords = explode(' ', $search);
+			foreach($keywords as $keyword)
+    		{
+				$lostItems = $query->where('title', 'LIKE', "%{$keyword}%")
+						   	   	   ->orWhere('body', 'LIKE', "%{$keyword}%")
+						   	   	   ->orWhere('location', 'LIKE', "%{$keyword}%")
+						   	       ->paginate(10);
+			}
 		}
 		return View::make('lostItems.index')->with(array('lostItems' => $lostItems));
 	}
