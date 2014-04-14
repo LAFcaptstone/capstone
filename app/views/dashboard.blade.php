@@ -58,7 +58,11 @@
 				<tbody>
 				@foreach ($foundItems as $foundItem)
        			    <tr>
-       			    	<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $foundItem->flag_count }}}</td>
+       			    	@if ($foundItem->flag_count > 0)
+	  	    	   			<td class="flag" style="color:#F00"><span class="glyphicon glyphicon-flag"></span>  {{{ $foundItem->flag_count }}}</td>
+						@else
+       			    		<td class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $foundItem->flag_count }}}</td>
+						@endif
 						<td>{{{ $foundItem->id }}}</td>
 						<td>{{{ $foundItem->title }}}</td>
 						<td>{{{ $foundItem->location }}}</td>
@@ -96,7 +100,11 @@
 				<tbody>
 				@foreach ($lostItems as $lostItem) 
 	    	   	    <tr>
-	  	    	   		<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
+	    	   	    	@if ($lostItem->flag_count > 0)
+	  	    	   			<td class="flag" style="color:#F00"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
+						@else
+							<td class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
+						@endif
 						<td>{{{ $lostItem->id }}}</td>
 						<td>{{{ $lostItem->title }}}</td>
 						<td>{{{ $lostItem->location }}}</td>
@@ -126,10 +134,9 @@
 
 <script>
 	// $('document').ready(function() {
-		// $('.flag').hide();
-      	// $('#flagPost').click(function() {
-      		// $('.flag').show();
-      	// });
+		// if (lostItem->flag_count > 0) {
+			// $('.flag').css('color', '#F00');
+      	// }
     // });
  
 	$('.btnDelete').on('click', function (e) {
