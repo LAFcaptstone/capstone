@@ -24,9 +24,14 @@ class LostItemsController extends BaseController {
 			$lostItems = $query->paginate(10);
 		} 
 		else {
-			$lostItems = $query->where('title', 'LIKE', "%{$search}%")
-						   	   ->orWhere('body', 'LIKE', "%{$search}%")
-						   	   ->paginate(10);
+			$keywords = explode(' ', $search);
+			foreach($keywords as $keyword)
+    		{
+				$lostItems = $query->where('title', 'LIKE', "%{$keyword}%")
+						   	   	   ->orWhere('body', 'LIKE', "%{$keyword}%")
+						   	   	   ->orWhere('location', 'LIKE', "%{$keyword}%")
+						   	       ->paginate(10);
+			}
 		}
 		return View::make('lostItems.index')->with(array('lostItems' => $lostItems));
 	}
@@ -68,12 +73,18 @@ class LostItemsController extends BaseController {
 			$lostItem->body = Input::get('body');
 			$lostItem->location = Input::get('location');
 			$lostItem->email = Input::get('email');
+			$lostItem->token = uniqid('', true);
 			if (Input::hasFile('image'))
 			{
 				$image = Input::file('image');
 				$lostItem->image_path = LostItem::upload_image($image);
 			}
 			$lostItem->save();
+
+			Mail::send('emails.auth.link', array('token' => $lostItem->token, 'email'=>Input::get('email')), function($message){
+        		$message->to(Input::get('email'))->subject('VIND.IT: Edit/Delete your Post');
+    		});
+
 			Session::flash('successMessage', 'Post created succesfully');
 			return Redirect::action('LostItemsController@index');
 		}
@@ -99,7 +110,12 @@ class LostItemsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$lostItem = LostItem::findOrFail($id);
+		if (Auth::check()) {
+			$lostItem = LostItem::findOrFail($id);
+		}
+		else {
+			$lostItem = LostItem::where('token', $id);
+		}
 		return View::make('lostitems.create-edit')->with('lostItem', $lostItem);
 	}
 

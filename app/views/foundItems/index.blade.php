@@ -1,52 +1,34 @@
 @extends('layouts.master')
 
+@section('topscript')
+<link rel="stylesheet" type="text/css" href="css/index.css">
+@stop
+
 @section('content')
-<div class="container">
-  <div class="row">
-    
-    <div class="col-md-12"> 
-      
-      <div class="panel">
-        <div class="panel-body">
-          
-          
-          <h3 style='margin-bottom:25px; margin-top:10px;'>Whats been found...</h3>
-          <!--/stories-->
-          @foreach ($foundItems as $foundItem)
-          <div class="row">    
-            <br>
-            <div class="col-md-2 col-sm-3 text-center">
-            @if (!is_null($foundItem->image_path)) 
-              <a class="story-title" href="{{{ action('FoundItemsController@show', $foundItem->id) }}}"><img alt="Post specific image" src="{{ $foundItem->image_path }}" style="width:100px;height:100px" class="img-circle"></a>
+
+<div class="portfolio">
+    <div class="portfolio-title">
+        <h3>Whats been found...</h3>
+    </div>
+    <div class="row">
+    @foreach ($foundItems as $foundItem)
+        <div class="col-md-2 col-md-offset-1 work">
+        	@if (!is_null($foundItem->image_path))
+            	<a href="{{{ action('FoundItemsController@show', $foundItem->id) }}}"><img src="{{ $foundItem->image_path }}" alt="" class="img-responsive"></a>
+            @else
+            	<a href="{{{ action('FoundItemsController@show', $foundItem->id) }}}"><img src="/img/vind.jpeg" alt="" class="img-responsive"></a>
             @endif
+            <a href="{{{ action('FoundItemsController@show', $foundItem->id) }}}"><h3>{{{ $foundItem->title }}}</h3></a>
+            <div class="icon-awesome">
+                <h4><small style="font-family:courier,'new courier';" class="text-muted">{{{ $foundItem->created_at->format('l, F jS Y @ h:i:s A') }}}</small></h4>
+                <h4><span class="label label-default">Location: {{{ $foundItem->location }}}</span></h4>
             </div>
-            <div class="col-md-10 col-sm-9">
-              <a href="{{{ action('FoundItemsController@show', $foundItem->id) }}}"><h3>{{{ $foundItem->title }}}</h3></a>
-              <div class="row">
-                <div class="col-xs-9">
-                  <h4><span class="label label-default">Location: {{{ $foundItem->location }}}</span></h4><h4>
-                  <small style="font-family:courier,'new courier';" class="text-muted">Posted at: {{{ $foundItem->created_at }}}</small>
-                  </h4></div>
-                <div class="col-xs-3"></div>
-              </div>
-              <br><br>
-            </div>
-          </div>
-          <hr>
-          @endforeach
-          <!--/stories-->
-          
-          
-          {{ $foundItems->appends(array('search' => Input::get('search')))->links() }}
-        
-          
         </div>
-      </div>
-                                                                                       
-                                                    
-                                                      
-    </div><!--/col-12-->
-  </div>
+    @endforeach
+    </div>
+
+    {{ $foundItems->appends(array('search' => Input::get('search')))->links() }}
 </div>
 
 @stop
+
