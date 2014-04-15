@@ -16,7 +16,6 @@
 		@yield('topscript')
 	</head>	
 		<body>
-			<div class='container'>
 				<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -32,12 +31,14 @@
 						
 						<ul class="nav navbar-nav">
 							<li><a href="#">Contact Us</a></li>
-							<li><a href="#" style='padding-right:25px;border-right:1px solid black;'>Login</a></li>
+					        @if(Auth::check())
+							<li><a href="{{{ action('HomeController@logout') }}}" >Welcome ({{{Auth::user()->first_name}}})</a></li>
+							@else
+							<li><a href="{{{ action('HomeController@showLogin') }}}" >Login</a></li>
+							@endif
 							<li><a href="{{{action('LostItemsController@create')}}}">Create New Post</a></li>
 						</ul>
-						<a href="{{{ action('FoundItemsController@index') }}}"><button type="button" class="btn btn-success navbar-btn">Found</button></a>
-						<a href="{{{ action('LostItemsController@index') }}}"><button type="button" class="btn btn-danger navbar-btn">Lost</button></a>
-						<div class="col-sm-5 col-md-5 pull-right">
+						<div class="col-sm-4 col-md-4 pull-right">
 						{{ Form::open(array('action' => array('FoundItemsController@index'), 'method' => 'GET', 'class' => 'navbar-form')) }}
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
@@ -50,32 +51,19 @@
 						
 					</div>
 				</div>
-			</div><!-- Container -->
 				    
-			<div class="container">
 				@if (Session::has('successMessage'))
-					<div class="alert alert-success">{{{ Session::get('successMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
+					<div class="alert alert-success" style='margin-top:50px;'>{{{ Session::get('successMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
 				@endif
 				@if (Session::has('errorMessage'))
-					<div class="alert alert-danger">{{{ Session::get('errorMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
+					<div class="alert alert-danger" style='margin-top:50px;'>{{{ Session::get('errorMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
 				@endif
 			</div>
-	   
 	   		<!-- yeilding content from blades -->
 			@yield('content')
-		
-			<footer>
-				<br>
-				<div class='row'>
-					<div class='col-lg-12'>
-						<h5 class='text-center'><small>Small Logo &copy;2014</small></h5>
-					</div>
-				</div>
-				<div style='margin-top:10px'/>
-			</footer>
 
-	</div>
-  
+		
+		
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </body>

@@ -1,5 +1,6 @@
 body {
   font-size: 14px;
+  padding-top:50px;
 }
 body, h1, h2, h3, h4, h5, h6 {
   font-family: "gandhi sans", helvetica, sans-serif;
@@ -12,24 +13,7 @@ body, h1, h2, h3, h4, h5, h6 {
 .container {
   max-width: 920px;
 }
-.navbar {
-  background: #8F9194;
-  padding: 0.3em 0;
-}
-.navbar .navbar-brand {
-  color: #fff;
-  font-family: "gandhi serif", georgia, serif;
-  font-weight: bold;
-}
-.navbar ul.nav li a {
-  color: #fff;
-  padding-left: 0;
-  padding-right: 0;
-  margin: 0 1.5em;
-}
-.navbar ul.nav li button {
-  margin: 0.7em 0 0 1em;
-}
+
 .jumbotron {
   background: url(/img/greenBG.png);
   color: #fff;
@@ -72,7 +56,6 @@ body, h1, h2, h3, h4, h5, h6 {
   font-size: 3em;
   font-weight: bold;
   text-align: center;
-  margin: 0.3em 0;
 }
 .benefit {
   margin: 0.8em 0;
