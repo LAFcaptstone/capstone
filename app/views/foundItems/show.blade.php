@@ -58,9 +58,6 @@
       }
             /* bootstrap 3 helpers */
 
-.navbar-form input, .form-inline input {
-  width:auto;
-}
 
 /* end */
 
@@ -107,16 +104,7 @@ header {
   }
 }
 
-.affix {
-      position:static;
-}
 
-body {
-  font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
-  font-weight:300;
-  color:#676767;
-  background-color:#efefef;
-}
 
 a,a:hover {
   color:#77CCDD;
@@ -139,54 +127,6 @@ h3.highlight  {
     border-bottom:2px solid #77CCDD;
 }
 
-.navbar {
-  background-color:#77CCDD;
-    color:#ffffff;
-    border-radius:0;
-}
-.navbar-nav > li > a {
-    color:#fff;
-    padding-left:20px;
-    padding-right:20px;
-    border-left:1px solid #66BBCC;
-}
-.navbar-nav > li:last-child > a {
-    border-right:1px solid #66BBCC;
-}
-
-.navbar-nav li a:hover {
-    background-color:#66BBCC;
-}
-
-.navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
-  color: #000;
-    opacity:.9;
-}
-
-.navbar-brand {
-  color:#fff;
-}
-
-.accordion-group {
-  border-width:0;
-}
-
-.dropdown-menu {
-  min-width: 250px;
-}
-
-.caret {
-  color:#fff;
-}
-
-.navbar-toggle {
-  color:#fff;
-    border-width:0;
-}
-  
-.navbar-toggle:hover {
-  background-color:#fff;
-}
 
 .panel,.panel-heading {
     border-radius:0;
