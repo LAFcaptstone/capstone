@@ -12,8 +12,10 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
-
+//admin dashboard
 Route::get('/dashboard', 'HomeController@showDashboard');
+//user profile
+Route::get('/profile', 'UserController@showProfile');
 
 Route::get('/login', 'HomeController@showLogin');
 
@@ -29,17 +31,17 @@ Route::get('/signup', 'UserController@create');
 
 Route::resource('users', 'UserController');
 
+Route::resource('messages', 'MessagesController');
+
 Route::resource('foundItems', 'FoundItemsController');
 
 Route::resource('lostItems', 'LostItemsController');
 
 Route::get('/map', 'HomeController@showMap');
 
-
 Route::controller('password', 'RemindersController');
 
-Route::get('/test', function(){
-	return View::make('newhome');
-});
+Route::get('/test', 'HomeController@showTest');
+
 
 

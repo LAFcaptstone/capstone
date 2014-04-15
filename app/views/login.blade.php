@@ -12,8 +12,7 @@
 
             </div>     
 
-        <div style="padding-top:30px" class="panel-body" >
-            <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+        <div style="padding-top:30px" class="panel-body">
                 {{ Form::open(array('action' => 'HomeController@doLogin', 'class' => 'form-horizontal', 'id' => 'loginform'))}}
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>

@@ -12,6 +12,20 @@ class UserController extends BaseController {
 		return View::make('users.show');
 	}
 
+	// use prpfile route
+	public function showProfile()
+	{
+		$userItem = Users::find(Auth::user()->id)->found_items() && lost_items()->where('id', '=', $userItem_id)->firstOrFail();
+		return View::make('users.profile');
+		// $foundItems = FoundItem::all();
+		// $lostItems = LostItem::all();
+		// $data = array(
+		// 	'foundItems' => $foundItems,
+		// 	'lostItems' => $lostItems
+		// );
+		// return View::make('dashboard')->with($data);
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
