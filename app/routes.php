@@ -43,5 +43,7 @@ Route::controller('password', 'RemindersController');
 
 Route::get('/test', 'HomeController@showTest');
 
+Route::get('/contact', 'HomeController@showContact');
+
 
 

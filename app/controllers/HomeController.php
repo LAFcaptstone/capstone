@@ -78,5 +78,10 @@ class HomeController extends BaseController {
 		return View::make('newhome');
 	}
 
+	public function showContact()
+	{
+		return View::make('contact');
+	}
+
 
 }
