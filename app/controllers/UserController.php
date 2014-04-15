@@ -15,10 +15,10 @@ class UserController extends BaseController {
 	// use prpfile route
 	public function showProfile()
 	{
-		$userItem = Users::find(Auth::user()->id)->found_items() && lost_items()->where('id', '=', $userItem_id)->firstOrFail();
+		$foundItems = FoundItem::all();
+		$lostItems = LostItem::all();
+		$userItem = User::find(Auth::user()->id)->foundItems() && lostItems()->where('id', '=', $userItem_id)->firstOrFail();
 		return View::make('users.profile');
-		// $foundItems = FoundItem::all();
-		// $lostItems = LostItem::all();
 		// $data = array(
 		// 	'foundItems' => $foundItems,
 		// 	'lostItems' => $lostItems
