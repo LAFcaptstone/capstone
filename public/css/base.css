@@ -82,20 +82,7 @@ body, h1, h2, h3, h4, h5, h6 {
   font-size: 2em;
   font-weight: bold;
 }
-#slideshow {
-  margin: 0.5em 0 1.5em;
-}
-#slideshow .carousel-inner img {
-  background: #000;
-  height: 500px;
-  width: 100%;
-}
-footer {
-  background: #111;
-  color: #fff;
-  margin: 3.5em 0 0;
-  padding: 1.5em 0 0.8em;
-}
+
 @media screen and (max-width: 768px) {
   .navbar ul.nav li {
     text-align: center;
