@@ -24,9 +24,14 @@ class FoundItemsController extends BaseController {
 			$foundItems = $query->paginate(10);
 		} 
 		else {
-			$foundItems = $query->where('title', 'LIKE', "%{$search}%")
-						   		->orWhere('body', 'LIKE', "%{$search}%")
-						   		->paginate(10);
+			$keywords = explode(' ', $search);
+			foreach($keywords as $keyword)
+    		{
+				$foundItems = $query->where('title', 'LIKE', "%{$keyword}%")
+						   			->orWhere('body', 'LIKE', "%{$keyword}%")
+						   			->orWhere('location', 'LIKE', "%{$keyword}%")
+						   			->paginate(10);
+			}
 		}
 		return View::make('foundItems.index')->with(array('foundItems' => $foundItems));
 	}
@@ -68,13 +73,19 @@ class FoundItemsController extends BaseController {
 			$foundItem->body = Input::get('body');
 			$foundItem->location = Input::get('location');
 			$foundItem->email = Input::get('email');
-			
+			$foundItem->token = uniqid('', true);
+
 			if (Input::hasFile('image'))
 			{
 				$image = Input::file('image');
 				$foundItem->image_path = FoundItem::upload_image($image);
 			}
 			$foundItem->save();
+
+			Mail::send('emails.auth.foundItemsLink', array('token' => $foundItem->token, 'id' => $foundItem->id, 'email'=>Input::get('email')), function($message){
+        		$message->to(Input::get('email'))->subject('VIND.IT: Edit/Delete your Post');
+    		});
+
 			Session::flash('successMessage', 'Post created succesfully');
 			return Redirect::action('FoundItemsController@index');
 		}
@@ -101,8 +112,15 @@ class FoundItemsController extends BaseController {
 	public function edit($id)
 	{
 		$foundItem = FoundItem::findOrFail($id);
-		return View::make('foundItems.create-edit')->with('foundItem', $foundItem);
+		// check if admin, owner or token
+		if (Auth::check() || $foundItem->token == Input::get('token')) {
+			return View::make('foundItems.create-edit')->with('foundItem', $foundItem);
+		}
+
+		App::abort('404');
 	}
+
+
 
 	/**
 	 * Update the specified resource in storage.

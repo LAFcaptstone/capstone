@@ -31,8 +31,11 @@ class HomeController extends BaseController {
 	// admin dashboard route
 	public function showDashboard()
 	{
-		$foundItems = FoundItem::all();
-		$lostItems = LostItem::all();
+		//$foundItems = FoundItem::all();
+		$query = FoundItem::orderBy('flag_count', 'desc');
+		$foundItems = $query->get();
+		$lostItems = LostItem::orderBy('flag_count', 'desc');
+		$lostItems = $query->get();
 		$data = array(
 			'foundItems' => $foundItems,
 			'lostItems' => $lostItems

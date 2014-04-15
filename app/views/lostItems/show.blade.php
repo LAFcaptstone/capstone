@@ -13,7 +13,9 @@
 <p><a href="mailto:support@findit.us?Subject=Hello%20again" target="_top" id="btnNotify">Notify</a></p>	
 <p>	
 	<a href="{{{action('LostItemsController@index') }}}">Return to Lost Items</a> |
-	<a href="#">Flag Post</a>
+	{{ Form::open(array('action' => array('LostItemsController@flag', $lostItem->id))) }}
+	{{ Form::submit('Flag Post', array('class' => 'btn btn-primary')) }}
+	{{ Form::close() }}
 </p>
 <p>
 	@if (Auth::check())

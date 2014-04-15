@@ -55,6 +55,12 @@ class UserController extends BaseController {
 			$newUser->email = Input::get('email');
 			$newUser->password = Input::get('password');
 			$newUser->save();
+
+
+			Mail::send('emails.update', array('first_name'=>Input::get('first_name')), function($message){
+        		$message->to(Input::get('email'), Input::get('first_name').' '.Input::get('last_name'))->subject('Welcome to VIND.IT!');
+    		});
+
 			Session::flash('successMessage', 'Welcome!');
 			return Redirect::action('HomeController@showWelcome');
 		}
@@ -114,11 +120,16 @@ class UserController extends BaseController {
 		else
 		{	
 			$newUser = new User();
-			$newUser->first_name = Input::get('first name');
-			$newUser->last_name = Input::get('last name');
+			$newUser->first_name = Input::get('first_name');
+			$newUser->last_name = Input::get('last_name');
 			$newUser->email = Input::get('email');
 			$newUser->password = Input::get('password');
 			$lostItem->save();
+
+			Mail::send('emails.update', array('first_name'=>Input::get('first_name')), function($message){
+        		$message->to(Input::get('email'), Input::get('first_name').' '.Input::get('last_name'))->subject('Welcome to VIND.IT!');
+    		});
+    		
 			Session::flash('successMessage', 'Welcome!');
 			return Redirect::action('HomeController@showWelcome');
 		}
