@@ -30,14 +30,12 @@
 					<div class="collapse navbar-collapse">
 						
 						<ul class="nav navbar-nav">
-							<li><a href="#">Contact Us</a></li>
-
-					        @if(Auth::check())
+							@if(Auth::check())
 							<li><a href="{{{ action('HomeController@logout') }}}" >Welcome ({{{Auth::user()->first_name}}})</a></li>
 							@else
 							<li><a href="{{{ action('HomeController@showLogin') }}}" >Login</a></li>
 							@endif
-
+							<li><a href="#contact">Contact Us</a></li>
 							<li><a href="{{{action('LostItemsController@create')}}}">Create New Post</a></li>
 						</ul>
 						<div class="col-sm-4 col-md-4 pull-right">
