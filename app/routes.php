@@ -47,5 +47,7 @@ Route::get('/foundItems/{$id}?token={$token}/edit', 'FoundItemsController@edit')
 
 Route::get('/test', 'HomeController@showTest');
 
+Route::get('/contact', 'HomeController@showContact');
+
 
 
