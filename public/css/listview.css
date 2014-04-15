@@ -1,9 +1,6 @@
 /*/*/*/*/*/*/*/*/* override bootstrap styles */
 @import url('http://fonts.googleapis.com/css?family=Oswald:300,400:latin,latin-ext');
 
-.navbar-form input, .form-inline input {
-  width:auto;
-}
 
 body {
   padding-top:50px;
@@ -11,7 +8,7 @@ body {
   background-color: #cecece;
 }
 
-h1,h2,h3,.highlight,.navbar a,#masthead h4 {
+h1,h2,h3,.highlight,#masthead h4 {
   font-family:'Oswald',arial narrow,sans-serif;
 }
 
@@ -47,11 +44,6 @@ footer {
   padding-top:0px;
 }
 
-.navbar.affix {
-  position:fixed;
-  top:0;
-  width:100%;
-}
 
 .top-spacer {
   background-color:#ffffff;
@@ -73,51 +65,6 @@ a,a:hover {
   }
 }
 
-.navbar-bright {
-  background: rgb(87,190,133); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(87,190,133,1) 0%, rgba(111,237,155,1) 25%, rgba(87,190,133,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(87,190,133,1)), color-stop(25%,rgba(111,237,155,1)), color-stop(100%,rgba(87,190,133,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(87,190,133,1) 0%,rgba(111,237,155,1) 25%,rgba(87,190,133,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(87,190,133,1) 0%,rgba(111,237,155,1) 25%,rgba(87,190,133,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(87,190,133,1) 0%,rgba(111,237,155,1) 25%,rgba(87,190,133,1) 100%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(87,190,133,1) 0%,rgba(111,237,155,1) 25%,rgba(87,190,133,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57be85', endColorstr='#57be85',GradientType=0 ); /* IE6-9 */
-
-
-  color:#fff;
-  margin-bottom: 0;
-  border-width: 0;
-}
-
-.navbar-bright a, .navbar-bright .navbar-brand, #masthead h4 {
-  color:#FFF;
-  text-shadow: 0px 0px 2px #50AF78;
-  font-size:14px;
-  text-transform: uppercase;
-  letter-spacing:.08em;
-}
-
-.navbar-bright li > a:hover {
-  background-color:#FFF;
-  color:#000;
-}
-
-.dropdown-menu {
-  min-width: 250px;
-}
-
-.caret {
-  color:#fff;
-}
-
-.navbar-toggle {
-  color:#fff;
-  border-width:0;
-}
-
-.navbar-toggle:hover {
-  background-color:#fff;
-}
 
 .panel {
   border-color:transparent;
