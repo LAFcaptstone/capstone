@@ -72,8 +72,7 @@
 			<table class="table table-responsive">
 				<thead>
         		    <tr>
-        		    	<th>Flag Count</th>
-        		       	<th>Id</th>
+        		    	
         		       	<th>Title</th>
         		       	<th>Location</th>
         		       	<th>Email</th>
@@ -88,8 +87,7 @@
 				@foreach ($foundItems as $foundItem)
        			    <tr>
        			    	<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $foundItem->flag_count }}}</td>
-						<td>{{{ $foundItem->id }}}</td>
-						<td>{{{ $foundItem->title }}}</td>
+       			    	<td>{{{ $foundItem->title }}}</td>
 						<td>{{{ $foundItem->location }}}</td>
 						<td>{{{ $foundItem->email }}}</td>
 						<td>{{{ $foundItem->image_path }}}</td>
@@ -110,8 +108,6 @@
 			<table class="table table-responsive">
 				<thead>
 	    	        <tr>
-	    	        	<th>Flag Count</th>
-	    	           	<th>Id</th>
 	    	           	<th>Title</th>
 	    	           	<th>Location</th>
 	    	           	<th>Email</th>
@@ -126,7 +122,6 @@
 				@foreach ($lostItems as $lostItem) 
 	    	   	    <tr>
 	  	    	   		<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
-						<td>{{{ $lostItem->id }}}</td>
 						<td>{{{ $lostItem->title }}}</td>
 						<td>{{{ $lostItem->location }}}</td>
 						<td>{{{ $lostItem->email }}}</td>

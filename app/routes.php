@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@showWelcome');
 //admin dashboard
 Route::get('/dashboard', 'HomeController@showDashboard');
 //user profile
-Route::get('/profile', 'UserController@showProfile');
+// Route::get('profile/{$id}', 'UserController@showProfile');
 
 Route::get('/login', 'HomeController@showLogin');
 
@@ -29,7 +29,7 @@ Route::post('/lostItems/{id}/flag', 'LostItemsController@flag');
 
 Route::get('/signup', 'UserController@create');
 
-Route::resource('users', 'UserController');
+Route::resource('profile', 'UserController');
 
 Route::resource('messages', 'MessagesController');
 
