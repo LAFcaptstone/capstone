@@ -73,12 +73,18 @@ class FoundItemsController extends BaseController {
 			$foundItem->body = Input::get('body');
 			$foundItem->location = Input::get('location');
 			$foundItem->email = Input::get('email');
+			$foundItem->token = uniqid('', true);
 			if (Input::hasFile('image'))
 			{
 				$image = Input::file('image');
 				$foundItem->image_path = FoundItem::upload_image($image);
 			}
 			$foundItem->save();
+
+			// Mail::send('emails.auth.link', array('email'=>Input::get('email')), function($message){
+        		// $message->to(Input::get('email'))->subject('VIND.IT: Edit/Delete your Post');
+    		// });
+
 			Session::flash('successMessage', 'Post created succesfully');
 			return Redirect::action('FoundItemsController@index');
 		}

@@ -73,12 +73,18 @@ class LostItemsController extends BaseController {
 			$lostItem->body = Input::get('body');
 			$lostItem->location = Input::get('location');
 			$lostItem->email = Input::get('email');
+			$lostItem->token = uniqid('', true);
 			if (Input::hasFile('image'))
 			{
 				$image = Input::file('image');
 				$lostItem->image_path = LostItem::upload_image($image);
 			}
 			$lostItem->save();
+
+			// Mail::send('emails.auth.link', array('email'=>Input::get('email')), function($message){
+        		// $message->to(Input::get('email'))->subject('VIND.IT: Edit/Delete your Post');
+    		// });
+
 			Session::flash('successMessage', 'Post created succesfully');
 			return Redirect::action('LostItemsController@index');
 		}
