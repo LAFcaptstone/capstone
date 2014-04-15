@@ -112,15 +112,19 @@ class FoundItemsController extends BaseController {
 	public function edit($id)
 	{
 		$foundItem = FoundItem::findOrFail($id);
+
+		return View::make('foundItems.create-edit')->with('foundItem', $foundItem);
+	}
+
+	public function editWithToken($id, $token) {
+		$item = FoundItem::where('token', '=', $token);
 		// check if admin, owner or token
-		if (Auth::check() || $foundItem->token == Input::get('token')) {
-			return View::make('foundItems.create-edit')->with('foundItem', $foundItem);
+		if (Auth::check() || $item->token == $token) {
+			return $this->edit($item->id);
 		}
 
 		App::abort('404');
 	}
-
-
 
 	/**
 	 * Update the specified resource in storage.
