@@ -179,4 +179,9 @@ class LostItemsController extends BaseController {
 		return Redirect::action('LostItemsController@show', $lostItem->id);
 	}
 
+	public function canManage()
+	{
+		return $this->id == $lostitem->user_id;
+	}
+
 }

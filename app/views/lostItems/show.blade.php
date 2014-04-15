@@ -19,7 +19,7 @@
 </p>
 <p>
 	@if (Auth::check())
-	@if (Auth::user()->is_admin || Auth::user()->id === $post->user_id)
+	@if (Auth::user()->is_admin || Auth::user()->id === $lostItem->user_id)
 	<a href="{{{ action('LostItemsController@edit', $lostItem->id) }}}">Edit Post</a> |
 	<a href="{{{ action('LostItemsController@destroy', $lostItem->id) }}}" id="btnDeletePost">Delete Post</a>
 	@endif

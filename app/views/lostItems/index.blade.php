@@ -2,6 +2,7 @@
 
 @section('content')
 
+<<<<<<< HEAD
 <!-- NavBar -->
  <header class="navbar navbar-bright navbar-fixed-top" role="banner">
   <div class="container">
@@ -45,6 +46,9 @@
   </div>
 </header>
 <!-- NavBar -->
+=======
+
+>>>>>>> master
 
 <div class="portfolio container">
     <div class="portfolio-title">

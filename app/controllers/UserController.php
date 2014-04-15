@@ -9,8 +9,15 @@ class UserController extends BaseController {
 	 */
 	public function index()
 	{
+		
 		return View::make('users.show');
 	}
+
+	// use prpfile route
+	// public function showProfile($id)
+	// {
+		
+	// }
 
 	/**
 	 * Show the form for creating a new resource.
@@ -67,9 +74,18 @@ class UserController extends BaseController {
 	 */
 	public function show($id)
 	{
+		if (Auth::check()){
+		$user = User::findOrFail($id);
+		$foundItems = FoundItem::where('user_id', Auth::user()->id)->get();
+		$lostItems = LostItem::where('user_id', Auth::user()->id)->get();
+		$data = array(
+			'foundItems' => $foundItems,
+			'lostItems' => $lostItems,
+			'user' => $user
+			);
+		}
+		return View::make('users.profile')->with($data);
 		
-		$newUser = User::findOrFail($id);
-		return View::make('users.show')->with('user', $newUser);
 	}
 
 	/**

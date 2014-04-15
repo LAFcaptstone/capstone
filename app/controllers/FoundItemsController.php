@@ -74,6 +74,7 @@ class FoundItemsController extends BaseController {
 			$foundItem->location = Input::get('location');
 			$foundItem->email = Input::get('email');
 			$foundItem->token = uniqid('', true);
+
 			if (Input::hasFile('image'))
 			{
 				$image = Input::file('image');
@@ -179,6 +180,11 @@ class FoundItemsController extends BaseController {
 		$foundItem->save();
 		Session::flash('successMessage', 'Post flagged succesfully');
 		return Redirect::action('FoundItemsController@show', $foundItem->id);
+	}
+
+	public function canManage()
+	{
+		return $this->id == $founditem->user_id;
 	}
 
 }

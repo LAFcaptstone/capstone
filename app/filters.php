@@ -44,6 +44,14 @@ Route::filter('auth.basic', function()
 	return Auth::basic();
 });
 
+// Route::filter('role', function()
+// { 
+//   if ( Auth::user()->role !==1) {
+//      // do something
+//      return Redirect::to('/'); 
+//    }
+// }); 
+
 /*
 |--------------------------------------------------------------------------
 | Guest Filter
@@ -78,3 +86,35 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+Route::filter('lostitem.protect', function($lost)
+{
+	$id = $lost->getParameter('lostitem');
+	
+	$lost = Post::find($id);
+	
+	if (!Auth::user()->canManage($lost)) {
+	Session::flash('errorMessage', 'You can only update / delete your posts.');
+	return Redirect::action('UserController@show', $id);
+	}
+});
+
+Route::filter('founditem.protect', function($found)
+{
+	$id = $found->getParameter('founditem');
+	
+	$found = Post::find($id);
+	
+	if (!Auth::user()->canManage($found)) {
+	Session::flash('errorMessage', 'You can only update / delete your posts.');
+	return Redirect::action('UserController@show', $id);
+	}
+});
+
+
+
+
+
+
+
