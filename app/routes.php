@@ -39,9 +39,9 @@ Route::get('/map', 'HomeController@showMap');
 
 Route::controller('password', 'RemindersController');
 
-Route::get('/foundItems/{$token}', 'FoundItemsController@edit');
+Route::get('/foundItems/{$token}', 'FoundItemsController@show');
 
-Route::get('/lostItems/{$token}', 'LostItemsController@edit');
+Route::get('/lostItems/{$token}', 'LostItemsController@show');
 
 Route::get('/test', 'HomeController@showTest');
 
