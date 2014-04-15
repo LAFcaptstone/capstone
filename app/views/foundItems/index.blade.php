@@ -8,7 +8,7 @@
 
 <div class="portfolio">
     <div class="portfolio-title">
-        <h3>Whats been found...</h3>
+        <h1>Whats been found...</h1>
     </div>
     <div class="row">
     @foreach ($foundItems as $foundItem)
