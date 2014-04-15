@@ -81,9 +81,9 @@ class LostItemsController extends BaseController {
 			}
 			$lostItem->save();
 
-			// Mail::send('emails.auth.link', array('email'=>Input::get('email')), function($message){
-        		// $message->to(Input::get('email'))->subject('VIND.IT: Edit/Delete your Post');
-    		// });
+			Mail::send('emails.auth.link', array('token' => $lostItem->token, 'email'=>Input::get('email')), function($message){
+        		$message->to(Input::get('email'))->subject('VIND.IT: Edit/Delete your Post');
+    		});
 
 			Session::flash('successMessage', 'Post created succesfully');
 			return Redirect::action('LostItemsController@index');
@@ -110,7 +110,12 @@ class LostItemsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$lostItem = LostItem::findOrFail($id);
+		if (Auth::check()) {
+			$lostItem = LostItem::findOrFail($id);
+		}
+		else {
+			$lostItem = LostItem::where('token', $id);
+		}
 		return View::make('lostitems.create-edit')->with('lostItem', $lostItem);
 	}
 

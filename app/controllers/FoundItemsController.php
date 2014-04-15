@@ -81,9 +81,9 @@ class FoundItemsController extends BaseController {
 			}
 			$foundItem->save();
 
-			// Mail::send('emails.auth.link', array('email'=>Input::get('email')), function($message){
-        		// $message->to(Input::get('email'))->subject('VIND.IT: Edit/Delete your Post');
-    		// });
+			Mail::send('emails.auth.foundItemsLink', array('token' => $foundItem->token, 'email'=>Input::get('email')), function($message){
+        		$message->to(Input::get('email'))->subject('VIND.IT: Edit/Delete your Post');
+    		});
 
 			Session::flash('successMessage', 'Post created succesfully');
 			return Redirect::action('FoundItemsController@index');
@@ -110,9 +110,16 @@ class FoundItemsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$foundItem = FoundItem::findOrFail($id);
+		if (Auth::check()) {
+			$foundItem = FoundItem::findOrFail($id);
+		}
+		else {
+			$foundItem = FoundItem::where('token', $id);
+		}
 		return View::make('foundItems.create-edit')->with('foundItem', $foundItem);
 	}
+
+
 
 	/**
 	 * Update the specified resource in storage.
