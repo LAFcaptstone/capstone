@@ -82,7 +82,7 @@ class FoundItemsController extends BaseController {
 			}
 			$foundItem->save();
 
-			Mail::send('emails.auth.foundItemsLink', array('token' => $foundItem->token, 'email'=>Input::get('email')), function($message){
+			Mail::send('emails.auth.foundItemsLink', array('token' => $foundItem->token, 'id' => $foundItem->id, 'email'=>Input::get('email')), function($message){
         		$message->to(Input::get('email'))->subject('VIND.IT: Edit/Delete your Post');
     		});
 
@@ -111,13 +111,13 @@ class FoundItemsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		if (Auth::check()) {
-			$foundItem = FoundItem::findOrFail($id);
+		$foundItem = FoundItem::findOrFail($id);
+		// check if admin, owner or token
+		if (Auth::check() || $foundItem->token == Input::get('token')) {
+			return View::make('foundItems.create-edit')->with('foundItem', $foundItem);
 		}
-		else {
-			$foundItem = FoundItem::where('token', $id);
-		}
-		return View::make('foundItems.create-edit')->with('foundItem', $foundItem);
+
+		App::abort('404');
 	}
 
 
