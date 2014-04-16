@@ -60,10 +60,7 @@ class HomeController extends BaseController {
 		// die();
 			if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
 			{
-				// if (Auth::user(1)){
-			 //    return Redirect::action('HomeController@showDashboard');
-		
-				// } 
+				 
 				if (Auth::user()->is_admin == 1){
 					return View::make('HomeController@showDashboard');
 				}
@@ -71,10 +68,10 @@ class HomeController extends BaseController {
 				{
 					return Redirect::intended('profile/' . Auth::user()->id);
 				}
+			}
 				Session::flash('errorMessage', 'NO!');
 			    return Redirect::back()->withInput();
-			}
-		}
+	}
 	
 
 	public function logout()
