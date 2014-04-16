@@ -32,7 +32,7 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         	<h1 class="page-header">Dashboard</h1>
 
-			<h3 class="sub-header">Users</h3>
+			<h3 class="sub-header">users</h3>
 			<table class="table table-responsive">
 				<thead>
         		    <tr>
@@ -47,18 +47,18 @@
         		</thead>
   		
 				<tbody>
-				@foreach ($newUsers as $newUser)
+				@foreach ($users as $user)
        			    <tr>
-						<td>{{{ $newUser->id }}}</td>
-						<td>{{{ $newUser->first_name }}}</td>
-						<td>{{{ $newUser->last_name }}}</td>
-						<td>{{{ $newUser->email }}}</td>
-						<td>{{{ $newUser->password }}}</td>
-						<td>{{{ $newUser->created_at->format('l, F jS Y @ h:i:s A') }}}</td>
-						<td>{{{ $newUser->updated_at->format('l, F jS Y @ h:i:s A') }}}</td>
-						<td><a href="{{{ action('UserController@edit', $newUser->id) }}}">Edit</a>
+						<td>{{{ $user->id }}}</td>
+						<td>{{{ $user->first_name }}}</td>
+						<td>{{{ $user->last_name }}}</td>
+						<td>{{{ $user->email }}}</td>
+						<td>{{{ $user->password }}}</td>
+						<td>{{{ $user->created_at->format('l, F jS Y @ h:i:s A') }}}</td>
+						<td>{{{ $user->updated_at->format('l, F jS Y @ h:i:s A') }}}</td>
+						<!-- <td><a href="{{{ action('UserController@edit', $user->id) }}}">Edit</a> -->
 						<td>
-							{{ Form::open(array('action' => array('UserController@destroy', $newUser->id), 'method' => 'delete')) }}
+							{{ Form::open(array('action' => array('UserController@destroy', $user->id), 'method' => 'delete')) }}
 							{{ Form::submit('Delete', array('class' => 'btnDelete')) }}
 							{{ Form::close() }}
 						</td>
