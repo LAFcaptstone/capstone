@@ -6,22 +6,14 @@
 
 @section('content')
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-        	<a class="navbar-brand" href="#">Project name</a>
-        </div>
-    </div>
-</div>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
         	<ul class="nav nav-sidebar">
-        	 	<li class="active"><a href="#">Overview</a></li>
-        	 	<li><a href="#">Reports</a></li>
-        	 	<li><a href="#">Analytics</a></li>
-        		<li><a href="#">Export</a></li>
+        	 	<li class="active"><a href="{{{action('HomeController@showFoundItemsDashboard') }}}">Found Items</a></li>
+        	 	<li><a href="{{{action('HomeController@showLostItemsDashboard') }}}">Lost Items</a></li>
+        	 	<li><a href="{{{action('HomeController@showUsersDashboard') }}}">Users</a></li>
+        		<li><a href="{{{action('HomeController@showMessagesDashboard') }}}">Messages</a></li>
         	</ul>
         	<ul class="nav nav-sidebar">
         		<li><a href="">Nav item</a></li>
@@ -80,49 +72,6 @@
 				@endforeach
 				</tbody>
 			</table>
-
-			<h3>Lost Items Posts</h3>
-			<table class="table table-responsive">
-				<thead>
-	    	        <tr>
-	    	        	<th>Flag Count</th>
-	    	           	<th>Id</th>
-	    	           	<th>Title</th>
-	    	           	<th>Location</th>
-	    	           	<th>Email</th>
-	    	           	<th>Image</th>
-	    	           	<th>Reward</th>
-	    	           	<th>Date Created</th>
-						<th>Date Updated</th>
-	    	        </tr>
-	    	    </thead>
-	  	
-				<tbody>
-				@foreach ($lostItems as $lostItem) 
-	    	   	    <tr>
-	    	   	    	@if ($lostItem->flag_count > 0)
-	  	    	   			<td class="flag" style="color:#F00"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
-						@else
-							<td class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
-						@endif
-						<td>{{{ $lostItem->id }}}</td>
-						<td>{{{ $lostItem->title }}}</td>
-						<td>{{{ $lostItem->location }}}</td>
-						<td>{{{ $lostItem->email }}}</td>
-						<td>{{{ $lostItem->image_path }}}</td>
-						<td>{{{ $lostItem->reward }}}</td>
-						<td>{{{ $lostItem->created_at->format('l, F jS Y @ h:i:s A') }}}</td>
-						<td>{{{ $lostItem->updated_at->format('l, F jS Y @ h:i:s A') }}}</td>
-						<td><a href="{{{ action('LostItemsController@edit', $lostItem->id) }}}">Edit</a>
-						<td>
-							{{ Form::open(array('action' => array('LostItemsController@destroy', $lostItem->id), 'method' => 'delete')) }}
-							{{ Form::submit('Delete', array('class' => 'btnDelete')) }}
-							{{ Form::close() }}
-						</td>
-					</tr>
-				@endforeach
-				</tbody>
-			</table>
 		</div>
 	</div>
 </div>
@@ -133,11 +82,7 @@
 @section('bottomscript')	
 
 <script>
-	// $('document').ready(function() {
-		// if (lostItem->flag_count > 0) {
-			// $('.flag').css('color', '#F00');
-      	// }
-    // });
+
  
 	$('.btnDelete').on('click', function (e) {
 		e.preventDefault();

@@ -12,7 +12,15 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
-//admin dashboard
+
+Route::get('/foundItemsDashboard', 'HomeController@showFoundItemsDashboard');
+
+Route::get('/lostItemsDashboard', 'HomeController@showLostItemsDashboard');
+
+Route::get('/usersDashboard', 'HomeController@showUsersDashboard');
+
+Route::get('/messagesDashboard', 'HomeController@showMessagesDashboard');
+
 Route::get('/dashboard', 'HomeController@showDashboard');
 
 Route::get('/login', 'HomeController@showLogin');

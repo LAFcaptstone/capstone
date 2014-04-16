@@ -241,7 +241,7 @@ footer {
 <!-- Begin Body -->
 <div class="container space">
 	<div class="no-gutter row box">
-					<!-- left side column -->
+		<!-- left side column -->
 				<div class="col-md-4">
 								
 								<!-- <div class="panel-heading" style="background-color:#888;color:#fff;">Image</div>  -->
@@ -306,10 +306,11 @@ footer {
               {{ Form::close() }}
             </div>  
             <div class="btn-group">
-              {{ Form::open(array('action' => array('FoundItemsController@index', $foundItem->id))) }}
-              {{ Form::submit('Return to Found Items', array('class' => 'btn btn-default show')) }}
-              {{ Form::close() }} 
-            </div>    
+              <button class="btn btn-default show"><a href="{{{action('FoundItemsController@index') }}}">Return to Found Items</a></button>
+            </div> 
+            <div class="btn-group">
+              <button class="btn btn-default show"><a href="{{{action('HomeController@showFoundItemsDashboard') }}}">Return to Dashboard</a></button>
+            </div>   
           </div>
         </div>
 

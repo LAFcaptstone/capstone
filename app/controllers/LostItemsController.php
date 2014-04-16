@@ -82,7 +82,7 @@ class LostItemsController extends BaseController {
 			}
 			$lostItem->save();
 
-			Mail::send('emails.auth.link', array('token' => $lostItem->token, 'email'=>Input::get('email')), function($message){
+			Mail::send('emails.auth.lostItemslink', array('token' => $lostItem->token, 'email'=>Input::get('email')), function($message){
         		$message->to(Input::get('email'))->subject('VIND.IT: Edit/Delete your Post');
     		});
 
