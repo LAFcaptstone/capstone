@@ -228,37 +228,37 @@ footer {
 @stop
 
 @section('content')  
-				<!-- Begin Navbar -->
+        <!-- Begin Navbar -->
 
 
-	
+  
 
 <!-- Begin Body -->
 <div class="container space">
-	<div class="no-gutter row box">
-					<!-- left side column -->
-				<div class="col-md-4">
-								
-								<!-- <div class="panel-heading" style="background-color:#888;color:#fff;">Image</div>  -->
-								<div class="panel-body">
-									<div style='height:300px;'>
-									@if(!is_null($lostItem->image_path))
-									<img class='img-responsive' style='height: 300px; width:370px;' src="{{{ $lostItem->image_path }}}">
-									@endif
-								</div>
-									
-								
-								
-								</div><!--/panel body-->
-						
-					</div><!--/end left column-->
-						
-					<!--mid column-->
-					<div class="col-md-4">
-							
-								<!-- <div class="panel-heading" style="background-color:#555;color:#eee;">Post Description</div>  -->
-								<div class="panel-body" style='height:300px;'>
-									<div>
+  <div class="no-gutter row box">
+    <!-- left side column -->
+        <div class="col-md-4">
+                
+                <!-- <div class="panel-heading" style="background-color:#888;color:#fff;">Image</div>  -->
+                <div class="panel-body">
+                  <div style='height:300px;'>
+                  @if(!is_null($lostItem->image_path))
+                  <img class='img-responsive' style='height: 300px; width:370px;' src="{{{ $lostItem->image_path }}}">
+                  @endif
+                </div>
+                  
+                
+                
+                </div><!--/panel body-->
+            
+          </div><!--/end left column-->
+            
+          <!--mid column-->
+          <div class="col-md-4">
+              
+                <!-- <div class="panel-heading" style="background-color:#555;color:#eee;">Post Description</div>  -->
+                <div class="panel-body" style='height:300px;'>
+                  <div>
                           <h2>{{{ $lostItem->title }}}</h2>
                           <hr>
                           <p>{{{ $lostItem->body }}}
@@ -267,28 +267,48 @@ footer {
                            <p class="badge">Location: {{{ $lostItem->location }}}</p>
                          </div>
                          <small style='margin-right:15px;'>Posted on: {{{ $lostItem->created_at }}}</small>
-									</div>
-									<div>
-									<hr>
-									 <button class='btn btn-success center-block contact'>Contact Post Creator</button>
-									</div class="contact">
-							   </div> 
-							
-					</div><!--/end mid column-->
-					
-					<!-- right content column-->
-					<div class="col-md-4" id="content">
-							<!-- <div class="panel"> -->
-					<!-- <div class="panel-heading" style="background-color:#111;color:#fff;">Map</div>    -->
-								
-									<div class='row'>
-										<div id="map-canvas"/>
-									</div><!--/panel-body-->
-								
-								<!--/end right column-->
-				  </div> 
-		</div>
+                  </div>
+                  <div>
+                   
+                  </div class="contact">
+                 </div> 
+              
+          </div><!--/end mid column-->
+          
+          <!-- right content column-->
+          <div class="col-md-4" id="content">
+              <!-- <div class="panel"> -->
+          <!-- <div class="panel-heading" style="background-color:#111;color:#fff;">Map</div>    -->
+                
+                  <div class='row'>
+                    <div id="map-canvas"/>
+                  </div><!--/panel-body-->
+                
+                <!--/end right column-->
+          </div> 
+    </div>
 </div>
+        <div class="container col-md-4 col-md-offset-4">
+          <div class="btn-group">
+            <div class="btn-group">
+              {{ Form::open(array('action' => array('LostItemsController@flag', $lostItem->id))) }}
+              {{ Form::submit('Flag Post', array('class' => 'btn btn-default show')) }}
+              {{ Form::close() }}
+            </div>
+            <div class="btn-group">
+              {{ Form::open(array('action' => array('LostItemsController@flag', $lostItem->id))) }}
+              {{ Form::submit('Contact Post Creator', array('class' => 'btn btn-default show')) }}
+              {{ Form::close() }}
+            </div>  
+            <div class="btn-group">
+              <button class="btn btn-default show"><a href="{{{action('LostItemsController@index') }}}">Return to Lost Items</a></button>
+            </div> 
+            <div class="btn-group">
+              <button class="btn btn-default show"><a href="{{{action('HomeController@showLostItemsDashboard') }}}">Return to Dashboard</a></button>
+            </div>   
+          </div>
+        </div>
+
 
 @stop
 
