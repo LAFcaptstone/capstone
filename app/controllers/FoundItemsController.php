@@ -74,7 +74,9 @@ class FoundItemsController extends BaseController {
 			$foundItem->location = Input::get('location');
 			$foundItem->email = Input::get('email');
 			$foundItem->token = uniqid('', true);
-			$foundItem->user_id = Auth::user()->id;
+			if(Auth::check()) {
+				$foundItem->user_id = Auth::user()->id;
+			}
 			if (Input::hasFile('image'))
 			{
 				$image = Input::file('image');
@@ -116,7 +118,7 @@ class FoundItemsController extends BaseController {
 		return View::make('foundItems.create-edit')->with('foundItem', $foundItem);
 	}
 
-	public function editWithToken($id, $token) {
+	public function editWithToken($token) {
 		$item = FoundItem::where('token', '=', $token);
 		// check if admin, owner or token
 		if (Auth::check() || $item->token == $token) {
@@ -174,7 +176,16 @@ class FoundItemsController extends BaseController {
 	{
 		FoundItem::findOrFail($id)->delete();
 
-		return Redirect::action('FoundItemsController@index');
+		if (Auth::user()->is_admin == 1){
+				return Redirect::action('HomeController@showFoundItemsDashboard');
+		}
+		elseif (Auth::user()->is_admin == 2)
+		{
+			return Redirect::intended('profile/' . Auth::user()->id);
+		}
+		else {
+			return Redirect::action('FoundItemsController@index');
+		}
 	}
 
 	public function flag($id)
