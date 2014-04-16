@@ -31,11 +31,9 @@ class HomeController extends BaseController {
 	// admin dashboard route
 	public function showDashboard()
 	{
-		//$foundItems = FoundItem::all();
-		$query = FoundItem::orderBy('flag_count', 'desc');
-		$foundItems = $query->get();
-		$lostItems = LostItem::orderBy('flag_count', 'desc');
-		$lostItems = $query->get();
+		
+		$foundItems = FoundItem::orderBy('flag_count', 'desc')->get();;
+		$lostItems = LostItem::orderBy('flag_count', 'desc')->get();;
 		$data = array(
 			'foundItems' => $foundItems,
 			'lostItems' => $lostItems
@@ -61,7 +59,13 @@ class HomeController extends BaseController {
 		// die();
 			if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
 			{
-			    return Redirect::intended('/');
+				if (Auth::user(1)){
+			    return Redirect::action('HomeController@showDashboard');
+		
+				} 
+				elseif (Auth::user(2)){
+				return View::make('profile');
+				}
 			}
 			else
 			{
