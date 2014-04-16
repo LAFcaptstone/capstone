@@ -13,12 +13,6 @@ class UserController extends BaseController {
 		return View::make('users.show');
 	}
 
-	// use prpfile route
-	// public function showProfile($id)
-	// {
-		
-	// }
-
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -48,13 +42,13 @@ class UserController extends BaseController {
     	}
 		else
 		{	
-			$newUser = new User();
-			// $newUser->user_id = Auth::user()->id;
-			$newUser->first_name = Input::get('first_name');
-			$newUser->last_name = Input::get('last_name');
-			$newUser->email = Input::get('email');
-			$newUser->password = Input::get('password');
-			$newUser->save();
+			$user = new User();
+			// $user->user_id = Auth::user()->id;
+			$user->first_name = Input::get('first_name');
+			$user->last_name = Input::get('last_name');
+			$user->email = Input::get('email');
+			$user->password = Input::get('password');
+			$user->save();
 
 
 			Mail::send('emails.update', array('first_name'=>Input::get('first_name')), function($message){
@@ -75,13 +69,20 @@ class UserController extends BaseController {
 	public function show($id)
 	{
 		if (Auth::check()){
-		$user = User::findOrFail($id);
-		$foundItems = FoundItem::where('user_id', Auth::user()->id)->get();
-		$lostItems = LostItem::where('user_id', Auth::user()->id)->get();
-		$data = array(
-			'foundItems' => $foundItems,
-			'lostItems' => $lostItems,
-			'user' => $user
+			$user = User::findOrFail($id);
+			$foundItems = FoundItem::where('user_id', Auth::user()->id)->get();
+			$lostItems = LostItem::where('user_id', Auth::user()->id)->get();
+			
+			// if (Auth::user()->is_admin == 1){
+			// 	$users = User::all();
+			// } elseif (Auth::user()->is_admin == 2){
+			// 	$users = Auth::user();
+			// }
+			$data = array(
+				'foundItems' => $foundItems,
+				'lostItems' => $lostItems,
+				'user' => $user // current_user
+				// 'users' => $users
 			);
 		}
 		return View::make('users.profile')->with($data);
@@ -96,8 +97,8 @@ class UserController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$newUser = User::findOrFail($id);
-		return View::make('users.edit')->with('user', $newUser);
+		$user = User::findOrFail($id);
+		return View::make('users.edit')->with('user', $user);
 	}
 
 	/**
@@ -119,11 +120,11 @@ class UserController extends BaseController {
     	}
 		else
 		{	
-			$newUser = new User();
-			$newUser->first_name = Input::get('first_name');
-			$newUser->last_name = Input::get('last_name');
-			$newUser->email = Input::get('email');
-			$newUser->password = Input::get('password');
+			$user = new User();
+			$user->first_name = Input::get('first_name');
+			$user->last_name = Input::get('last_name');
+			$user->email = Input::get('email');
+			$user->password = Input::get('password');
 			$lostItem->save();
 
 			Mail::send('emails.update', array('first_name'=>Input::get('first_name')), function($message){

@@ -32,14 +32,15 @@ class HomeController extends BaseController {
 	public function showDashboard()
 	{
 		
-		$foundItems = FoundItem::orderBy('flag_count', 'desc')->get();;
-		$lostItems = LostItem::orderBy('flag_count', 'desc')->get();;
+		$foundItems = FoundItem::orderBy('flag_count', 'desc')->get();
+		$lostItems = LostItem::orderBy('flag_count', 'desc')->get();
 		$data = array(
 			'foundItems' => $foundItems,
 			'lostItems' => $lostItems
 		);
 		return View::make('dashboard')->with($data);
 	}
+
 
 	public function showMap()
 	{
@@ -59,20 +60,22 @@ class HomeController extends BaseController {
 		// die();
 			if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
 			{
-				if (Auth::user(1)){
-			    return Redirect::action('HomeController@showDashboard');
+				// if (Auth::user(1)){
+			 //    return Redirect::action('HomeController@showDashboard');
 		
-				} 
-				elseif (Auth::user(2)){
-				return View::make('profile');
+				// } 
+				if (Auth::user()->is_admin == 1){
+					return View::make('HomeController@showDashboard');
 				}
-			}
-			else
-			{
+				elseif (Auth::user()->is_admin == 2)
+				{
+					return Redirect::intended('profile/' . Auth::user()->id);
+				}
 				Session::flash('errorMessage', 'NO!');
 			    return Redirect::back()->withInput();
 			}
-	}
+		}
+	
 
 	public function logout()
 	{
@@ -89,6 +92,7 @@ class HomeController extends BaseController {
 	{
 		return View::make('contact');
 	}
+
 
 
 }
