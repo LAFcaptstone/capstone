@@ -52,11 +52,6 @@
 						<td>{{{ $user->last_name }}}</td>
 						<td>{{{ $user->email }}}</td>
 						<td><a href="{{{ action('UserController@edit', $user->id) }}}">Edit</a>
-						<td>
-							{{ Form::open(array('action' => array('UserController@destroy', $user->id), 'method' => 'delete')) }}
-							{{ Form::submit('Delete', array('class' => 'btnDelete')) }}
-							{{ Form::close() }}
-						</td>
 					</tr>
 				</tbody>
 			</table>
