@@ -28,19 +28,42 @@ class HomeController extends BaseController {
 		return View::make('home')->with('data', $data);
 	}
 
-	// admin dashboard route
-	public function showDashboard()
+	// Found items dashboard 
+	public function showFoundItemsDashboard()
 	{
-		//$foundItems = FoundItem::all();
-		$query = FoundItem::orderBy('flag_count', 'desc');
-		$foundItems = $query->get();
-		$lostItems = LostItem::orderBy('flag_count', 'desc');
-		$lostItems = $query->get();
-		$data = array(
-			'foundItems' => $foundItems,
-			'lostItems' => $lostItems
-		);
-		return View::make('dashboard')->with($data);
+		if ('flag_count' == 0) {
+			$foundItems = FoundItem::orderBy('created_at', 'desc')->get();
+		}
+		else {
+			$foundItems = FoundItem::orderBy('flag_count', 'desc')->get();
+		}
+		return View::make('foundItemsDashboard')->with(array('foundItems' =>$foundItems));
+	}
+
+	// Found items dashboard 
+	public function showLostItemsDashboard()
+	{
+		if ('flag_count' == 0) {
+			$lostItems = LostItem::orderBy('created_at', 'desc')->get();
+		}
+		else {
+			$lostItems = LostItem::orderBy('flag_count', 'desc')->get();
+		}
+		return View::make('lostItemsDashboard')->with(array('lostItems' =>$lostItems));
+	}
+
+	public function showUsersDashboard()
+	{
+		$newUser = User::orderBy('created_at', 'desc')->get();
+		
+		return View::make('usersDashboard')->with(array('newUser' =>$newUser));
+	}
+
+	public function showMessagesDashboard()
+	{
+		$messages = Message::orderBy('created_at', 'desc')->get();
+		
+		return View::make('messagesDashboard')->with(array('messages' =>$messages));
 	}
 
 	public function showMap()
@@ -57,17 +80,22 @@ class HomeController extends BaseController {
 
 	public function doLogin ()
 	{
-		// var_dump(Input::all());
-		// die();
-			if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
-			{
-			    return Redirect::intended('/');
-			}
-			else
-			{
-				Session::flash('errorMessage', 'NO!');
-			    return Redirect::back()->withInput();
-			}
+		
+		if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
+		{
+			Session::flash('successMessage', 'Login succesful!');
+			// if (isAdmin()) {
+		    	return Redirect::intended('/foundItemsDashboard');
+		    // }
+		    // else {
+		    	// return Redirect::intended('/profile');
+		    // }
+		}
+		else
+		{
+			Session::flash('errorMessage', 'Login failed, please check your inputs.');
+		    return Redirect::back()->withInput();
+		}
 	}
 
 	public function logout()
