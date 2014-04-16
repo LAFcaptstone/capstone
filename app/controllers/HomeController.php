@@ -31,17 +31,16 @@ class HomeController extends BaseController {
 	// admin dashboard route
 	public function showDashboard()
 	{
-		//$foundItems = FoundItem::all();
-		$query = FoundItem::orderBy('flag_count', 'desc');
-		$foundItems = $query->get();
-		$lostItems = LostItem::orderBy('flag_count', 'desc');
-		$lostItems = $query->get();
+		
+		$foundItems = FoundItem::orderBy('flag_count', 'desc')->get();
+		$lostItems = LostItem::orderBy('flag_count', 'desc')->get();
 		$data = array(
 			'foundItems' => $foundItems,
 			'lostItems' => $lostItems
 		);
 		return View::make('dashboard')->with($data);
 	}
+
 
 	public function showMap()
 	{
@@ -61,14 +60,22 @@ class HomeController extends BaseController {
 		// die();
 			if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
 			{
-			    return Redirect::intended('/');
-			}
-			else
-			{
+				// if (Auth::user(1)){
+			 //    return Redirect::action('HomeController@showDashboard');
+		
+				// } 
+				if (Auth::user()->is_admin == 1){
+					return View::make('HomeController@showDashboard');
+				}
+				elseif (Auth::user()->is_admin == 2)
+				{
+					return Redirect::intended('profile/' . Auth::user()->id);
+				}
 				Session::flash('errorMessage', 'NO!');
 			    return Redirect::back()->withInput();
 			}
-	}
+		}
+	
 
 	public function logout()
 	{
@@ -85,6 +92,7 @@ class HomeController extends BaseController {
 	{
 		return View::make('contact');
 	}
+
 
 
 }

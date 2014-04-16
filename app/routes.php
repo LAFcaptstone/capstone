@@ -14,8 +14,6 @@
 Route::get('/', 'HomeController@showWelcome');
 //admin dashboard
 Route::get('/dashboard', 'HomeController@showDashboard');
-//user profile
-// Route::get('profile/{$id}', 'UserController@showProfile');
 
 Route::get('/login', 'HomeController@showLogin');
 
