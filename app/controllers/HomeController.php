@@ -31,6 +31,7 @@ class HomeController extends BaseController {
 	// Found items dashboard 
 	public function showFoundItemsDashboard()
 	{
+
 		if ('flag_count' == 0) {
 			$foundItems = FoundItem::orderBy('created_at', 'desc')->get();
 		}
@@ -64,7 +65,9 @@ class HomeController extends BaseController {
 		$messages = Message::orderBy('created_at', 'desc')->get();
 		
 		return View::make('messagesDashboard')->with(array('messages' =>$messages));
+		
 	}
+
 
 	public function showMap()
 	{
@@ -84,19 +87,21 @@ class HomeController extends BaseController {
 		if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
 		{
 			Session::flash('successMessage', 'Login succesful!');
-			// if (isAdmin()) {
-		    	return Redirect::intended('/foundItemsDashboard');
-		    // }
-		    // else {
-		    	// return Redirect::intended('/profile');
-		    // }
+
+			if (Auth::user()->is_admin == 1){
+				return Redirect::intended('/foundItemsDashboard');
+			}
+			elseif (Auth::user()->is_admin == 2)
+			{
+				return Redirect::intended('profile/' . Auth::user()->id);
+			}
 		}
-		else
-		{
-			Session::flash('errorMessage', 'Login failed, please check your inputs.');
-		    return Redirect::back()->withInput();
-		}
+
+		Session::flash('errorMessage', 'Login failed, please check your inputs.');
+		return Redirect::back()->withInput();
+		
 	}
+
 
 	public function logout()
 	{
@@ -113,6 +118,7 @@ class HomeController extends BaseController {
 	{
 		return View::make('contact');
 	}
+
 
 
 }

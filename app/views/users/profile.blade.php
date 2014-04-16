@@ -6,13 +6,6 @@
 
 @section('content')
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-        	<a class="navbar-brand" href="#">VindiT</a>
-        </div>
-    </div>
-</div>
 
 <div class="container-fluid">
     <div class="row">
@@ -40,7 +33,7 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         	<h1 class="page-header">Dashboard</h1>
 
-        	<h3>User Name: {{{('')}}}</h3>
+        	<h3>User Name: {{{('Auth::user()')}}}</h3>
 			<table class="table table-responsive">
 				<thead>
 	    	        <tr>
@@ -50,10 +43,12 @@
 	    	        </tr>
 	    	    </thead>
 	  	
+
+
 				<tbody>
-				@foreach ($lostItems as $lostItem) 
+				 
 	    	   	    <tr>
-	  	    	   		<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
+	  	    	   		
 						<td>{{{ $user->first_name }}}</td>
 						<td>{{{ $user->last_name }}}</td>
 						<td>{{{ $user->email }}}</td>
@@ -64,7 +59,6 @@
 							{{ Form::close() }}
 						</td>
 					</tr>
-				@endforeach
 				</tbody>
 			</table>
 
@@ -86,7 +80,7 @@
 				
 				@foreach ($foundItems as $foundItem)
        			    <tr>
-       			    	<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $foundItem->flag_count }}}</td>
+       			    	
        			    	<td>{{{ $foundItem->title }}}</td>
 						<td>{{{ $foundItem->location }}}</td>
 						<td>{{{ $foundItem->email }}}</td>
@@ -121,7 +115,7 @@
 				<tbody>
 				@foreach ($lostItems as $lostItem) 
 	    	   	    <tr>
-	  	    	   		<td style="color:red;" class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
+	  	    	   		
 						<td>{{{ $lostItem->title }}}</td>
 						<td>{{{ $lostItem->location }}}</td>
 						<td>{{{ $lostItem->email }}}</td>

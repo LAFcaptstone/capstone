@@ -20,8 +20,8 @@ Route::get('/lostItemsDashboard', 'HomeController@showLostItemsDashboard');
 Route::get('/usersDashboard', 'HomeController@showUsersDashboard');
 
 Route::get('/messagesDashboard', 'HomeController@showMessagesDashboard');
-//user profile
-// Route::get('profile/{$id}', 'UserController@showProfile');
+
+Route::get('/dashboard', 'HomeController@showDashboard');
 
 Route::get('/login', 'HomeController@showLogin');
 
