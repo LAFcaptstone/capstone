@@ -89,16 +89,17 @@ class HomeController extends BaseController {
 			Session::flash('successMessage', 'Login succesful!');
 
 			if (Auth::user()->is_admin == 1){
-				return Redirect::intended('/foundItemsDashboard');
+				return Redirect::action('HomeController@showFoundItemsDashboard');
 			}
 			elseif (Auth::user()->is_admin == 2)
 			{
 				return Redirect::intended('profile/' . Auth::user()->id);
 			}
 		}
-
-		Session::flash('errorMessage', 'Login failed, please check your inputs.');
-		return Redirect::back()->withInput();
+		else {
+			Session::flash('errorMessage', 'Login failed, please check your inputs.');
+			return Redirect::back()->withInput();
+		}
 		
 	}
 
