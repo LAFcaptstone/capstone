@@ -6,6 +6,13 @@
 
 @section('content')
 
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        	<a class="navbar-brand" href="#">Project name</a>
+        </div>
+    </div>
+</div>
 
 <div class="container-fluid">
     <div class="row">
@@ -33,7 +40,7 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         	<h1 class="page-header">Dashboard</h1>
 
-        	<h3>User Name: {{{('Auth::user()')}}}</h3>
+        	<h3>User Name: {{{('Auth::user()->first_name')}}}</h3>
 			<table class="table table-responsive">
 				<thead>
 	    	        <tr>
@@ -143,12 +150,7 @@
 @section('bottomscript')	
 
 <script>
-	// $('document').ready(function() {
-		// $('.flag').hide();
-      	// $('#flagPost').click(function() {
-      		// $('.flag').show();
-      	// });
-    // });
+	
  
 	$('.btnDelete').on('click', function (e) {
 		e.preventDefault();

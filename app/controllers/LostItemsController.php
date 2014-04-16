@@ -74,6 +74,7 @@ class LostItemsController extends BaseController {
 			$lostItem->location = Input::get('location');
 			$lostItem->email = Input::get('email');
 			$lostItem->token = uniqid('', true);
+			$lostItem->user_id = Auth::user()->id;
 			if (Input::hasFile('image'))
 			{
 				$image = Input::file('image');

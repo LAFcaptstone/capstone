@@ -74,7 +74,7 @@ class FoundItemsController extends BaseController {
 			$foundItem->location = Input::get('location');
 			$foundItem->email = Input::get('email');
 			$foundItem->token = uniqid('', true);
-
+			$foundItem->user_id = Auth::user()->id;
 			if (Input::hasFile('image'))
 			{
 				$image = Input::file('image');
