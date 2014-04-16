@@ -55,9 +55,9 @@ class HomeController extends BaseController {
 
 	public function showUsersDashboard()
 	{
-		$newUser = User::orderBy('created_at', 'desc')->get();
+		$users = User::orderBy('created_at', 'desc')->get();
 		
-		return View::make('usersDashboard')->with(array('newUser' =>$newUser));
+		return View::make('usersDashboard')->with(array('users' =>$users));
 	}
 
 	public function showMessagesDashboard()
