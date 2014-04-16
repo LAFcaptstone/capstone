@@ -11,6 +11,7 @@ class UserTableSeeder extends Seeder {
 		$user->last_name = 'starnes';
         $user->email = 'admin@vindit.us';
         $user->password = 'Vindit1234!';
+        $user->is_admin = 1;
         $user->save();
 
         $user = new User();
@@ -18,6 +19,15 @@ class UserTableSeeder extends Seeder {
 		$user->last_name = 'kepple';
         $user->email = 'coreyckepple@gmail.com';
         $user->password = 'codeup';
+        $user->is_admin = 1;
+        $user->save();
+
+        $user = new User();
+		$user->first_name = 'cecilia';
+		$user->last_name = 'munson';
+        $user->email = 'cecimunson@gmail.com';
+        $user->password = 'codeup';
+        $user->is_admin = 1;
         $user->save();
 	}
 }

@@ -74,7 +74,9 @@ class LostItemsController extends BaseController {
 			$lostItem->location = Input::get('location');
 			$lostItem->email = Input::get('email');
 			$lostItem->token = uniqid('', true);
-			$lostItem->user_id = Auth::user()->id;
+			if(Auth::check()) {
+				$lostItem->user_id = Auth::user()->id;
+			}
 			if (Input::hasFile('image'))
 			{
 				$image = Input::file('image');
@@ -111,13 +113,19 @@ class LostItemsController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		if (Auth::check()) {
-			$lostItem = LostItem::findOrFail($id);
+		$lostItem = LostItem::findOrFail($id);
+
+		return View::make('lostItems.create-edit')->with('lostItem', $lostItem);
+	}
+
+	public function editWithToken($token) {
+		$item = LostItem::where('token', '=', $token);
+		// check if admin, owner or token
+		if (Auth::check() || $item->token == $token) {
+			return $this->edit($item->id);
 		}
-		else {
-			$lostItem = LostItem::where('token', $id);
-		}
-		return View::make('lostitems.create-edit')->with('lostItem', $lostItem);
+
+		App::abort('404');
 	}
 
 	/**
@@ -168,7 +176,16 @@ class LostItemsController extends BaseController {
 	{
 		LostItem::findOrFail($id)->delete();
 
-		return Redirect::action('LostItemsController@index');
+		if (Auth::user()->is_admin == 1){
+				return Redirect::action('HomeController@showLostItemsDashboard');
+		}
+		elseif (Auth::user()->is_admin == 2)
+		{
+			return Redirect::intended('profile/' . Auth::user()->id);
+		}
+		else {
+			return Redirect::action('LostItemsController@index');
+		}
 	}
 
 	public function flag($id)
