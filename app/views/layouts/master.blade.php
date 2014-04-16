@@ -36,7 +36,8 @@
 							<li><a href="{{{ action('HomeController@showLogin') }}}" >Login</a></li>
 							@endif
 							<li><a href="{{{ action('HomeController@showContact') }}}">Contact Us</a></li>
-							<li><a href="{{{ action('LostItemsController@create') }}}">Create New Post</a></li>
+							<li><a href="{{{ action('FoundItemsController@create') }}}" style='color:green;'>New Found Post</a></li>
+							<li><a href="{{{ action('LostItemsController@create') }}}" style='color:#F00;'>New Lost Post</a></li>
 						</ul>
 						<div class="col-sm-4 col-md-4 pull-right">
 						{{ Form::open(array('action' => array('FoundItemsController@index'), 'method' => 'GET', 'class' => 'navbar-form')) }}

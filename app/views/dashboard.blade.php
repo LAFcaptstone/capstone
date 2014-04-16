@@ -5,15 +5,6 @@
 @stop
 
 @section('content')
-
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-        	<a class="navbar-brand" href="#">Project name</a>
-        </div>
-    </div>
-</div>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">

@@ -29,6 +29,8 @@ Route::post('/lostItems/{id}/flag', 'LostItemsController@flag');
 
 Route::get('/signup', 'UserController@create');
 
+Route::get('/foundItems/{$id}?token={$token}/edit', 'FoundItemsController@edit');
+
 Route::resource('profile', 'UserController');
 
 Route::resource('messages', 'MessagesController');
@@ -41,7 +43,7 @@ Route::get('/map', 'HomeController@showMap');
 
 Route::controller('password', 'RemindersController');
 
-Route::get('/foundItems/{$id}?token={$token}/edit', 'FoundItemsController@edit');
+
 // 
 // Route::get('/lostItems/{$token}', 'LostItemsController@edit');
 
