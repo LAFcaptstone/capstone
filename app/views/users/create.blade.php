@@ -18,35 +18,35 @@
                 {{ Form::open(array('action' => 'UserController@store', 'class' => 'form-horizontal', 'id' =>'signupform')) }}
                 <div class="form-group">
                     {{ Form::label('first_name', 'First Name', array('class' => 'col-sm-3 control-label')) }}
-                    <div class="col-md-9">
+                    <div class="col-sm-10">
                         {{ Form::text('first_name', null, array('class' => 'form-control', 'placeholder' => 'First Name')) }}
                         {{ $errors->has('first_name') ? $errors->first('first_name', '<p><span class="help-block">:message</span></p>') : " " }}
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('last_name', 'Last Name', array('class' => 'col-sm-3 control-label')) }}
-                    <div class="col-md-9">
+                    <div class="col-sm-10">
                         {{ Form::text('last_name', null, array('class' => 'form-control', 'placeholder' => 'Last Name')) }}
                         {{ $errors->has('last_name') ? $errors->first('last_name', '<p><span class="help-block">:message</span></p>') : " " }}
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('email', 'Email', array('class' => 'col-sm-3 control-label')) }}
-                    <div class="col-md-9">
+                    <div class="col-sm-10">
                         {{ Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'Email')) }}
                         {{ $errors->has('email') ? $errors->first('email', '<p><span class="help-block">:message</span></p>') : " " }}
                     </div>
                 </div>
                 <div class="form-group">
                     {{ Form::label('password', 'Password', array('class' => 'col-sm-3 control-label')) }}
-                    <div class="col-md-9">
+                    <div class="col-sm-10">
                         {{ Form::password('password', null, array('class' => 'form-control', 'placeholder' => 'Password')) }}
                         {{ $errors->has('password') ? $errors->first('password', '<p><span class="help-block">:message</span></p>') : " " }}
                     </div>
                 </div>
                 <div class="form-group">
                     <!-- Button -->                                        
-                    <div class="col-md-offset-3 col-md-9">
+                    <div class="col-sm-offset-3 col-sm-10">
                         {{ Form::submit('Sign Up', array('id' => 'btn-signup', 'type' => 'button', 'class' => 'btn btn-info', 'icon-hand-right'))}}
                         <span style="margin-left:8px; margin-right:8px;">or </span>
                         <a href="{{action('UserController@store')}}">{{ Form::submit('Sign Up with Facebook', array('id' => 'btn-fbsignup', 'type' => 'button', 'class' => 'btn btn-primary', 'icon-facebook'))}}</a>
