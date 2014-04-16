@@ -12,8 +12,14 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
-//admin dashboard
-Route::get('/dashboard', 'HomeController@showDashboard');
+
+Route::get('/foundItemsDashboard', 'HomeController@showFoundItemsDashboard');
+
+Route::get('/lostItemsDashboard', 'HomeController@showLostItemsDashboard');
+
+Route::get('/usersDashboard', 'HomeController@showUsersDashboard');
+
+Route::get('/messagesDashboard', 'HomeController@showMessagesDashboard');
 //user profile
 // Route::get('profile/{$id}', 'UserController@showProfile');
 
