@@ -49,6 +49,7 @@ class UserController extends BaseController {
 			$user->last_name = Input::get('last_name');
 			$user->email = Input::get('email');
 			$user->password = Input::get('password');
+			$user->is_admin = 2;
 			$user->save();
 
 
@@ -56,8 +57,18 @@ class UserController extends BaseController {
         		$message->to(Input::get('email'), Input::get('first_name').' '.Input::get('last_name'))->subject('Welcome to VIND.IT!');
     		});
 
-			Session::flash('successMessage', 'Welcome!');
-			return Redirect::action('HomeController@showWelcome');
+    		if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
+			{
+				Session::flash('successMessage', 'Welcome To Vind.IT!');
+
+				return Redirect::intended('profile/' . Auth::user()->id);
+			
+			}
+			else {
+				Session::flash('errorMessage', 'We were unable to process your request, please check your inputs.');
+				return Redirect::back()->withInput();
+			}
+			
 		}
 	}
 
