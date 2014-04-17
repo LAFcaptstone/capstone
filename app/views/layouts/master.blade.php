@@ -51,13 +51,14 @@
 						
 					</div>
 				</div>
-				    
+				<div class="container">    
 				@if (Session::has('successMessage'))
 					<div class="alert alert-success" style='margin-top:50px;'>{{{ Session::get('successMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
 				@endif
 				@if (Session::has('errorMessage'))
 					<div class="alert alert-danger" style='margin-top:50px;'>{{{ Session::get('errorMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
 				@endif
+				</div>
 			</div>
 	   		<!-- yeilding content from blades -->
 			@yield('content')

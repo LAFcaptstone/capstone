@@ -47,7 +47,7 @@ class FoundItemsController extends BaseController {
     	// attempt validation
     	if ($validator->fails())
     	{
-    		Session::flash('errorMessage', 'Post could not be created');
+    		Session::flash('errorMessage', 'Please enter valid infomation');
 
     	    // validation failed, redirect to the post create page with validation errors and old inputs
     	    return Redirect::back()->withInput()->withErrors($validator);
@@ -153,7 +153,7 @@ class FoundItemsController extends BaseController {
     	// attempt validation
     	if ($validator->fails())
     	{
-			Session::flash('errorMessage', 'Post could not be updated');
+			Session::flash('errorMessage', 'Please enter valid infomation');
     	    // validation failed, redirect to the post create page with validation errors and old inputs
     	    return Redirect::back()->withInput()->withErrors($validator);
     	}
