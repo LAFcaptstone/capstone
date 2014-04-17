@@ -298,7 +298,7 @@ footer {
               {{ Form::close() }}
             </div>
             <div class="btn-group">
-              <button class="btn btn-default show"><a href="mailto:{{{ $foundItem->email }}}">Contact Post Creator</a></button>
+              <button class="btn btn-default show"><a href="mailto:{{{ $lostItem->email }}}">Contact Post Creator</a></button>
             </div>  
             <div class="btn-group">
               <button class="btn btn-default show"><a href="{{{action('LostItemsController@index') }}}">Return to Lost Items</a></button>
