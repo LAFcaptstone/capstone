@@ -5,7 +5,14 @@
 @stop
 
 @section('content')
+<style type="text/css">
 
+.modal-body {
+	width: auto;
+  	overflow-y: auto; 
+}
+
+</style>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
