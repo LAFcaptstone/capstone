@@ -305,10 +305,10 @@ footer {
             <div class="btn-group">
               <button class="btn btn-default show"><a href="mailto:{{{ $foundItem->email }}}">Contact Post Creator</a></button>
             </div> 
-            @if(Auth::check() && Auth::user()->is_admin == 1)  
             <div class="btn-group">
               <button class="btn btn-default show"><a href="{{{action('FoundItemsController@index') }}}">Return to Found Items</a></button>
             </div> 
+            @if(Auth::check() && Auth::user()->is_admin == 1)  
             <div class="btn-group">
               <button class="btn btn-default show"><a href="{{{action('HomeController@showFoundItemsDashboard') }}}">Return to Dashboard</a></button>
             </div>

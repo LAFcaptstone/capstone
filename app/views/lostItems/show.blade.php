@@ -301,10 +301,10 @@ footer {
             <div class="btn-group">
               <button class="btn btn-default show"><a href="mailto:{{{ $lostItem->email }}}">Contact Post Creator</a></button>
             </div> 
-            @if(Auth::check() && Auth::user()->is_admin == 1) 
             <div class="btn-group">
               <button class="btn btn-default show"><a href="{{{action('LostItemsController@index') }}}">Return to Lost Items</a></button>
             </div> 
+            @if(Auth::check() && Auth::user()->is_admin == 1) 
             <div class="btn-group">
               <button class="btn btn-default show"><a href="{{{action('HomeController@showLostItemsDashboard') }}}">Return to Dashboard</a></button>
             </div>
