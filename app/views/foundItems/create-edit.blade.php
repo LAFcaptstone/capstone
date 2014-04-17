@@ -26,8 +26,12 @@
 		<div class="form-group">
 		    {{ Form::label('email', 'Email', array('class' => 'col-sm-2 control-label')) }}
 		    <div class="col-sm-10">
+		    	@if (Auth::check())
+		    	<span class='form-control'> {{{ Auth::user()->email }}}</span>
+		    	@else
 				{{ Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'Email')) }}
 		    	{{ $errors->has('email') ? $errors->first('email', '<p><span class="help-block">:message</span></p>') : " " }}
+				@endif		    
 		    </div>
 		</div>
 
@@ -58,8 +62,15 @@
 		    <div class="col-sm-offset-2 col-sm-10">
     			{{ Form::file('image') }}
 				<br>
-		      	<button type="submit" class="btn btn-default">Submit</button>
-		      	<a href="{{{action('FoundItemsController@index') }}}">Cancel</a>
+		      	<button type="submit" class="btn btn-success">Submit</button>
+		      	{{ Form::close() }}
+		      	@if(Auth::check() && Auth::user()->is_admin == 1)
+		      	<a href="{{{ action('UserController@show', Auth::user()->id) }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-danger'>Cancel</a>
+		      	@elseif(Auth::check() && Auth::user()->is_admin == 2)
+		      	<a href="{{{ action('UserController@show', Auth::user()->id) }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-danger'>Cancel</a>
+		   		@else
+		   		<a href="{{{action('FoundItemsController@index') }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-danger'>Cancel</a>
+ 				@endif	   
 		    </div>
 		</div>
 
