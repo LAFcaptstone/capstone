@@ -14,17 +14,6 @@
         	 	<li class="active"><a href="{{{action('HomeController@showLostItemsDashboard') }}}">Lost Items</a></li>
         	 	<li><a href="{{{action('HomeController@showUsersDashboard') }}}">Users</a></li>
         		<li><a href="{{{action('HomeController@showMessagesDashboard') }}}">Messages</a></li>
-        	</ul>
-        	<ul class="nav nav-sidebar">
-        		<li><a href="">Nav item</a></li>
-        		<li><a href="">Nav item again</a></li>
-        		<li><a href="">One more nav</a></li>
-        		<li><a href="">Another nav item</a></li>
-        		<li><a href="">More navigation</a></li>
-        	</ul>
-        	<ul class="nav nav-sidebar">
-        		<li><a href="">Nav item again</a></li>
-        		<li><a href="">One more nav</a></li>
         		<li><a href="{{{ action('HomeController@logout') }}}">Logout</a></li>
         	</ul>
 		</div> <!-- sidebar -->
@@ -74,6 +63,7 @@
 				@endforeach
 				</tbody>
 			</table>
+			{{ $lostItems->links() }}
 		</div>
 	</div><!-- row -->
 </div>
