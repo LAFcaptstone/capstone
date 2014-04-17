@@ -300,7 +300,7 @@ footer {
             </div>
             <div class="btn-group">
               <button class="btn btn-default show"><a href="mailto:{{{ $lostItem->email }}}">Contact Post Creator</a></button>
-            </div> 
+            </div>  
             <div class="btn-group">
               <button class="btn btn-default show"><a href="{{{action('LostItemsController@index') }}}">Return to Lost Items</a></button>
             </div> 
