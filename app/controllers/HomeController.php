@@ -100,6 +100,7 @@ class HomeController extends BaseController {
 		else {
 			Session::flash('errorMessage', 'Login failed, please check your inputs.');
 			return Redirect::back()->withInput();
+			
 		}
 		
 	}
