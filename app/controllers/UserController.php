@@ -156,11 +156,11 @@ class UserController extends BaseController {
 	 */
 	public function destroy($id)
 	{
-		Post::find($id)->delete();
-    		Session::flash('successMessage', 'Post Deleted successfully');
+		User::find($id)->delete();
+    		Session::flash('successMessage', 'User Deleted successfully');
     	    
 
-			return Redirect::action('HomeController@showWelcome');
+			return Redirect::action('HomeController@showUsersDashboard');
 	}
 
 }
