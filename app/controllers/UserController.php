@@ -37,9 +37,9 @@ class UserController extends BaseController {
 		// attempt validation
     	if ($validator->fails())
     	{
-    	Session::flash('errorMessage', 'Error Signing up! Please Try Again.');
-        // validation failed, redirect to the post create page with validation errors and old inputs
-        return Redirect::back()->withInput()->withErrors($validator);
+    		Session::flash('errorMessage', 'Error Signing up! Please Try Again.');
+        	// validation failed, redirect to the post create page with validation errors and old inputs
+        	return Redirect::back()->withInput()->withErrors($validator);
     	}
 		else
 		{	
@@ -51,13 +51,6 @@ class UserController extends BaseController {
 			$user->password = Input::get('password');
 			$user->is_admin = 2;
 			$user->save();
-
-			if ($validator->fails()) {
-			   			Session::flash('errorMessage', 'That email already exist! Please use another!');
-			   			return Redirect::back()->withInput();
-			}
-			else {
-			   
 			
 			Mail::send('emails.update', array('first_name'=>Input::get('first_name')), function($message){
         		$message->to(Input::get('email'), Input::get('first_name').' '.Input::get('last_name'))->subject('Welcome to VIND.IT!');
@@ -76,8 +69,8 @@ class UserController extends BaseController {
 			}
 			
 		}
-		}
 	}
+	
 
 	/**
 	 * Display the specified resource.
@@ -103,8 +96,8 @@ class UserController extends BaseController {
 				'user' => $user // current_user
 				// 'users' => $users
 			);
-		}
 		return View::make('users.profile')->with($data);
+		}
 		
 	}
 

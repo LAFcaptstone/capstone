@@ -51,6 +51,7 @@ class HomeController extends BaseController {
 			$lostItems = LostItem::orderBy('flag_count', 'desc')->paginate(14);
 		}
 		return View::make('lostItemsDashboard')->with(array('lostItems' =>$lostItems));
+
 	}
 
 	public function showUsersDashboard()

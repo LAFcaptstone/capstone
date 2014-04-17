@@ -5,7 +5,6 @@
 @stop
 
 @section('content')
-
 <div class="portfolio">
     <div class="portfolio-title">
         <h1>Whats been found...</h1>
