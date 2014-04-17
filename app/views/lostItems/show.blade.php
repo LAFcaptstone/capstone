@@ -241,9 +241,11 @@ footer {
                 
                 <!-- <div class="panel-heading" style="background-color:#888;color:#fff;">Image</div>  -->
                 <div class="panel-body">
-                  <div style='height:300px;'>
+                  <div style='height:300px; width:370px;'>
                   @if(!is_null($lostItem->image_path))
-                  <img class='img-responsive' style='height: 300px; width:370px;' src="{{{ $lostItem->image_path }}}">
+                  	<img class="img-responsive" src="{{{ $lostItem->image_path }}}">
+                  @else
+					<img src="/img/vind.jpeg" alt="" class="img-responsive">
                   @endif
                 </div>
                   
@@ -296,9 +298,7 @@ footer {
               {{ Form::close() }}
             </div>
             <div class="btn-group">
-              {{ Form::open(array('action' => array('LostItemsController@flag', $lostItem->id))) }}
-              {{ Form::submit('Contact Post Creator', array('class' => 'btn btn-default show')) }}
-              {{ Form::close() }}
+              <button class="btn btn-default show"><a href="mailto:{{{ $foundItem->email }}}">Contact Post Creator</a></button>
             </div>  
             <div class="btn-group">
               <button class="btn btn-default show"><a href="{{{action('LostItemsController@index') }}}">Return to Lost Items</a></button>

@@ -5,14 +5,14 @@
 @stop
 
 @section('content')
-<div class="portfolio container">
-    <div class="portfolio-title">
-        <h3>Whats been lost...</h3>
+<div class="portfolio">
+     <div class="portfolio-title">
+        <h1>Whats been Lost...</h1>
             <p><a href="{{{action('FoundItemsController@index')}}}" class="btn btn-success btn-md">What's been found...<span class="glyphicon glyphicon-circle-arrow-right"></span></a><a href="{{{action('LostItemsController@index')}}}" class="btn btn-danger btn-md">What's been lost...<span class="glyphicon glyphicon-circle-arrow-right"></span></a></p>
     </div>
     <div class="row">
     	@foreach ($lostItems as $lostItem)
-    	<div class="col-md-3">
+    	<div class="col-md-2 col-md-offset-1 work">
     	    @if (!is_null($lostItem->image_path))
     	    	<a href="{{{ action('LostItemsController@show', $lostItem->id) }}}"><img src="{{ $lostItem->image_path }}" alt="" style="width:200px;height:150px"></a>
     	    @else

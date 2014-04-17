@@ -99,7 +99,9 @@ class MessagesController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		Message::findOrFail($id)->delete();
+
+		return Redirect::action('HomeController@showMessagesDashboard');
 	}
 
 }

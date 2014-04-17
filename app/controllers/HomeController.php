@@ -33,10 +33,10 @@ class HomeController extends BaseController {
 	{
 
 		if ('flag_count' == 0) {
-			$foundItems = FoundItem::orderBy('created_at', 'desc')->get();
+			$foundItems = FoundItem::orderBy('created_at', 'desc')->paginate(14);
 		}
 		else {
-			$foundItems = FoundItem::orderBy('flag_count', 'desc')->get();
+			$foundItems = FoundItem::orderBy('flag_count', 'desc')->paginate(14);
 		}
 		return View::make('foundItemsDashboard')->with(array('foundItems' =>$foundItems));
 	}
@@ -45,10 +45,10 @@ class HomeController extends BaseController {
 	public function showLostItemsDashboard()
 	{
 		if ('flag_count' == 0) {
-			$lostItems = LostItem::orderBy('created_at', 'desc')->get();
+			$lostItems = LostItem::orderBy('created_at', 'desc')->paginate(14);
 		}
 		else {
-			$lostItems = LostItem::orderBy('flag_count', 'desc')->get();
+			$lostItems = LostItem::orderBy('flag_count', 'desc')->paginate(14);
 		}
 		return View::make('lostItemsDashboard')->with(array('lostItems' =>$lostItems));
 
@@ -56,14 +56,14 @@ class HomeController extends BaseController {
 
 	public function showUsersDashboard()
 	{
-		$users = User::orderBy('created_at', 'desc')->get();
+		$users = User::orderBy('created_at', 'desc')->paginate(14);
 		
 		return View::make('usersDashboard')->with(array('users' =>$users));
 	}
 
 	public function showMessagesDashboard()
 	{
-		$messages = Message::orderBy('created_at', 'desc')->get();
+		$messages = Message::orderBy('created_at', 'desc')->paginate(14);
 		
 		return View::make('messagesDashboard')->with(array('messages' =>$messages));
 		
@@ -121,6 +121,20 @@ class HomeController extends BaseController {
 		return View::make('contact');
 	}
 
+	public function search()
+	{
+		$search = Input::get('search');
+		$keywords = explode(' ', $search);
+		$query = FoundItem::orderBy('created_at', 'desc');
+		foreach($keywords as $keyword)
+    	{
+			$foundItems = $query->where('title', 'LIKE', "%{$keyword}%")
+				  			 	->orWhere('body', 'LIKE', "%{$keyword}%")
+				      		 	->orWhere('location', 'LIKE', "%{$keyword}%")
+				      		 	->paginate(8);
+		}
+		return View::make('foundItems.index')->with(array('foundItems' => $foundItems));
+	}
 
 
 }

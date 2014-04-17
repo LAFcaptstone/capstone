@@ -13,6 +13,7 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x11png">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" rel="stylesheet">
 		<link href='/css/base.css' rel='stylesheet'>
+		
 		@yield('topscript')
 	</head>	
 		<body>
@@ -40,13 +41,9 @@
 							<li><a href="{{{ action('LostItemsController@create') }}}" style='color:#F00;'>New Lost Post</a></li>
 						</ul>
 						<div class="col-sm-4 col-md-4 pull-right">
-						{{ Form::open(array('action' => array('FoundItemsController@index'), 'method' => 'GET', 'class' => 'navbar-form')) }}
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-							<div class="input-group-btn">
-								<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-							</div>
-						</div>
+						{{ Form::open(array('action' => array('HomeController@search'), 'method' => 'GET', 'class' => 'navbar-form')) }}
+						{{ Form::text('search') }}
+       					{{ Form::submit('Search', array('class'=> 'btn btn-default')) }}
 						{{ Form::close() }} 
 						</div>
 						
