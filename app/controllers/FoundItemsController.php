@@ -17,22 +17,10 @@ class FoundItemsController extends BaseController {
 	 */
 	public function index()
 	{
-		//show lists of all posts
-		$search = Input::get('search');
 		$query = FoundItem::orderBy('created_at', 'desc');
-		if (is_null($search)) {
-			$foundItems = $query->paginate(10);
-		} 
-		else {
-			$keywords = explode(' ', $search);
-			foreach($keywords as $keyword)
-    		{
-				$foundItems = $query->where('title', 'LIKE', "%{$keyword}%")
-						   			->orWhere('body', 'LIKE', "%{$keyword}%")
-						   			->orWhere('location', 'LIKE', "%{$keyword}%")
-						   			->paginate(10);
-			}
-		}
+		
+		$foundItems = $query->paginate(8);
+		
 		return View::make('foundItems.index')->with(array('foundItems' => $foundItems));
 	}
 

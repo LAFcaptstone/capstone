@@ -23,7 +23,7 @@ Route::get('/usersDashboard', 'HomeController@showUsersDashboard');
 
 Route::get('/messagesDashboard', 'HomeController@showMessagesDashboard');
 
-Route::get('/dashboard', 'HomeController@showDashboard');
+//Route::get('/dashboard', 'HomeController@showDashboard');
 
 Route::get('/login', 'HomeController@showLogin');
 
@@ -34,6 +34,8 @@ Route::get('/logout', 'HomeController@logout');
 Route::post('/foundItems/{id}/flag', 'FoundItemsController@flag');
 
 Route::post('/lostItems/{id}/flag', 'LostItemsController@flag');
+
+Route::get('/search', 'HomeController@search');
 
 Route::get('/signup', 'UserController@create');
 
@@ -51,7 +53,7 @@ Route::controller('password', 'RemindersController');
 
 Route::get('/editFoundItem/{id}/{token}', 'FoundItemsController@editWithToken');
 
-// Route::get('/lostItems/{$token}', 'LostItemsController@edit');
+Route::get('/editLostItem/{id}/{token}', 'LostItemsController@editWithToken');
 
 Route::get('/test', 'HomeController@showTest');
 

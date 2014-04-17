@@ -17,22 +17,11 @@ class LostItemsController extends BaseController {
 	 */
 	public function index()
 	{
-		//show lists of all posts
-		$search = Input::get('search');
+		
 		$query = LostItem::orderBy('created_at', 'desc');
-		if (is_null($search)) {
-			$lostItems = $query->paginate(10);
-		} 
-		else {
-			$keywords = explode(' ', $search);
-			foreach($keywords as $keyword)
-    		{
-				$lostItems = $query->where('title', 'LIKE', "%{$keyword}%")
-						   	   	   ->orWhere('body', 'LIKE', "%{$keyword}%")
-						   	   	   ->orWhere('location', 'LIKE', "%{$keyword}%")
-						   	       ->paginate(10);
-			}
-		}
+		
+		$lostItems = $query->paginate(8);
+		
 		return View::make('lostItems.index')->with(array('lostItems' => $lostItems));
 	}
 

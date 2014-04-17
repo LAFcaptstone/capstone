@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
 @section('topscript')
-<link rel="stylesheet" type="text/css" href="css/dashboard.css">
+
+<link rel="stylesheet" type="text/css" href="/css/dashboard.css">
+
 @stop
 
 @section('content')
@@ -10,14 +12,17 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
         	<ul class="nav nav-sidebar">
+
         	 	<li><a href="{{{ action('HomeController@logout') }}}">Logout</a></li>
+
         	</ul>
+        	
 		</div>
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         	<h1 class="page-header">Dashboard</h1>
 
-        	<h3>User Name: {{{('Auth::user()->first_name')}}}</h3>
+        	<h3>User Name: {{{ Auth::user()->first_name }}}</h3>
 			<table class="table table-responsive">
 				<thead>
 	    	        <tr>

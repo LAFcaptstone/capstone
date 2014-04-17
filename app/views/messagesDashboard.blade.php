@@ -14,17 +14,6 @@
         	 	<li><a href="{{{action('HomeController@showLostItemsDashboard') }}}">Lost Items</a></li>
         	 	<li><a href="{{{action('HomeController@showUsersDashboard') }}}">Users</a></li>
         		<li class="active"><a href="{{{action('HomeController@showMessagesDashboard') }}}">Messages</a></li>
-        	</ul>
-        	<ul class="nav nav-sidebar">
-        		<li><a href="">Nav item</a></li>
-        		<li><a href="">Nav item again</a></li>
-        		<li><a href="">One more nav</a></li>
-        		<li><a href="">Another nav item</a></li>
-        		<li><a href="">More navigation</a></li>
-        	</ul>
-        	<ul class="nav nav-sidebar">
-        		<li><a href="">Nav item again</a></li>
-        		<li><a href="">One more nav</a></li>
         		<li><a href="{{{ action('HomeController@logout') }}}">Logout</a></li>
         	</ul>
 		</div> <!-- sidebar -->
@@ -36,36 +25,49 @@
 			<table class="table table-responsive">
 				<thead>
 	    	        <tr>
-	    	           	<th>Id</th>
 	    	           	<th>Title</th>
-	    	           	<th>Body</th>
 	    	           	<th>Email</th>
 	    	           	<th>Date Created</th>
-						<th>Date Updated</th>
 	    	        </tr>
 	    	    </thead>
 	  	
 				<tbody>
 				@foreach ($messages as $message) 
 	    	   	    <tr>
-						<td>{{{ $message->id }}}</td>
-						<td>{{{ $message->title }}}</td>
-						<td>{{{ $message->body }}}</td>
+						<td><a href="#" data-toggle="modal" data-target="#myModal{{{ $message->id }}}">{{{ $message->title }}}</a></td>
 						<td>{{{ $message->email }}}</td>
 						<td>{{{ $message->created_at->format('l, F jS Y @ h:i:s A') }}}</td>
-						<td>{{{ $message->updated_at->format('l, F jS Y @ h:i:s A') }}}</td>
-						<!-- <td> -->
-							<!-- {{ Form::open(array('action' => array('MessagesController@destroy', $message->id), 'method' => 'delete')) }} -->
-							<!-- {{ Form::submit('Delete', array('class' => 'btnDelete')) }} -->
-							<!-- {{ Form::close() }} -->
-						<!-- </td> -->
+						<td>
+							{{ Form::open(array('action' => array('MessagesController@destroy', $message->id), 'method' => 'delete')) }}
+							{{ Form::submit('Delete', array('class' => 'btnDelete')) }}
+							{{ Form::close() }}
+						</td>
 					</tr>
+						<!-- Modal -->
+						<div class="modal fade" id="myModal{{{ $message->id }}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						        <h4 class="modal-title" id="myModalLabel">{{{ $message->title }}}</h4>
+						      </div>
+						      <div class="modal-body">
+						        {{{ $message->body }}}
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
 				@endforeach
 				</tbody>
 			</table>
+			{{ $messages->links() }}
 		</div>
 	</div><!-- row -->
 </div>
+
 
 
 @stop
@@ -75,12 +77,12 @@
 <script>
 
  
-	// $('.btnDelete').on('click', function (e) {
-		// e.preventDefault();
-		// if (confirm('Are you sure you want to delete this post?')) {
-			// $(this).parent('form').submit();
-		// }
-	// });
+	$('.btnDelete').on('click', function (e) {
+		e.preventDefault();
+		if (confirm('Are you sure you want to delete this post?')) {
+			$(this).parent('form').submit();
+		}
+	});
 
 </script>
 
