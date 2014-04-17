@@ -2,11 +2,11 @@
     margin-top: 50px;
 }
 
-.portfolio-title h3 {
+.portfolio-title h1 {
     width: 220px;
     margin: 0 auto;
     background: #fff;
-    font-family: 'Lobster', cursive;
+    font-family: 'Lobster';
     font-size: 24px;
     color: #5d5d5d;
 }

@@ -9,15 +9,10 @@ class UserController extends BaseController {
 	 */
 	public function index()
 	{
-		
-		return View::make('users.show');
+		$query = User::orderBy('created_at', 'desc');
+		$users = $query->paginate(10);
+		return View::make('users.usersDashboard')->with(array('users' => $users));
 	}
-
-	// use prpfile route
-	// public function showProfile($id)
-	// {
-		
-	// }
 
 	/**
 	 * Show the form for creating a new resource.
@@ -48,21 +43,32 @@ class UserController extends BaseController {
     	}
 		else
 		{	
-			$newUser = new User();
-			// $newUser->user_id = Auth::user()->id;
-			$newUser->first_name = Input::get('first_name');
-			$newUser->last_name = Input::get('last_name');
-			$newUser->email = Input::get('email');
-			$newUser->password = Input::get('password');
-			$newUser->save();
+			$user = new User();
+			// $user->user_id = Auth::user()->id;
+			$user->first_name = Input::get('first_name');
+			$user->last_name = Input::get('last_name');
+			$user->email = Input::get('email');
+			$user->password = Input::get('password');
+			$user->is_admin = 2;
+			$user->save();
 
 
 			Mail::send('emails.update', array('first_name'=>Input::get('first_name')), function($message){
         		$message->to(Input::get('email'), Input::get('first_name').' '.Input::get('last_name'))->subject('Welcome to VIND.IT!');
     		});
 
-			Session::flash('successMessage', 'Welcome!');
-			return Redirect::action('HomeController@showWelcome');
+    		if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
+			{
+				Session::flash('successMessage', 'Welcome To Vind.IT!');
+
+				return Redirect::intended('profile/' . Auth::user()->id);
+			
+			}
+			else {
+				Session::flash('errorMessage', 'We were unable to process your request, please check your inputs.');
+				return Redirect::back()->withInput();
+			}
+			
 		}
 	}
 
@@ -75,16 +81,23 @@ class UserController extends BaseController {
 	public function show($id)
 	{
 		if (Auth::check()){
-		$user = User::findOrFail($id);
-		$foundItems = FoundItem::where('user_id', Auth::user()->id)->get();
-		$lostItems = LostItem::where('user_id', Auth::user()->id)->get();
-		$data = array(
-			'foundItems' => $foundItems,
-			'lostItems' => $lostItems,
-			'user' => $user
+			$user = User::findOrFail($id);
+			$foundItems = FoundItem::where('user_id', Auth::user()->id)->get();
+			$lostItems = LostItem::where('user_id', Auth::user()->id)->get();
+			
+			// if (Auth::user()->is_admin == 1){
+			// 	$users = User::all();
+			// } elseif (Auth::user()->is_admin == 2){
+			// 	$users = Auth::user();
+			// }
+			$data = array(
+				'foundItems' => $foundItems,
+				'lostItems' => $lostItems,
+				'user' => $user // current_user
+				// 'users' => $users
 			);
-		}
 		return View::make('users.profile')->with($data);
+		}
 		
 	}
 
@@ -96,8 +109,8 @@ class UserController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		$newUser = User::findOrFail($id);
-		return View::make('users.edit')->with('user', $newUser);
+		$user = User::findOrFail($id);
+		return View::make('users.edit')->with('user', $user);
 	}
 
 	/**
@@ -119,11 +132,11 @@ class UserController extends BaseController {
     	}
 		else
 		{	
-			$newUser = new User();
-			$newUser->first_name = Input::get('first_name');
-			$newUser->last_name = Input::get('last_name');
-			$newUser->email = Input::get('email');
-			$newUser->password = Input::get('password');
+			$user = new User();
+			$user->first_name = Input::get('first_name');
+			$user->last_name = Input::get('last_name');
+			$user->email = Input::get('email');
+			$user->password = Input::get('password');
 			$lostItem->save();
 
 			Mail::send('emails.update', array('first_name'=>Input::get('first_name')), function($message){

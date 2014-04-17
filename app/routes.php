@@ -12,10 +12,16 @@
 */
 
 Route::get('/', 'HomeController@showWelcome');
-//admin dashboard
+
+Route::get('/foundItemsDashboard', 'HomeController@showFoundItemsDashboard');
+
+Route::get('/lostItemsDashboard', 'HomeController@showLostItemsDashboard');
+
+Route::get('/usersDashboard', 'HomeController@showUsersDashboard');
+
+Route::get('/messagesDashboard', 'HomeController@showMessagesDashboard');
+
 Route::get('/dashboard', 'HomeController@showDashboard');
-//user profile
-// Route::get('profile/{$id}', 'UserController@showProfile');
 
 Route::get('/login', 'HomeController@showLogin');
 
@@ -29,8 +35,6 @@ Route::post('/lostItems/{id}/flag', 'LostItemsController@flag');
 
 Route::get('/signup', 'UserController@create');
 
-Route::get('/foundItems/{$id}?token={$token}/edit', 'FoundItemsController@edit');
-
 Route::resource('profile', 'UserController');
 
 Route::resource('messages', 'MessagesController');
@@ -43,8 +47,8 @@ Route::get('/map', 'HomeController@showMap');
 
 Route::controller('password', 'RemindersController');
 
+Route::get('/editFoundItem/{id}/{token}', 'FoundItemsController@editWithToken');
 
-// 
 // Route::get('/lostItems/{$token}', 'LostItemsController@edit');
 
 Route::get('/test', 'HomeController@showTest');

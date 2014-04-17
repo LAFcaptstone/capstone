@@ -46,8 +46,8 @@
 
   html { height: 100% }
   body { height: 100%; margin: 0; padding: 0 }
-  #map-canvas { height: 300px; width:350px; margin-left: 10px;}
-  #panel {
+  #map-canvas { height: 300px; width:325px; margin-left: 15px; margin-top: 15px;}
+  /*#panel {
         position: absolute;
         top: 5px;
         left: 40%;
@@ -55,7 +55,8 @@
         background-color: #fff;
         padding: 5px;
         border: 1px solid #999;
-      }
+        margin-top: 10px;
+      }*/
             /* bootstrap 3 helpers */
 
 
@@ -203,6 +204,29 @@ footer {
     *width: 8.263888888888888%;
   }
 }
+.space {
+  margin-top: 100px;
+  margin-left: 10%;
+  
+}
+
+.box {
+  width: 120%;
+  margin: 0 auto;
+  border-style:solid;
+  border-width:1px;
+}
+
+.contact {
+  margin: auto;
+  margin-top: 40px;
+}
+
+.show {
+  margin: 0px;
+}
+
+
 
 	/* end custom theme */
 </style>
@@ -212,71 +236,84 @@ footer {
 				<!-- Begin Navbar -->
 
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h1>{{{ $foundItem->title }}}</h1>
-				<small style='margin-right:15px;'>Posted on: {{{ $foundItem->created_at }}}</small>
-				<p class="badge">Location: {{{ $foundItem->location }}}</p>
-			</div>
-		</div>
-	</div>
+	
 
 <!-- Begin Body -->
-<div class="container">
-	<div class="no-gutter row">
-					<!-- left side column -->
-				<div class="col-md-3">
-								<div class="panel panel-default" id="sidebar">
-								<div class="panel-heading" style="background-color:#888;color:#fff;">Image</div> 
+<div class="container space">
+	<div class="no-gutter row box">
+		<!-- left side column -->
+				<div class="col-md-4">
+								
+								<!-- <div class="panel-heading" style="background-color:#888;color:#fff;">Image</div>  -->
 								<div class="panel-body">
 									<div style='height:300px;'>
 									@if(!is_null($foundItem->image_path))
-									<img class='img-responsive' src="{{{ $foundItem->image_path }}}">
+									<img class='img-responsive' style='height: 300px; width:370px;' src="{{{ $foundItem->image_path }}}">
 									@endif
 								</div>
 									
-									<hr>
-
-								<div class="col col-span-12">
-									<i class="icon-2x icon-facebook"></i>&nbsp;
-									<i class="icon-2x icon-twitter"></i>&nbsp;
-									<i class="icon-2x icon-linkedin"></i>&nbsp;
-									<i class="icon-2x icon-pinterest"></i>
-								</div>
+								
 								
 								</div><!--/panel body-->
-							</div><!--/panel-->
+						
 					</div><!--/end left column-->
 						
 					<!--mid column-->
 					<div class="col-md-4">
-							<div class="panel" id="midCol">
-								<div class="panel-heading" style="background-color:#555;color:#eee;">Post Description</div> 
+							
+								<!-- <div class="panel-heading" style="background-color:#555;color:#eee;">Post Description</div>  -->
 								<div class="panel-body" style='height:300px;'>
-									<div class="well">
-													<h4>{{{ $foundItem->body }}}
+									<div>
+                          <h2>{{{ $foundItem->title }}}</h2>
+                          <hr>
+                          <p>{{{ $foundItem->body }}}
+                            <div class="col-md-12">
+                           
+                           <p class="badge">Location: {{{ $foundItem->location }}}</p>
+                         </div>
+                         <small style='margin-right:15px;'>Posted on: {{{ $foundItem->created_at }}}</small>
 									</div>
-									
-									<hr>
-									<button class='btn btn-success center-block'>Contact Post Creator</button>
-									
-							 </div> 
-							 </div><!--/panel-->
+									<div>
+									 
+									</div class="contact">
+							   </div> 
+							
 					</div><!--/end mid column-->
 					
 					<!-- right content column-->
-					<div class="col-md-5" id="content">
-							<div class="panel">
-					<div class="panel-heading" style="background-color:#111;color:#fff;">Map</div>   
-								<div class="panel-body">
+					<div class="col-md-4" id="content">
+							<!-- <div class="panel"> -->
+					<!-- <div class="panel-heading" style="background-color:#111;color:#fff;">Map</div>    -->
+								
 									<div class='row'>
 										<div id="map-canvas"/>
 									</div><!--/panel-body-->
-								</div><!--/panel-->
+								
 								<!--/end right column-->
-				</div> 
-		</div>
+				  </div> 
+    </div>
 </div>
+        <div class="container col-md-4 col-md-offset-4">
+          <div class="btn-group">
+            <div class="btn-group">
+              {{ Form::open(array('action' => array('FoundItemsController@flag', $foundItem->id))) }}
+              {{ Form::submit('Flag Post', array('class' => 'btn btn-default show')) }}
+              {{ Form::close() }}
+            </div>
+            <div class="btn-group">
+              {{ Form::open(array('action' => array('FoundItemsController@flag', $foundItem->id))) }}
+              {{ Form::submit('Contact Post Creator', array('class' => 'btn btn-default show')) }}
+              {{ Form::close() }}
+            </div>  
+            <div class="btn-group">
+              <button class="btn btn-default show"><a href="{{{action('FoundItemsController@index') }}}">Return to Found Items</a></button>
+            </div> 
+            <div class="btn-group">
+              <button class="btn btn-default show"><a href="{{{action('HomeController@showFoundItemsDashboard') }}}">Return to Dashboard</a></button>
+            </div>   
+          </div>
+        </div>
+
+
 @stop
->>>>>>> FETCH_HEAD
+
