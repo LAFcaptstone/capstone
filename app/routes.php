@@ -33,7 +33,9 @@ Route::post('/foundItems/{id}/flag', 'FoundItemsController@flag');
 
 Route::post('/lostItems/{id}/flag', 'LostItemsController@flag');
 
-Route::get('/search', 'HomeController@search');
+Route::get('/searchFoundItems', 'HomeController@searchFoundItems');
+
+Route::get('/searchLostItems', 'HomeController@searchLostItems');
 
 Route::get('/signup', 'UserController@create');
 

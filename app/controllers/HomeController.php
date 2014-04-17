@@ -121,10 +121,11 @@ class HomeController extends BaseController {
 		return View::make('contact');
 	}
 
-	public function search()
+	public function searchFoundItems()
 	{
 		$search = Input::get('search');
 		$keywords = explode(' ', $search);
+		
 		$query = FoundItem::orderBy('created_at', 'desc');
 		foreach($keywords as $keyword)
     	{
@@ -133,8 +134,23 @@ class HomeController extends BaseController {
 				      		 	->orWhere('location', 'LIKE', "%{$keyword}%")
 				      		 	->paginate(8);
 		}
-		return View::make('foundItems.index')->with(array('foundItems' => $foundItems));
+		return View::make('foundItems.index')->with(array('foundItems' => $foundItems));				
 	}
 
+	public function searchLostItems()
+	{
+		$search = Input::get('search');
+		$keywords = explode(' ', $search);
+		$query = LostItem::orderBy('created_at', 'desc');
+		foreach($keywords as $keyword)
+    	{
+			$lostItems = $query->where('title', 'LIKE', "%{$keyword}%")
+				  			 	->orWhere('body', 'LIKE', "%{$keyword}%")
+				      		 	->orWhere('location', 'LIKE', "%{$keyword}%")
+				      		 	->paginate(8);
+		}
+		return View::make('lostItems.index')->with(array('lostItems' => $lostItems));
+	}
 
 }
+
