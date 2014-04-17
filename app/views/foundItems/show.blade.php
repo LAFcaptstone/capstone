@@ -4,39 +4,39 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" rel="stylesheet">
 
 <script type="text/javascript"
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5pYCoWnluxbeBgj6r9-evOPE_WJflfl0&sensor=true">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5pYCoWnluxbeBgj6r9-evOPE_WJflfl0&sensor=true">
 </script>
 <script type="text/javascript">
-	var geocoder;
-	var map;
-	function initialize() {
-		geocoder = new google.maps.Geocoder();
-		var mapOptions = {
-			center: new google.maps.LatLng(29.424122, -98.493628),
-			zoom: 11
-		};
-		map = new google.maps.Map(document.getElementById("map-canvas"),
-			mapOptions);
-		}
-		function codeAddress() {
-				var address = '{{{$foundItem->location}}}'
-				geocoder.geocode( { 'address': address}, function(results, status) {
-					if (status == google.maps.GeocoderStatus.OK) {
-							map.setCenter(results[0].geometry.location);
-						var marker = new google.maps.Marker({
-									map: map,
-									position: results[0].geometry.locatio
-							});
-					}else {
-							alert('Geocode was not successful for the following reason: ' + status);
-					}
-				});
-		}
+    var geocoder;
+    var map;
+    function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var mapOptions = {
+            center: new google.maps.LatLng(29.424122, -98.493628),
+            zoom: 11
+        };
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        }
+        function codeAddress() {
+                var address = '{{{$foundItem->location}}}'
+                geocoder.geocode( { 'address': address}, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                            map.setCenter(results[0].geometry.location);
+                        var marker = new google.maps.Marker({
+                                    map: map,
+                                    position: results[0].geometry.locatio
+                            });
+                    }else {
+                            alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+        }
 
-	google.maps.event.addDomListener(window, 'load', initialize);
-	window.onload = function(){
-		codeAddress();
-	};
+    google.maps.event.addDomListener(window, 'load', initialize);
+    window.onload = function(){
+        codeAddress();
+    };
 </script>
 
   
@@ -228,44 +228,44 @@ footer {
 
 
 
-	/* end custom theme */
+    /* end custom theme */
 </style>
 @stop
 
 @section('content')  
-				<!-- Begin Navbar -->
+                <!-- Begin Navbar -->
 
 
-	
+    
 
 <!-- Begin Body -->
 <div class="container space">
-	<div class="no-gutter row box">
-		<!-- left side column -->
-				<div class="col-md-4">
-								
-								<!-- <div class="panel-heading" style="background-color:#888;color:#fff;">Image</div>  -->
-					<div class="panel-body">
-                	  <div style='height:300px; width:370px;'>
-                	  @if(!is_null($foundItem->image_path))
-                	  	<img class="img-responsive" src="{{{ $foundItem->image_path }}}">
-                	  @else
-						<img src="/img/vind.jpeg" alt="" class="img-responsive">
-                	  @endif
-                	</div>
-									
-								
-								
-								</div><!--/panel body-->
-						
-					</div><!--/end left column-->
-						
-					<!--mid column-->
-					<div class="col-md-4">
-							
-								<!-- <div class="panel-heading" style="background-color:#555;color:#eee;">Post Description</div>  -->
-								<div class="panel-body" style='height:300px;'>
-									<div>
+    <div class="no-gutter row box">
+        <!-- left side column -->
+                <div class="col-md-4">
+                                
+                                <!-- <div class="panel-heading" style="background-color:#888;color:#fff;">Image</div>  -->
+                    <div class="panel-body">
+                      <div style='height:300px; width:370px;'>
+                      @if(!is_null($foundItem->image_path))
+                        <img class="img-responsive" src="{{{ $foundItem->image_path }}}">
+                      @else
+                        <img src="/img/vind.jpeg" alt="" class="img-responsive">
+                      @endif
+                    </div>
+                                    
+                                
+                                
+                                </div><!--/panel body-->
+                        
+                    </div><!--/end left column-->
+                        
+                    <!--mid column-->
+                    <div class="col-md-4">
+                            
+                                <!-- <div class="panel-heading" style="background-color:#555;color:#eee;">Post Description</div>  -->
+                                <div class="panel-body" style='height:300px;'>
+                                    <div>
                           <h2>{{{ $foundItem->title }}}</h2>
                           <hr>
                           <p>{{{ $foundItem->body }}}
@@ -274,25 +274,25 @@ footer {
                            <p class="badge">Location: {{{ $foundItem->location }}}</p>
                          </div>
                          <small style='margin-right:15px;'>Posted on: {{{ $foundItem->created_at }}}</small>
-									</div>
-									<div>
-									 
-									</div class="contact">
-							   </div> 
-							
-					</div><!--/end mid column-->
-					
-					<!-- right content column-->
-					<div class="col-md-4" id="content">
-							<!-- <div class="panel"> -->
-					<!-- <div class="panel-heading" style="background-color:#111;color:#fff;">Map</div>    -->
-								
-									<div class='row'>
-										<div id="map-canvas"/>
-									</div><!--/panel-body-->
-								
-								<!--/end right column-->
-				  </div> 
+                                    </div>
+                                    <div>
+                                     
+                                    </div class="contact">
+                               </div> 
+                            
+                    </div><!--/end mid column-->
+                    
+                    <!-- right content column-->
+                    <div class="col-md-4" id="content">
+                            <!-- <div class="panel"> -->
+                    <!-- <div class="panel-heading" style="background-color:#111;color:#fff;">Map</div>    -->
+                                
+                                    <div class='row'>
+                                        <div id="map-canvas"/>
+                                    </div><!--/panel-body-->
+                                
+                                <!--/end right column-->
+                  </div> 
     </div>
 </div>
         <div class="container col-md-4 col-md-offset-4">
