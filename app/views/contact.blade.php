@@ -1,6 +1,13 @@
 @extends('layouts.master')
 
 @section('content')
+<style type="text/css">
+p{
+	padding: 0px;
+	margin-bottom: 0px;
+}
+
+</style>
 <div class='container'>
 		<div class="sect-border"></div>
 
@@ -22,7 +29,7 @@
 			{{ Form::textarea('body', null, array('class' => 'form-control'))}}
 			{{ $errors->first('body', '<span class="help-block" style="color:red;">:message</span>') }}
 		</div>
-		<button style="display:block" class="btn btn-success" type="submit" value="submit" title='Submit Post'><span class='glyphicon glyphicon-pencil'></span>
+		<button  class="btn btn-success" type="submit" value="submit" title='Submit Post'><p> Submit </p></button>
 		{{ Form::close() }}
 		</div>
 		</div>

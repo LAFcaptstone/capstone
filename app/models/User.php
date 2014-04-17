@@ -24,7 +24,7 @@ class User extends Base implements UserInterface, RemindableInterface {
 	public static $rules = array(
     	'first_name'      => 'required|max:50',
     	'last_name'       => 'required|max:50',
-    	'email'		 => 'required|max:50',
+    	'email'		 => 'required|unique:users|max:50|email',
     	'password'   => 'required|max:10',
 	
 	);
