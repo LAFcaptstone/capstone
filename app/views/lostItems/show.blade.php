@@ -263,7 +263,8 @@ footer {
                   <div>
                           <h2>{{{ $lostItem->title }}}</h2>
                           <hr>
-                          <p>{{{ $lostItem->body }}}
+                          <p>{{{ $lostItem->body }}}</p>
+                          <p>Reward: {{{ $lostItem->reward }}}</p>
                             <div class="col-md-12">
                            
                            <p class="badge">Location: {{{ $lostItem->location }}}</p>
