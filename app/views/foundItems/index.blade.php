@@ -4,11 +4,14 @@
 <link rel="stylesheet" type="text/css" href="css/index.css">
 @stop
 
+@section('itemtype')
+<input type="hidden" name="itemtype" value="found">
+@stop
+
 @section('content')
 <div class="portfolio">
     <div class="portfolio-title">
         <h1>Whats been found...</h1>
-            <p><a href="{{{action('FoundItemsController@index')}}}" class="btn btn-success btn-md">What's been found...<span class="glyphicon glyphicon-circle-arrow-right"></span></a><a href="{{{action('LostItemsController@index')}}}" class="btn btn-danger btn-md">What's been lost...<span class="glyphicon glyphicon-circle-arrow-right"></span></a></p>
     </div>
     <div class="row">
     @foreach ($foundItems as $foundItem)
@@ -31,6 +34,7 @@
 
     {{ $foundItems->appends(array('search' => Input::get('search')))->links() }}
 </div>
+
 
 @stop
 

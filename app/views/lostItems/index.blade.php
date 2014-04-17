@@ -8,7 +8,6 @@
 <div class="portfolio">
      <div class="portfolio-title">
         <h1>Whats been Lost...</h1>
-            <p><a href="{{{action('FoundItemsController@index')}}}" class="btn btn-success btn-md">What's been found...<span class="glyphicon glyphicon-circle-arrow-right"></span></a><a href="{{{action('LostItemsController@index')}}}" class="btn btn-danger btn-md">What's been lost...<span class="glyphicon glyphicon-circle-arrow-right"></span></a></p>
     </div>
     <div class="row">
     	@foreach ($lostItems as $lostItem)
@@ -29,6 +28,7 @@
 
     {{ $lostItems->appends(array('search' => Input::get('search')))->links() }}
 </div>
+
 
 @stop
 
