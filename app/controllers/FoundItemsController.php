@@ -8,7 +8,7 @@ class FoundItemsController extends BaseController {
 	    parent::__construct();
 	
 	    // run auth filter before all methods on this controller except index and show
-	    $this->beforeFilter('auth', array('except' => array('index', 'show', 'create', 'store', 'flag')));
+	    $this->beforeFilter('auth', array('except' => array('index', 'show', 'create', 'store', 'edit', 'flag')));
 	}
 	/**
 	 * Display a listing of the resource.
@@ -47,7 +47,7 @@ class FoundItemsController extends BaseController {
     	// attempt validation
     	if ($validator->fails())
     	{
-    		Session::flash('errorMessage', 'Post could not be created');
+    		Session::flash('errorMessage', 'Please enter valid infomation');
 
     	    // validation failed, redirect to the post create page with validation errors and old inputs
     	    return Redirect::back()->withInput()->withErrors($validator);
@@ -75,8 +75,11 @@ class FoundItemsController extends BaseController {
 			Mail::send('emails.auth.foundItemsLink', array('token' => $foundItem->token, 'id' => $foundItem->id, 'email'=>Input::get('email')), function($message){
         		$message->to(Input::get('email'))->subject('VIND.IT: Edit/Delete your Post');
     		});
-
-			Session::flash('successMessage', 'Post created succesfully');
+    		if (Auth::check()) {
+				Session::flash('successMessage', 'Post created succesfully, post can be edited from inside your User Profile');
+			}else{
+				Session::flash('successMessage', 'Post created succesfully, check your e-mail to edit post.');
+			}
 			return Redirect::action('FoundItemsController@index');
 		}
 	}
@@ -103,18 +106,37 @@ class FoundItemsController extends BaseController {
 	{
 		$foundItem = FoundItem::findOrFail($id);
 
+		$accessOk = false;
+
+		if (Auth::check())
+		{
+			if (Auth::user()->is_admin == User::ROLE_ADMIN || Auth::user()->id == $founditem->user_id)
+			{
+				$accessOk = true;
+			}
+		}
+		else if ($foundItem->token == Input::get('token'))
+		{
+			$accessOk = true;
+		}
+
+		if (!$accessOk)
+		{
+			App::abort('404');
+		}
+
 		return View::make('foundItems.create-edit')->with('foundItem', $foundItem);
 	}
 
-	public function editWithToken($token) {
-		$item = FoundItem::where('token', '=', $token);
-		// check if admin, owner or token
-		if (Auth::check() || $item->token == $token) {
-			return $this->edit($item->id);
-		}
+	// public function editWithToken($token) {
+	// 	$item = FoundItem::where('token', '=', $token);
+	// 	// check if admin, owner or token
+	// 	if (Auth::check() || $item->token == $token) {
+	// 		return $this->edit($item->id);
+	// 	}
 
-		App::abort('404');
-	}
+	// 	App::abort('404');
+	// }
 
 	/**
 	 * Update the specified resource in storage.
@@ -131,7 +153,7 @@ class FoundItemsController extends BaseController {
     	// attempt validation
     	if ($validator->fails())
     	{
-			Session::flash('errorMessage', 'Post could not be updated');
+			Session::flash('errorMessage', 'Please enter valid infomation');
     	    // validation failed, redirect to the post create page with validation errors and old inputs
     	    return Redirect::back()->withInput()->withErrors($validator);
     	}

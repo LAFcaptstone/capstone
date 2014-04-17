@@ -48,7 +48,7 @@ class LostItemsController extends BaseController {
     	// attempt validation
     	if ($validator->fails())
     	{
-    		Session::flash('errorMessage', 'Post could not be created');
+    		Session::flash('errorMessage', 'Please enter valid infomation');
 
     	    // validation failed, redirect to the post create page with validation errors and old inputs
     	    return Redirect::back()->withInput()->withErrors($validator);
@@ -73,11 +73,15 @@ class LostItemsController extends BaseController {
 			}
 			$lostItem->save();
 
-			Mail::send('emails.auth.lostItemslink', array('token' => $lostItem->token, 'email'=>Input::get('email')), function($message){
+			Mail::send('emails.auth.lostItemslink', array('token' => $lostItem->token,'id' => $lostItem->id, 'email'=>Input::get('email')), function($message){
         		$message->to(Input::get('email'))->subject('VIND.IT: Edit/Delete your Post');
     		});
 
-			Session::flash('successMessage', 'Post created succesfully');
+			if (Auth::check()) {
+				Session::flash('successMessage', 'Post created succesfully, post can be edited from inside your User Profile');
+			}else{
+				Session::flash('successMessage', 'Post created succesfully, check your e-mail to edit post.');
+			}
 			return Redirect::action('LostItemsController@index');
 		}
 	}
@@ -104,17 +108,26 @@ class LostItemsController extends BaseController {
 	{
 		$lostItem = LostItem::findOrFail($id);
 
-		return View::make('lostItems.create-edit')->with('lostItem', $lostItem);
-	}
+		$accessOk = false;
 
-	public function editWithToken($token) {
-		$item = LostItem::where('token', '=', $token);
-		// check if admin, owner or token
-		if (Auth::check() || $item->token == $token) {
-			return $this->edit($item->id);
+		if (Auth::check())
+		{
+			if (Auth::user()->is_admin == User::ROLE_ADMIN || Auth::user()->id == $lostitem->user_id)
+			{
+				$accessOk = true;
+			}
+		}
+		else if ($lostItem->token == Input::get('token'))
+		{
+			$accessOk = true;
 		}
 
-		App::abort('404');
+		if (!$accessOk)
+		{
+			App::abort('404');
+		}
+
+		return View::make('lostItems.create-edit')->with('lostItem', $lostItem);
 	}
 
 	/**
@@ -132,7 +145,7 @@ class LostItemsController extends BaseController {
     	// attempt validation
     	if ($validator->fails())
     	{
-			Session::flash('errorMessage', 'Post could not be updated');
+			Session::flash('errorMessage', 'Please enter valid infomation');
     	    // validation failed, redirect to the post create page with validation errors and old inputs
     	    return Redirect::back()->withInput()->withErrors($validator);
     	}

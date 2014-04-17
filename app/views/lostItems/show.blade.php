@@ -263,7 +263,8 @@ footer {
                   <div>
                           <h2>{{{ $lostItem->title }}}</h2>
                           <hr>
-                          <p>{{{ $lostItem->body }}}
+                          <p>{{{ $lostItem->body }}}</p>
+                          <p>Reward: {{{ $lostItem->reward }}}</p>
                             <div class="col-md-12">
                            
                            <p class="badge">Location: {{{ $lostItem->location }}}</p>
@@ -303,9 +304,11 @@ footer {
             <div class="btn-group">
               <button class="btn btn-default show"><a href="{{{action('LostItemsController@index') }}}">Return to Lost Items</a></button>
             </div> 
+            @if(Auth::check() && Auth::user()->is_admin == 1) 
             <div class="btn-group">
               <button class="btn btn-default show"><a href="{{{action('HomeController@showLostItemsDashboard') }}}">Return to Dashboard</a></button>
-            </div>   
+            </div>
+            @endif   
           </div>
         </div>
 

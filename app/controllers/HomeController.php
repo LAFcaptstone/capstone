@@ -98,7 +98,7 @@ class HomeController extends BaseController {
 			}
 		}
 		else {
-			Session::flash('errorMessage', 'Login failed, please check your inputs.');
+			Session::flash('errorMessage', 'Login failed, please enter Email and Password.');
 			return Redirect::back()->withInput();
 		}
 		
