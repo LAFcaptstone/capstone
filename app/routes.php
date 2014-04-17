@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@showWelcome');
 
+// Route::get('/profile/', 'UserController@show');
+
 Route::get('/foundItemsDashboard', 'HomeController@showFoundItemsDashboard');
 
 Route::get('/lostItemsDashboard', 'HomeController@showLostItemsDashboard');

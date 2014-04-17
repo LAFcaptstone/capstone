@@ -8,20 +8,13 @@
 
 @section('content')
 
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-        	<a class="navbar-brand" href="#">Project name</a>
-        </div>
-    </div>
-</div>
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
         	<ul class="nav nav-sidebar">
-        	 	<li class="active"><a href="#">Overview</a></li>
-        	 	<li><a href="#">Reports</a></li>
+
+        	 	<li><a href="{{{ action('HomeController@logout') }}}">Logout</a></li>
+
         	</ul>
         	
 		</div>
@@ -49,11 +42,6 @@
 						<td>{{{ $user->last_name }}}</td>
 						<td>{{{ $user->email }}}</td>
 						<td><a href="{{{ action('UserController@edit', $user->id) }}}">Edit</a>
-						<td>
-							{{ Form::open(array('action' => array('UserController@destroy', $user->id), 'method' => 'delete')) }}
-							{{ Form::submit('Delete', array('class' => 'btnDelete')) }}
-							{{ Form::close() }}
-						</td>
 					</tr>
 				</tbody>
 			</table>

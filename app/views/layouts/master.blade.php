@@ -31,8 +31,10 @@
 					<div class="collapse navbar-collapse">
 						
 						<ul class="nav navbar-nav">
-							@if(Auth::check())
-							<li><a href="{{{ action('HomeController@logout') }}}" >Welcome ({{{Auth::user()->first_name}}})</a></li>
+							@if(Auth::check() && Auth::user()->is_admin == 1)
+							<li><a href="{{{ action('HomeController@showFoundItemsDashboard') }}}" >Welcome ({{{Auth::user()->first_name}}})</a></li>
+							@elseif(Auth::check() && Auth::user()->is_admin == 2)
+							<li><a href="{{{ action('UserController@show', Auth::user()->id) }}}" >Welcome ({{{Auth::user()->first_name}}})</a></li>
 							@else
 							<li><a href="{{{ action('HomeController@showLogin') }}}" >Login</a></li>
 							@endif
