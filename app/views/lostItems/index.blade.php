@@ -22,6 +22,7 @@
     	    <div class="icon-awesome">
     	        <h4><small style="font-family:courier,'new courier';" class="text-muted">{{{ $lostItem->created_at->format('l, F jS Y @ h:i:s A') }}}</small></h4>
     	        <h4><span class="label label-default">Location: {{{ $lostItem->location }}}</span></h4>
+                <h4>Reward: {{{ $lostItem->reward }}}</h4>
     	    </div>
     	</div>
     	@endforeach
