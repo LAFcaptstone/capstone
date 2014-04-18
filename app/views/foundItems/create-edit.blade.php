@@ -2,7 +2,7 @@
 
 @section('content')
 
-@if (empty($foundItem->id))
+@if (empty($foundItems->id))
 
 <div class="row">
     <div class="col-sm-12">
@@ -20,7 +20,7 @@
 	</div>
 </div>
 
-	{{ Form::model($foundItem, array('action' => array('FoundItemsController@update', $foundItem->id), 'method' => 'PUT', 'files' => true, 'class' => 'form-horizontal')) }}
+	{{ Form::model($foundItems, array('action' => array('FoundItemsController@update', $foundItems->id), 'method' => 'PUT', 'files' => true, 'class' => 'form-horizontal')) }}
 
 @endif
 		<div class="form-group">
@@ -72,11 +72,13 @@
 		   		<a href="{{{action('FoundItemsController@index') }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-primary'>Cancel</a>
  				@endif	
 		    </div>
- 			<div class="col-sm-offset-2 col-sm-10">
- 				{{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItems->id), 'method' => 'delete')) }}
-				{{ Form::submit('Delete', array('class' => 'btnDelete btn btn-danger')) }}
-				{{ Form::close() }} 
-			</div> 
+		    @if (!empty($foundItems->id))
+ 				<div class="col-sm-offset-2 col-sm-10">
+ 					{{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItems->id), 'method' => 'delete')) }}
+					{{ Form::submit('Delete', array('class' => 'btnDelete btn btn-danger')) }}
+					{{ Form::close() }} 
+				</div> 
+			@endif
 		</div>
 
 	{{ Form::close() }}
