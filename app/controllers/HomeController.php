@@ -17,8 +17,8 @@ class HomeController extends BaseController {
 
 	public function __construct()
 	{
-	    // require auth check to access dashboard page
-	    //$this->beforeFilter('auth', array('only' => 'showDashboard'));
+	    //require auth check to access dashboard page
+	    $this->beforeFilter('auth', array('only' => 'showDashboard'));
 	}
 	// home view route
 	public function showWelcome()
@@ -31,27 +31,17 @@ class HomeController extends BaseController {
 	// Found items dashboard 
 	public function showFoundItemsDashboard()
 	{
-
-		if ('flag_count' == 0) {
-			$foundItems = FoundItem::orderBy('created_at', 'desc')->paginate(14);
-		}
-		else {
-			$foundItems = FoundItem::orderBy('flag_count', 'desc')->paginate(14);
-		}
+		$foundItems = FoundItem::orderBy('flag_count', 'desc')->orderBy('created_at', 'desc')->paginate(14);
+		
 		return View::make('foundItemsDashboard')->with(array('foundItems' =>$foundItems));
 	}
 
 	// Found items dashboard 
 	public function showLostItemsDashboard()
 	{
-		if ('flag_count' == 0) {
-			$lostItems = LostItem::orderBy('created_at', 'desc')->paginate(14);
-		}
-		else {
-			$lostItems = LostItem::orderBy('flag_count', 'desc')->paginate(14);
-		}
+		$lostItems = LostItem::orderBy('flag_count', 'desc')->orderBy('created_at', 'desc')->paginate(14);
+		
 		return View::make('lostItemsDashboard')->with(array('lostItems' =>$lostItems));
-
 	}
 
 	public function showUsersDashboard()
