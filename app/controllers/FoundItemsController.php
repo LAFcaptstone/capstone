@@ -7,8 +7,8 @@ class FoundItemsController extends BaseController {
 	    // call base controller constructor
 	    parent::__construct();
 	
-	    // run auth filter before all methods on this controller except index and show
-	    $this->beforeFilter('auth', array('except' => array('index', 'show', 'create', 'store', 'edit', 'flag')));
+	    // // run auth filter before all methods on this controller except index and show
+	    // $this->beforeFilter('auth', array('except' => array('index', 'show', 'create', 'store', 'edit', 'flag')));
 	}
 	/**
 	 * Display a listing of the resource.
@@ -110,7 +110,7 @@ class FoundItemsController extends BaseController {
 
 		if (Auth::check())
 		{
-			if (Auth::user()->is_admin == User::ROLE_ADMIN || Auth::user()->id == $founditem->user_id)
+			if (Auth::user()->is_admin == User::ROLE_ADMIN || Auth::user()->id == $foundItem->user_id)
 			{
 				$accessOk = true;
 			}
@@ -128,15 +128,6 @@ class FoundItemsController extends BaseController {
 		return View::make('foundItems.create-edit')->with('foundItem', $foundItem);
 	}
 
-	// public function editWithToken($token) {
-	// 	$item = FoundItem::where('token', '=', $token);
-	// 	// check if admin, owner or token
-	// 	if (Auth::check() || $item->token == $token) {
-	// 		return $this->edit($item->id);
-	// 	}
-
-	// 	App::abort('404');
-	// }
 
 	/**
 	 * Update the specified resource in storage.
@@ -187,13 +178,16 @@ class FoundItemsController extends BaseController {
 		FoundItem::findOrFail($id)->delete();
 
 		if (Auth::user()->is_admin == 1){
+			Session::flash('successMessage', 'Lost Item Deleted successfully');
 				return Redirect::action('HomeController@showFoundItemsDashboard');
 		}
 		elseif (Auth::user()->is_admin == 2)
 		{
+			Session::flash('successMessage', 'Lost Item Deleted successfully');
 			return Redirect::intended('profile/' . Auth::user()->id);
 		}
 		else {
+			Session::flash('successMessage', 'Lost Item Deleted successfully');
 			return Redirect::action('FoundItemsController@index');
 		}
 	}
