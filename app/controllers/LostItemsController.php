@@ -8,7 +8,7 @@ class LostItemsController extends BaseController {
 	    parent::__construct();
 	
 	    // run auth filter before all methods on this controller except index and show
-	    $this->beforeFilter('auth', array('except' => array('index', 'show', 'create', 'store', 'flag')));
+	    // $this->beforeFilter('auth', array('except' => array('index', 'show', 'create', 'store', 'flag')));
 	}
 	/**
 	 * Display a listing of the resource.
@@ -128,7 +128,7 @@ class LostItemsController extends BaseController {
 			App::abort('404');
 		}
 
-		return View::make('lostItems.create-edit')->with('lostItem', $lostItem);
+		return View::make('lostItems.create-edit')->with('lostItems', $lostItem);
 	}
 
 	/**
@@ -177,23 +177,23 @@ class LostItemsController extends BaseController {
 	 * @return Response
 	 */
 	public function destroy($id)
-	{
-		LostItem::findOrFail($id)->delete();
-
-		if (Auth::user()->is_admin == 1){
-			Session::flash('successMessage', 'Lost Item Deleted successfully');
-				return Redirect::action('HomeController@showLostItemsDashboard');
-		}
-		elseif (Auth::user()->is_admin == 2)
 		{
-			Session::flash('successMessage', 'Lost Item Deleted successfully');
-			return Redirect::intended('profile/' . Auth::user()->id);
+		LostItem::findOrFail($id)->delete();
+		if(Auth::check()){
+
+			if (Auth::user()->is_admin == 1){
+				Session::flash('successMessage', 'Lost Item Deleted successfully');
+					return Redirect::action('HomeController@showlostItemsDashboard');
+			}
+			else
+			{
+				Session::flash('successMessage', 'Lost Item Deleted successfully');
+				return Redirect::intended('profile/' . Auth::user()->id);
+			}
 		}
-		else {
+		
 			Session::flash('successMessage', 'Lost Item Deleted successfully');
 			return Redirect::action('LostItemsController@index');
-
-		}
 	}
 
 	public function flag($id)
