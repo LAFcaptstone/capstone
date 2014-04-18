@@ -42,7 +42,7 @@
 						<td>{{{ $user->first_name }}}</td>
 						<td>{{{ $user->last_name }}}</td>
 						<td>{{{ $user->email }}}</td>
-						<td>{{{ $user->password }}}</td>
+						
 						<td>{{{ $user->created_at->format('l, F jS Y @ h:i:s A') }}}</td>
 						<td>{{{ $user->updated_at->format('l, F jS Y @ h:i:s A') }}}</td>
 						<!-- <td><a href="{{{ action('UserController@edit', $user->id) }}}">Edit</a> -->
