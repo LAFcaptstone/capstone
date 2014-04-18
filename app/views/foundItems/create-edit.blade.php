@@ -65,15 +65,35 @@
 		      	<button type="submit" class="btn btn-success">Submit</button>
 		      	{{ Form::close() }}
 		      	@if(Auth::check() && Auth::user()->is_admin == 1)
-		      	<a href="{{{ action('UserController@show', Auth::user()->id) }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-danger'>Cancel</a>
+		      	<a href="{{{ action('UserController@show', Auth::user()->id) }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-primary'>Cancel</a>
 		      	@elseif(Auth::check() && Auth::user()->is_admin == 2)
-		      	<a href="{{{ action('UserController@show', Auth::user()->id) }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-danger'>Cancel</a>
+		      	<a href="{{{ action('UserController@show', Auth::user()->id) }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-primary'>Cancel</a>
 		   		@else
-		   		<a href="{{{action('FoundItemsController@index') }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-danger'>Cancel</a>
- 				@endif	   
+		   		<a href="{{{action('FoundItemsController@index') }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-primary'>Cancel</a>
+ 				@endif	
 		    </div>
+ 			<div class="col-sm-offset-2 col-sm-10">
+ 				{{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItem->id), 'method' => 'delete')) }}
+				{{ Form::submit('Delete', array('class' => 'btnDelete btn btn-danger')) }}
+				{{ Form::close() }} 
+			</div> 
 		</div>
 
 	{{ Form::close() }}
 	
+@stop
+
+@section('bottomscript')	
+
+<script>
+ 
+	$('.btnDelete').on('click', function (e) {
+		e.preventDefault();
+		if (confirm('Are you sure you want to delete this post?')) {
+			$(this).parent('form').submit();
+		}
+	});
+
+</script>
+
 @stop
