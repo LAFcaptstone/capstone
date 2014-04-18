@@ -187,13 +187,16 @@ class FoundItemsController extends BaseController {
 		FoundItem::findOrFail($id)->delete();
 
 		if (Auth::user()->is_admin == 1){
+			Session::flash('successMessage', 'Lost Item Deleted successfully');
 				return Redirect::action('HomeController@showFoundItemsDashboard');
 		}
 		elseif (Auth::user()->is_admin == 2)
 		{
+			Session::flash('successMessage', 'Lost Item Deleted successfully');
 			return Redirect::intended('profile/' . Auth::user()->id);
 		}
 		else {
+			Session::flash('successMessage', 'Lost Item Deleted successfully');
 			return Redirect::action('FoundItemsController@index');
 		}
 	}

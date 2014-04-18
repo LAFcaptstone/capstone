@@ -71,6 +71,7 @@ class LostItemsController extends BaseController {
 				$image = Input::file('image');
 				$lostItem->image_path = LostItem::upload_image($image);
 			}
+			$lostItem->reward = Input::get('reward');
 			$lostItem->save();
 
 			Mail::send('emails.auth.lostItemslink', array('token' => $lostItem->token,'id' => $lostItem->id, 'email'=>Input::get('email')), function($message){
@@ -162,6 +163,7 @@ class LostItemsController extends BaseController {
 				$image = Input::file('image');
 				$lostItem->image_path = LostItem::upload_image($image);
 			}
+			$lostItem->reward = Input::get('reward');
 			$lostItem->save();
 			Session::flash('successMessage', 'Post updated succesfully');
 			return Redirect::action('LostItemsController@show', $lostItem->id);
@@ -179,14 +181,18 @@ class LostItemsController extends BaseController {
 		LostItem::findOrFail($id)->delete();
 
 		if (Auth::user()->is_admin == 1){
+			Session::flash('successMessage', 'Lost Item Deleted successfully');
 				return Redirect::action('HomeController@showLostItemsDashboard');
 		}
 		elseif (Auth::user()->is_admin == 2)
 		{
+			Session::flash('successMessage', 'Lost Item Deleted successfully');
 			return Redirect::intended('profile/' . Auth::user()->id);
 		}
 		else {
+			Session::flash('successMessage', 'Lost Item Deleted successfully');
 			return Redirect::action('LostItemsController@index');
+
 		}
 	}
 
