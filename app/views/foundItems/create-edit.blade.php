@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 @if (empty($foundItems->id))
 
 <div class="row">
@@ -80,8 +81,6 @@
 				</div> 
 			@endif
 		</div>
-
-	{{ Form::close() }}
 	
 @stop
 
