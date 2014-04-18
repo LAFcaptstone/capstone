@@ -15,7 +15,7 @@ class AddForignkeyToUserTable extends Migration {
 		Schema::table('found_items', function($table)
 		{
 		    $table->integer('user_id')->unsigned()->nullable();
-      	    $table->foreign('user_id')->references('id')->on('users');		    
+      	    $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');		    
 		});
 	}
 

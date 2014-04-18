@@ -27,7 +27,7 @@
 		    {{ Form::label('email', 'Email', array('class' => 'col-sm-2 control-label')) }}
 		    <div class="col-sm-10">
 		    	@if (Auth::check())
-		    	<span class='form-control'> {{{ Auth::user()->email }}}</span>
+		    	{{ Form::email('email', Auth::user()->email, array('class' => 'form-control')) }}
 		    	@else
 				{{ Form::email('email', null, array('class' => 'form-control', 'placeholder' => 'Email')) }}
 		    	{{ $errors->has('email') ? $errors->first('email', '<p><span class="help-block">:message</span></p>') : " " }}
@@ -65,7 +65,7 @@
 		      	<button type="submit" class="btn btn-success">Submit</button>
 		      	{{ Form::close() }}
 		      	@if(Auth::check() && Auth::user()->is_admin == 1)
-		      	<a href="{{{ action('UserController@show', Auth::user()->id) }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-danger'>Cancel</a>
+		      	<a href="{{{ action('HomeController@showFoundItemsDashboard') }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-danger'>Cancel</a>
 		      	@elseif(Auth::check() && Auth::user()->is_admin == 2)
 		      	<a href="{{{ action('UserController@show', Auth::user()->id) }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-danger'>Cancel</a>
 		   		@else

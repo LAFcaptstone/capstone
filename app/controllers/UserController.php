@@ -9,9 +9,6 @@ class UserController extends BaseController {
 	 */
 	public function index()
 	{
-		$query = User::orderBy('created_at', 'desc');
-		$users = $query->paginate(10);
-		return View::make('users.usersDashboard')->with(array('users' => $users));
 	}
 
 	/**
