@@ -128,7 +128,7 @@ class LostItemsController extends BaseController {
 			App::abort('404');
 		}
 
-		return View::make('lostItems.create-edit')->with('lostItem', $lostItem);
+		return View::make('lostItems.create-edit')->with('lostItems', $lostItem);
 	}
 
 	/**
