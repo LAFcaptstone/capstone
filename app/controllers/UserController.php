@@ -106,8 +106,10 @@ class UserController extends BaseController {
 	 */
 	public function edit($id)
 	{
+
 		$user = User::findOrFail($id);
 		return View::make('users.edit')->with('user', $user);
+
 	}
 
 	/**
