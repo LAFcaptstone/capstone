@@ -78,11 +78,13 @@
 		   		<a href="{{{action('LostItemsController@index') }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-primary'>Cancel</a>
  				@endif	   
 		    </div>
-		    <div class="col-sm-offset-2 col-sm-10">
-		    	{{ Form::open(array('action' => array('LostItemsController@destroy', $lostItems->id), 'method' => 'delete')) }}
-				{{ Form::submit('Delete', array('class' => 'btnDelete btn btn-danger')) }}
-				{{ Form::close() }}
-			</div>
+		    @if (!empty($foundItems->id))
+		    	<div class="col-sm-offset-2 col-sm-10">
+		    		{{ Form::open(array('action' => array('LostItemsController@destroy', $lostItems->id), 'method' => 'delete')) }}
+					{{ Form::submit('Delete', array('class' => 'btnDelete btn btn-danger')) }}
+					{{ Form::close() }}
+				</div>
+			@endif
 		</div>
 
 @stop

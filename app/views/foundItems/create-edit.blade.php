@@ -2,7 +2,8 @@
 
 @section('content')
 
-@if (is_null($foundItems->id))
+
+@if (empty($foundItems->id))
 
 <div class="row">
     <div class="col-sm-12">
@@ -72,11 +73,13 @@
 		   		<a href="{{{action('FoundItemsController@index') }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-primary'>Cancel</a>
  				@endif	
 		    </div>
- 			<div class="col-sm-offset-2 col-sm-10">
- 				{{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItems->id), 'method' => 'delete')) }}
-				{{ Form::submit('Delete', array('class' => 'btnDelete btn btn-danger')) }}
-				{{ Form::close() }} 
-			</div> 
+		    @if (!empty($foundItems->id))
+ 				<div class="col-sm-offset-2 col-sm-10">
+ 					{{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItems->id), 'method' => 'delete')) }}
+					{{ Form::submit('Delete', array('class' => 'btnDelete btn btn-danger')) }}
+					{{ Form::close() }} 
+				</div> 
+			@endif
 		</div>
 	
 @stop

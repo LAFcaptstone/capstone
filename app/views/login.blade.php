@@ -35,7 +35,6 @@
                     <!-- Button -->
                     	<div class="col-sm-12 controls">
                             <input type="submit" value="Log in" class="btn btn-success">
-                            <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
                         </div>
                     </div>
 					<div class="form-group">
