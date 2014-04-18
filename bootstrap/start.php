@@ -24,12 +24,18 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
+// $env = $app->detectEnvironment(array(
 
-	'local' => array('corey-kepples-macbook'),
+// 	'local' => array('Stevens-MacBook-Pro'),
 
-));
+// ));
 
+
+$env = $app->detectEnvironment(function() {
+
+	return !empty($_server['LARAVEL_ENV']) && $_server['LARAVEL_ENV'] == 'local' ? 'local' : 'production';
+
+});
 /*
 |--------------------------------------------------------------------------
 | Bind Paths
