@@ -125,7 +125,7 @@ class FoundItemsController extends BaseController {
 			App::abort('404');
 		}
 
-		return View::make('foundItems.create-edit')->with('foundItem', $foundItem);
+		return View::make('foundItems.create-edit')->with('foundItems', $foundItem);
 	}
 
 
