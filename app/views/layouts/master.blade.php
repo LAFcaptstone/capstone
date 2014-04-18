@@ -47,15 +47,15 @@
         			<div class="form-group" style="display:inline;">
         			  <div class="input-group">
         			    <div class="input-group-btn">
-        			      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
+        			      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">View Posts</button>
         			      <ul class="dropdown-menu">
         			        <li class="found-items"><a href="{{{ action('HomeController@searchFoundItems') }}}">Found Items</a></li>
         			        <li class="lost-items"><a href="{{{ action('HomeController@searchLostItems') }}}">Lost Items</a></li>
         			      </ul>
         			    </div>
         			    @yield('itemtype')
-        			    <input type="text" name="search" id="searching" class="form-control" placeholder="What are searching for?" {{ Request::is('searchFoundItems') || Request::is('searchLostItems') ? '' : 'disabled' }}>
-        			    <span class="input-group-addon"><button type="submit"><span class="glyphicon glyphicon-search"></span></button></span>
+        			    <input type="text" name="search" id="searching" class="form-control" placeholder="What are searching for?" {{ Request::is('searchFoundItems') || Request::is('searchLostItems') ? '' : "disabled" }}>
+        			    <span class="input-group-addon"><button type='submit'><span class="glyphicon glyphicon-search"></span></button></span>
         			  </div>
         			</div>
       			</form>
