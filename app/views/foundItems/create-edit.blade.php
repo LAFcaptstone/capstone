@@ -2,7 +2,7 @@
 
 @section('content')
 
-@if (empty($foundItem->id))
+@if (is_null($foundItems->id))
 
 <div class="row">
     <div class="col-sm-12">
@@ -20,7 +20,7 @@
 	</div>
 </div>
 
-	{{ Form::model($foundItem, array('action' => array('FoundItemsController@update', $foundItem->id), 'method' => 'PUT', 'files' => true, 'class' => 'form-horizontal')) }}
+	{{ Form::model($foundItems, array('action' => array('FoundItemsController@update', $foundItems->id), 'method' => 'PUT', 'files' => true, 'class' => 'form-horizontal')) }}
 
 @endif
 		<div class="form-group">
@@ -78,8 +78,6 @@
 				{{ Form::close() }} 
 			</div> 
 		</div>
-
-	{{ Form::close() }}
 	
 @stop
 

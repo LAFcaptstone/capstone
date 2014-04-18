@@ -2,7 +2,7 @@
 
 @section('content')
 
-@if (empty($lostItem->id))
+@if (empty($lostItems->id))
 
 <div class="row">
     <div class="col-sm-12">
@@ -20,7 +20,7 @@
 	</div>
 </div>
 
-	{{ Form::model($lostItem, array('action' => array('LostItemsController@update', $lostItem->id), 'method' => 'PUT', 'files' => true, 'class' => 'form-horizontal')) }}
+	{{ Form::model($lostItems, array('action' => array('LostItemsController@update', $lostItems->id), 'method' => 'PUT', 'files' => true, 'class' => 'form-horizontal')) }}
 
 @endif
 		<div class="form-group">
