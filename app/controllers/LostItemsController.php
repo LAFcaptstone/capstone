@@ -113,7 +113,7 @@ class LostItemsController extends BaseController {
 
 		if (Auth::check())
 		{
-			if (Auth::user()->is_admin == User::ROLE_ADMIN || Auth::user()->id == $lostitem->user_id)
+			if (Auth::user()->is_admin == User::ROLE_ADMIN || Auth::user()->id == $lostItem->user_id)
 			{
 				$accessOk = true;
 			}
