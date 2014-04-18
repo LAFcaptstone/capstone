@@ -79,7 +79,7 @@
  				@endif	   
 		    </div>
 		    <div class="col-sm-offset-2 col-sm-10">
-		    	{{ Form::open(array('action' => array('LostItemsController@destroy', $lostItem->id), 'method' => 'delete')) }}
+		    	{{ Form::open(array('action' => array('LostItemsController@destroy', $lostItems->id), 'method' => 'delete')) }}
 				{{ Form::submit('Delete', array('class' => 'btnDelete btn btn-danger')) }}
 				{{ Form::close() }}
 			</div>
