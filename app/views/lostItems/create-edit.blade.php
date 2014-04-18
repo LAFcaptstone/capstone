@@ -64,22 +64,22 @@
 		</div>
 		
 		<div class="form-group">
-		    <div class="col-sm-offset-2 col-sm-10">
+		    <div class="col-sm-offset-2 col-sm-2">
     			Upload Image: {{ Form::file('image') }}
 				<br>
 		      	<button type="submit" class="btn btn-success">Submit</button>
 		      	{{ Form::close() }}
-
 		      	@if(Auth::check() && Auth::user()->is_admin == 1)
-		      	<a href="{{{ action('UserController@show', Auth::user()->id) }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-primary'>Cancel</a>
+		      	<a href="{{{ action('HomeController@showLostItemsDashboard') }}}" style='text-decoration:none;color:#FFF' class='btn btn-primary'>Cancel</a>
 		      	@elseif(Auth::check() && Auth::user()->is_admin == 2)
-		      	<a href="{{{ action('UserController@show', Auth::user()->id) }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-primary'>Cancel</a>
+		      	<a href="{{{ action('UserController@show', Auth::user()->id) }}}" style='text-decoration:none;color:#FFF' class='btn btn-primary'>Cancel</a>
 		   		@else
-		   		<a href="{{{action('LostItemsController@index') }}}" style='text-decoration:none;color:#FFF'><button class='btn btn-primary'>Cancel</a>
- 				@endif	   
-		    </div>
+		   		<a href="{{{action('LostItemsController@index') }}}" style='text-decoration:none;color:#FFF' class='btn btn-primary'>Cancel</a>
+ 				@endif
+ 			</div>	   
+		    
 		    @if (!empty($foundItems->id))
-		    	<div class="col-sm-offset-2 col-sm-10">
+		    	<div class="col-sm-offset-2 col-sm-2">
 		    		{{ Form::open(array('action' => array('LostItemsController@destroy', $lostItems->id), 'method' => 'delete')) }}
 					{{ Form::submit('Delete', array('class' => 'btnDelete btn btn-danger')) }}
 					{{ Form::close() }}
