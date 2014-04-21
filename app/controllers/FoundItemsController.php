@@ -19,7 +19,7 @@ class FoundItemsController extends BaseController {
 	{
 		$query = FoundItem::orderBy('created_at', 'desc');
 		
-		$foundItems = $query->paginate(8);
+		$foundItems = $query->paginate(9);
 		
 		return View::make('foundItems.index')->with(array('foundItems' => $foundItems));
 	}
