@@ -41,7 +41,7 @@
 		 <div class="row"  style="margin-top:15px;">
 			<div class="col-sm-4">
 					<div class="row">
-						<div class="col-sm-10 col-sm-offset-2 text-center"><h4>Cecilia Munson</h4><a href="https://github.com/ceciliamunson"><img src="/img/cecilia.jpg" class="img-circle center-block" alt='CM'></a><p style="margin-top:15px;"> My background in Industrial Engineering, solidifies the problem-solving skills I use as a full-stack web developer. In addition to LAMP + JS, I have experience working with MySQL, jQuery, Git, Laravel MVC and other PHP and JavaSript libraries. </p></div>
+						<div class="col-sm-10 col-sm-offset-2 text-center"><h4>Cecilia Munson</h4><a href="https://github.com/ceciliamunson"><img src="/img/ceci.png" class="img-circle center-block" alt='CM'></a><p style="margin-top:15px;"> My background in Industrial Engineering, solidifies the problem-solving skills I use as a full-stack web developer. In addition to LAMP + JS, I have experience working with MySQL, jQuery, Git, Laravel MVC and other PHP and JavaSript libraries. </p></div>
 					</div>
 			</div>
 				<div class="col-sm-4 text-center">
