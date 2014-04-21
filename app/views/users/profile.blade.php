@@ -4,22 +4,15 @@
 
 <link rel="stylesheet" type="text/css" href="/css/dashboard.css">
 
+
 @stop
 
 @section('content')
-
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-        	<ul class="nav nav-sidebar">
+        	 	<h2 class="text-center"><a href="{{{ action('HomeController@logout') }}}">Logout</a></h2>
 
-        	 	<li><a href="{{{ action('HomeController@logout') }}}">Logout</a></li>
-
-        	</ul>
-        	
-		</div>
-
-		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		<div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
         	<h1 class="page-header">Dashboard</h1>
 
         	<h3>User Name: {{{ Auth::user()->first_name }}}</h3>
@@ -120,6 +113,7 @@
 		</div>
 	</div>
 </div>
+
 
 
 @stop
