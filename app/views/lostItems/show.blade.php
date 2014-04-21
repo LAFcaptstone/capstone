@@ -106,7 +106,7 @@
                 @if(!is_null($lostItem->image_path))
                 	<img class="img-responsive center-block space" src="{{{ $lostItem->image_path }}}">
                 @else
-    					<img src="/img/vind.jpeg" alt="" class="img-responsive center-block space">
+    					<img src="/img/default.png" alt="" class="img-responsive center-block space">
                 @endif
           </div>      
           <!--mid column-->

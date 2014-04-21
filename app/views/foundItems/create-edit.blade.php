@@ -42,7 +42,7 @@
 		</div>
 
 		<div class="form-group">
-		    {{ Form::label('location', 'Location', array('class' => 'col-sm-2 control-label')) }}
+		    {{ Form::label('location', 'Zip Code', array('class' => 'col-sm-2 control-label')) }}
 		    <div class="col-sm-3">
 				{{ Form::text('location', null, array('class' => 'form-control', 'placeholder' => 'Zip Code')) }}
 		    	{{ $errors->has('location') ? $errors->first('location', '<p><span class="help-block">:message</span></p>') : " " }}
@@ -72,7 +72,7 @@
 		    	  	<button type="submit" class="btn btn-success">Submit</button>
 		    	  	{{ Form::close() }}
 		    	</div>
-		    	<div class="col-sm-3">
+		    	<div class="col-sm-offset-1 col-sm-3">
 		    	  	@if(Auth::check() && Auth::user()->is_admin == 1)
 		    	  		<a href="{{{ action('HomeController@showFoundItemsDashboard') }}}" style='text-decoration:none;color:#FFF' class='btn btn-primary'>Cancel</a>
 		    	  	@elseif(Auth::check() && Auth::user()->is_admin == 2)
@@ -81,7 +81,7 @@
 		   				<a href="{{{action('FoundItemsController@index') }}}" style='text-decoration:none;color:#FFF' class='btn btn-primary'>Cancel</a>
 	 				@endif	
 	 			</div>
-		    	<div class="col-sm-3">
+		    	<div class="col-sm-offset-1 col-sm-3">
 		    		@if (!empty($foundItems->id))
 	 					{{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItems->id), 'method' => 'delete')) }}
 						{{ Form::submit('Delete', array('class' => 'btnDelete btn btn-danger')) }}

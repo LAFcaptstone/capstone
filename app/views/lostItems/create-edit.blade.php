@@ -79,7 +79,7 @@
 		      		<button type="submit" class="btn btn-success">Submit</button>
 		      		{{ Form::close() }}
 		      	</div>
-		      	<div class="col-sm-3">
+		      	<div class="col-sm-offset-1 col-sm-3">
 		      		@if(Auth::check() && Auth::user()->is_admin == 1)
 		      			<a href="{{{ action('HomeController@showLostItemsDashboard') }}}" style='text-decoration:none;color:#FFF' class='btn btn-primary'>Cancel</a>
 		      		@elseif(Auth::check() && Auth::user()->is_admin == 2)
@@ -88,7 +88,7 @@
 		   				<a href="{{{action('LostItemsController@index') }}}" style='text-decoration:none;color:#FFF' class='btn btn-primary'>Cancel</a>
 	 				@endif	
 	 			</div>   
-		    	<div class="col-sm-3">
+		    	<div class="col-sm-offset-1 col-sm-3">
 		    		@if (!empty($lostItems->id))
 		    			{{ Form::open(array('action' => array('LostItemsController@destroy', $lostItems->id), 'method' => 'delete')) }}
 						{{ Form::submit('Delete', array('class' => 'btnDelete btn btn-danger')) }}

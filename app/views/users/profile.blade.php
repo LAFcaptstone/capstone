@@ -34,7 +34,6 @@
 						<td>{{{ $user->first_name }}}</td>
 						<td>{{{ $user->last_name }}}</td>
 						<td>{{{ $user->email }}}</td>
-						<td><a href="{{{ action('UserController@edit', $user->id) }}}">Edit</a>
 					</tr>
 				</tbody>
 			</table>
