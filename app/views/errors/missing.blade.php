@@ -1,8 +1,15 @@
 @extends('layouts.master')
 
-   	 
+ <style type="text/css">
+
+ .404 {
+ 	margin: auto;
+ }
+
+ </style>
 
 @section('content')
-   
-	<h1 class="capstone-title">Sorry Not here!</h2>
+   <section class="container-fluid">
+	<img src="/img/404.png" class="img-responsive center-block space">
+   </section>
 @stop
