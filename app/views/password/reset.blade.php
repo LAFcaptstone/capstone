@@ -1,6 +1,10 @@
 @extends('layouts.master')
 
 @section('topscript')
+<link rel="stylesheet" type="text/css" href="/css/base.css">
+@stop
+
+@section('content')
 <div class="container-full">
 	<div class="container">    
 	    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
