@@ -11,8 +11,8 @@
 		<link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
 		<link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x11png">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" rel="stylesheet">
-		<link href='/css/master.css' rel='stylesheet'>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href='css/master.css' rel='stylesheet'>
 		
 		@yield('topscript')
 	</head>	
@@ -27,7 +27,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			      </button>
-			      <a class="navbar-brand" href="{{{action('HomeController@showWelcome')}}}">Vind iT</a>
+			      <a class="navbar-brand" href="{{{action('HomeController@showWelcome')}}}" style='margin-right:8px;'>Vind iT</a>
 			    </div>
     
     			<div class="navbar-collapse collapse" id="navbar-collapsible">
@@ -40,8 +40,8 @@
 						<li><a href="{{{ action('HomeController@showLogin') }}}" >Login</a></li>
 						@endif
 						<li><a href="{{{ action('HomeController@showContact') }}}">Contact Us</a></li>
-						<li><a href="{{{ action('FoundItemsController@create') }}}" style='color:green;'>New Found Post</a></li>
-						<li><a href="{{{ action('LostItemsController@create') }}}" style='color:#F00;'>New Lost Post</a></li>
+						<li><a href="{{{ action('LostItemsController@create') }}}" style='color:#F06161;'>I Lost...</a></li>
+						<li><a href="{{{ action('FoundItemsController@create') }}}" style='color:#95FC87;'>I Found...</a></li>
 					    <li>&nbsp;</li>
 				    </ul>
    
@@ -55,14 +55,15 @@
 			          			<li class="lost-items"><a href="{{{ action('HomeController@searchLostItems') }}}">Lost Items</a></li>
 			          		</ul>
 			              </div>
-			              <input type="text" name="search" id="searching" class="form-control" placeholder="What are searching for?" {{ Request::is('searchFoundItems') || Request::is('searchLostItems') ? '' : "disabled" }}>
-			          	<span class="input-group-addon"><button type='submit'><span class="glyphicon glyphicon-search"></span></button></span>
+			              <input type="text" name="search" id="searching" class="form-control" {{ Request::is('searchFoundItems') || Request::is('searchLostItems') || Request::is('lostItems')  || Request::is('foundItems') ? '' : "disabled" }}>
+			          	<span class="input-group-addon"><button type='submit' style='display:none;'></button><span class="glyphicon glyphicon-search"></span></span>
 			            </div>
 			          </div>
 			        </form>
     			</div>
  	 		</div>
 		</nav>
+
 		<div class="container">
 		@if (Session::has('successMessage'))
 			<div class="alert alert-success" style='margin-top:50px;'>{{{ Session::get('successMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
@@ -75,10 +76,10 @@
 	   	<!-- yeilding content from blades -->
 		@yield('content')
 			
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		
+		@yield('bottomscript')
+
 	</body>
-
-@yield('bottomscript')
-
 </html>
