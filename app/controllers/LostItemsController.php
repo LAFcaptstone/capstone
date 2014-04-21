@@ -96,7 +96,7 @@ class LostItemsController extends BaseController {
 	public function show($id)
 	{
 		$lostItem = LostItem::findOrFail($id);
-		return View::make('lostitems.show')->with('lostItem', $lostItem);
+		return View::make('lostItems.show')->with('lostItem', $lostItem);
 	}
 
 	/**
@@ -183,7 +183,7 @@ class LostItemsController extends BaseController {
 
 			if (Auth::user()->is_admin == 1){
 				Session::flash('successMessage', 'Lost Item Deleted successfully');
-					return Redirect::action('HomeController@showlostItemsDashboard');
+					return Redirect::action('HomeController@showLostItemsDashboard');
 			}
 			else
 			{
