@@ -1,11 +1,15 @@
 @extends('layouts.master')
 
 @section('topscript')
-<div class="container-fluid">
+<link rel="stylesheet" type="text/css" href="/css/base.css">
+@stop
+
+@section('content')
+<div class="container">
     <div class="row">
 		<h2> Forgot your password?</h2>
 		<br>
-		<p>Please enter your email address below and follow the instructions on the email we will send you shortly.</p>
+		<h4>Please enter your email address below and follow the instructions on the email we will send you shortly.</h4>
 	</div>
 
 	<div class="row">	
