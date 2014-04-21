@@ -5,7 +5,9 @@
 @stop
 
 @section('content')
-<section class="page container" id="section1">
+
+<section class="page container1" id="section1">
+
     <h3 class="text-center v-center1">What's been lost...</h3>
     <hr>
     <div class="row">

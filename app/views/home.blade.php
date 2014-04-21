@@ -41,18 +41,18 @@
 		 <div class="row"  style="margin-top:15px;">
 			<div class="col-sm-4">
 					<div class="row">
-						<div class="col-sm-10 col-sm-offset-2 text-center"><h4>Cecilia Munson</h4><img src="/img/cecilia.jpg" class="img-circle center-block" alt='CM'><p style="margin-top:15px;"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, a, magnam iure quia ratione illum eos reiciendis tenetur velit ut neque earum provident perspiciatis recusandae ex facere error illo inventore. </p></div>
+						<div class="col-sm-10 col-sm-offset-2 text-center"><h4>Cecilia Munson</h4><a href="https://github.com/ceciliamunson"><img src="/img/cecilia.jpg" class="img-circle center-block" alt='CM'></a><p style="margin-top:15px;"> My background in Industrial Engineering, solidifies the problem-solving skills I use as a full-stack web developer. In addition to LAMP + JS, I have experience working with MySQL, jQuery, Git, Laravel MVC and other PHP and JavaSript libraries. </p></div>
 					</div>
 			</div>
 				<div class="col-sm-4 text-center">
 					
 					<div class="row">
-						<div class="col-sm-10 col-sm-offset-1 text-center"><h4>Steven Starnes</h4><img src="/img/steve.png" class="img-circle center-block" alt='SS'><p style="margin-top:15px;"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, accusamus, amet quisquam iure laboriosam reiciendis aspernatur ab corporis asperiores voluptates esse sed vel nisi quibusdam reprehenderit nulla voluptas saepe. Molestias. </p></div>
+						<div class="col-sm-10 col-sm-offset-1 text-center"><h4>Steven Starnes</h4><a href="https://github.com/Starnes81"><img src="/img/steve.png" class="img-circle center-block" alt='SS'></a><p style="margin-top:15px;">  I'm a full-stack web application developer, Covering LAMP+J, HTML5, CSS3, as well as MySQL, jQuery, Git, and Laravel. I have a extended background in digital media and proven dedicated work history. </p></div>
 					</div>
 			</div>
 				<div class="col-sm-4 text-center">
 					<div class="row">
-						<div class="col-sm-10 text-center"><h4>Corey Kepple</h4><img src="/img/corey.jpg" class="img-circle center-block" alt='Ck'><p style="margin-top:15px;"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum neque quam provident! Blanditiis, quas soluta vel sequi odio porro error ullam dolorum qui ipsum dolore illum sapiente nobis architecto debitis. </p></div>
+						<div class="col-sm-10 text-center"><h4>Corey Kepple</h4><a href="https://github.com/CoreycKepple"><img src="/img/corey.jpg" class="img-circle center-block" alt='Ck'></a><p style="margin-top:15px;"> I am a full-stack web application developer. I have experience programming to deploy in a Linux environment, using Apache web server application. I have experience with database management and database architecture using MySQL. My natural aptitude for programming tends to lean more towards the back-end and server side coding. </p></div>
 					</div>
 			</div>
 	</div>

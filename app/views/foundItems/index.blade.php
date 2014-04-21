@@ -5,11 +5,9 @@
 @stop
 
 @section('content')
-<<<<<<< HEAD
-<section class="page container" id="section1">
-=======
+
 <section class="page container1" id="section1">
->>>>>>> FETCH_HEAD
+
     <h3 class="text-center v-center1">What's been found...</h3>
     <hr>
     <div class="row">
