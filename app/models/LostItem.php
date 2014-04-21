@@ -8,7 +8,7 @@ class LostItem extends Base {
     * Validation Rules
     */ 
     public static $rules = array(
-    'title'      => 'required|max:100',
+    'title'      => 'required|max:30',
     'body'       => 'required|max:2000',
     'email'		 => 'required|max:100',
     'location'   => 'required|max:10',
