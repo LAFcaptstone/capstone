@@ -1,12 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-<div class='container-full'>
-<div class="container">    
+<section class="container-fluid" id="section1">
     <div id="loginbox" style="margin-top:100px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
         <div class="panel panel-info" >
             <div class="panel-heading">
-                <div class="panel-title">Sign In</div>
+                <div class="panel-title">Login</div>
 
                 <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="{{ action('RemindersController@getRemind') }}">Forgot password?</a></div>
 
@@ -23,14 +22,7 @@
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <input id="password" type="password" class="form-control" name="password" placeholder="password">
                     </div>
-                    <div class="input-group">
-                        <div class="checkbox">
-                           <label>
-                                <input id="remember" type="checkbox" name="remember" value="1"> Remember me
-                            </label>
-                        </div>
-                    </div>
-
+                    
                     <div style="margin-top:10px" class="form-group">
                     <!-- Button -->
                     	<div class="col-sm-12 controls">
@@ -49,7 +41,6 @@
         	</div>                     
         </div>  
     </div>
-</div>
-</div>
+</section>
 
 @stop

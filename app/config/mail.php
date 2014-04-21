@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.gmail.com',
+	'host' => $_ENV['EMAIL_HOST'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'support@vindit.us', 'name' => 'VIND.IT'),
+	'from' => array('address' => $_ENV['EMAIL_USER'], 'name' => 'VIND.IT'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'support@vindit.us',
+	'username' => $_ENV['EMAIL_USER'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => 'Codeup2014',
+	'password' => $_ENV['EMAIL_PASS'],
 
 	/*
 	|--------------------------------------------------------------------------

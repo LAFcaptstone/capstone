@@ -4,12 +4,19 @@ html,body {
     background:center no-repeat fixed url('/assets/example/bg_suburb.jpg');
 }
 
+.img-circle {
+  margin-top:18px;
+  height:150px;
+  width:150px;
+}
+
+
 .icon-bar {
 	background-color:#fff;
 }
 
 .navbar-trans {
-	background-color:#279ddd;
+	background-color:#FFF;
     color:#fff;
 }
 
@@ -18,7 +25,7 @@ html,body {
 }
 
 .navbar-trans a{
-    color:#fefefe;
+    color:#000;
 }
 
 .navbar-trans .form-control:focus {
@@ -44,8 +51,9 @@ section {
 }
   
 #section1 {
-	background-color: #168ccc;
-    color:#49bfff;
+	background-color: #FFF;
+    color:#000;
+
 }
   
 #section2 {
@@ -54,8 +62,8 @@ section {
 }
   
 #section3 {
-	background-color: #168ccc;
-    color:#ddd;
+	background-color: #FFF;
+    color:#000;
 }
 
 #section4 {
