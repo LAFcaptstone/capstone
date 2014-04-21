@@ -7,8 +7,8 @@ class FoundItem extends Base {
       * Validation Rules
       */ 
     public static $rules = array(
-    'title'      => 'required|max:100',
-    'body'       => 'required|max:2000',
+    'title'      => 'required|max:30',
+    'body'       => 'required|max:350',
     'email'		 => 'required|max:100',
     'location'   => 'required|max:10'
 	

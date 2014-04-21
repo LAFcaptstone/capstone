@@ -53,32 +53,32 @@
 							<td>{{{ $message->created_at->format('l, F jS Y @ h:i:s A') }}}</td>
 							<td>
 								{{ Form::open(array('action' => array('MessagesController@destroy', $message->id), 'method' => 'delete')) }}
-								{{ Form::submit('Delete', array('class' => 'btnDelete')) }}
+								{{ Form::button('<span class="glyphicon glyphicon-trash"></span>', array('class' => 'btnDelete')) }}
 								{{ Form::close() }}
 							</td>
 						</tr>
 							<!-- Modal -->
 							<div class="modal fade" id="myModal{{{ $message->id }}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							  <div class="modal-dialog">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							        <h4 class="modal-title" id="myModalLabel">{{{ $message->title }}}</h4>
-							      </div>
-							      <div class="modal-body">
-							        {{{ $message->body }}}
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							      </div>
-							    </div>
-							  </div>
+							  	<div class="modal-dialog">
+							  	  	<div class="modal-content">
+							  	  	  	<div class="modal-header">
+							  	  	  	  	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							  	  	  	  	<h4 class="modal-title" id="myModalLabel">{{{ $message->title }}}</h4>
+							  	  	  	</div>
+							  	  	  	<div class="modal-body">
+							  	  	  	  	{{{ $message->body }}}
+							  	  	  	</div>
+							  	  	  	<div class="modal-footer">
+							  	  	  	  	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							  	  	  	</div>
+							  	  	</div>
+							  	</div>
 							</div>
 					@endforeach
 					</tbody>
 				</table>
-				{{ $messages->links() }}
 			</div>	
+			{{ $messages->links() }}
 		</div>
 	</div><!-- row -->
 </div>

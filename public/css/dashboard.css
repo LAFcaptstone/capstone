@@ -70,6 +70,10 @@ body {
   margin-top: 0;
 }
 
+.glyphicon-trash {
+  color: #279ddd;
+}
+
 
 /*
  * Placeholder dashboard ideas
@@ -93,6 +97,9 @@ body {
 /*
  * Filter pluggin css starts
  */
+ .form-control {
+  font-weight: bold !important;
+ }
 
  .filterable {
     margin-top: 15px;
