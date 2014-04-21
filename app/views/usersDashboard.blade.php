@@ -52,7 +52,7 @@
 							<!-- <td><a href="{{{ action('UserController@edit', $user->id) }}}">Edit</a> -->
 							<td>
 								{{ Form::open(array('action' => array('UserController@destroy', $user->id), 'method' => 'delete')) }}
-								{{ Form::submit('Delete', array('class' => 'btnDelete')) }}
+								{{ Form::button('<span class="glyphicon glyphicon-trash"></span>', array('class' => 'btnDelete')) }}
 								{{ Form::close() }}
 							</td>
 						</tr>

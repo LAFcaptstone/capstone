@@ -20,47 +20,51 @@
 
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         	<h1 class="page-header">Dashboard</h1>
-		
-        	    <h3 class="sub-header">Found Items Posts</h3>
-				<table class="table table-responsive">
-					<thead>
-        			    <tr>
-        			    	<th>Flag Count</th>
-        			       	<th>Id</th>
-        			       	<th>Title</th>
-        			       	<th>Location</th>
-        			       	<th>Email</th>
-        			       	<th>Image</th>
-        			       	<th>Date Created</th>
-							<th>Date Updated</th>
-        			    </tr>
-        			</thead>
-  			
-					<tbody>
-					@foreach ($foundItems as $foundItem)
-       				    <tr>
-       				    	@if ($foundItem->flag_count > 0)
-	  		    	   			<td class="flag" style="color:#F00"><span class="glyphicon glyphicon-flag"></span>  {{{ $foundItem->flag_count }}}</td>
-							@else
-       				    		<td class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $foundItem->flag_count }}}</td>
-							@endif
-							<td>{{{ $foundItem->id }}}</td>
-							<td>{{{ $foundItem->title }}}</td>
-							<td>{{{ $foundItem->location }}}</td>
-							<td>{{{ $foundItem->email }}}</td>
-							<td>{{{ $foundItem->image_path }}}</td>
-							<td>{{{ $foundItem->created_at->format('l, F jS Y @ h:i:s A') }}}</td>
-							<td>{{{ $foundItem->updated_at->format('l, F jS Y @ h:i:s A') }}}</td>
-							<td><a href="{{{ action('FoundItemsController@edit', $foundItem->id) }}}">Edit</a>
-							<td>
-								{{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItem->id), 'method' => 'delete')) }}
-								{{ Form::submit('Delete', array('class' => 'btnDelete')) }}
-								{{ Form::close() }}
-							</td>
-						</tr>
-					@endforeach
-					</tbody>
-				</table>
+		  
+            <div class="panel panel-primary filterable">
+                    <div class="panel-heading">
+        	          <h1 class="panel-title">Found Items Posts</h1>
+                    </div>
+				    <table class="table table-responsive">
+				    	<thead>
+        		  	    <tr>
+        		  	    	<th>Flag Count</th>
+        		  	       	<th>Id</th>
+        		  	       	<th>Title</th>
+        		  	       	<th>Location</th>
+        		  	       	<th>Email</th>
+        		  	       	<th>Image</th>
+        		  	       	<th>Date Created</th>
+				    			<th>Date Updated</th>
+        		  	    </tr>
+        		  	</thead>
+  			   
+				    	<tbody>
+				    	@foreach ($foundItems as $foundItem)
+       			  	    <tr>
+       			  	    	@if ($foundItem->flag_count > 0)
+	  		       	   			<td class="flag" style="color:#F00"><span class="glyphicon glyphicon-flag"></span>  {{{ $foundItem->flag_count }}}</td>
+				    			@else
+       			  	    		<td class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $foundItem->flag_count }}}</td>
+				    			@endif
+				    			<td>{{{ $foundItem->id }}}</td>
+				    			<td>{{{ $foundItem->title }}}</td>
+				    			<td>{{{ $foundItem->location }}}</td>
+				    			<td>{{{ $foundItem->email }}}</td>
+				    			<td>{{{ $foundItem->image_path }}}</td>
+				    			<td>{{{ $foundItem->created_at->format('l, F jS Y @ h:i:s A') }}}</td>
+				    			<td>{{{ $foundItem->updated_at->format('l, F jS Y @ h:i:s A') }}}</td>
+				    			<td><a href="{{{ action('FoundItemsController@edit', $foundItem->id) }}}">Edit</a>
+				    			<td>
+				    				{{ Form::open(array('action' => array('FoundItemsController@destroy', $foundItem->id), 'method' => 'delete')) }}
+				    				{{ Form::button('<span class="glyphicon glyphicon-trash"></span>', array('class' => 'btnDelete')) }}
+				    				{{ Form::close() }}
+				    			</td>
+				    		</tr>
+				    	@endforeach
+				    	</tbody>
+				    </table>
+                </div>
 				{{ $foundItems->links() }}
 			</div>
 		</div>
