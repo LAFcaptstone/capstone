@@ -1,8 +1,7 @@
 @extends('layouts.master')
 
 @section('topscript')
-<div class="container-full">
-	<div class="container">    
+<section class="container-fluid" id="section1">
 	    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
 	        <div class="panel panel-info" >
 	            <div class="panel-heading">
@@ -46,7 +45,5 @@
 	        	</div>
 	        </div>
 	    </div>
-	</div>        	               
-</div>	               
-
+</section>              
 @stop
