@@ -89,7 +89,7 @@
 	 				@endif	
 	 			</div>   
 		    	<div class="col-sm-3">
-		    		@if (!empty($foundItems->id))
+		    		@if (!empty($lostItems->id))
 		    			{{ Form::open(array('action' => array('LostItemsController@destroy', $lostItems->id), 'method' => 'delete')) }}
 						{{ Form::submit('Delete', array('class' => 'btnDelete btn btn-danger')) }}
 						{{ Form::close() }}
