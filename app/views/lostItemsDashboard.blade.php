@@ -20,48 +20,52 @@
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         	<h1 class="page-header">Dashboard</h1>
 
-			<h3>Lost Items Posts</h3>
-			<table class="table table-responsive">
-				<thead>
-	    	        <tr>
-	    	        	<th>Flag Count</th>
-	    	           	<th>Id</th>
-	    	           	<th>Title</th>
-	    	           	<th>Location</th>
-	    	           	<th>Email</th>
-	    	           	<th>Image</th>
-	    	           	<th>Reward</th>
-	    	           	<th>Date Created</th>
-						<th>Date Updated</th>
-	    	        </tr>
-	    	    </thead>
-	  	
-				<tbody>
-				@foreach ($lostItems as $lostItem) 
-	    	   	    <tr>
-	    	   	    	@if ($lostItem->flag_count > 0)
-	  	    	   			<td class="flag" style="color:#F00"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
-						@else
-							<td class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
-						@endif
-						<td>{{{ $lostItem->id }}}</td>
-						<td>{{{ $lostItem->title }}}</td>
-						<td>{{{ $lostItem->location }}}</td>
-						<td>{{{ $lostItem->email }}}</td>
-						<td>{{{ $lostItem->image_path }}}</td>
-						<td>{{{ $lostItem->reward }}}</td>
-						<td>{{{ $lostItem->created_at->format('l, F jS Y @ h:i:s A') }}}</td>
-						<td>{{{ $lostItem->updated_at->format('l, F jS Y @ h:i:s A') }}}</td>
-						<td><a href="{{{ action('LostItemsController@edit', $lostItem->id) }}}">Edit</a>
-						<td>
-							{{ Form::open(array('action' => array('LostItemsController@destroy', $lostItem->id), 'method' => 'delete')) }}
-							{{ Form::submit('Delete', array('class' => 'btnDelete')) }}
-							{{ Form::close() }}
-						</td>
-					</tr>
-				@endforeach
-				</tbody>
-			</table>
+        	<div class="panel panel-primary filterable">
+        		<div class="panel-heading">
+					<h1 class="panel-title">Lost Items Posts</h1>
+				</div>
+				<table class="table table-responsive">
+					<thead>
+	    		        <tr>
+	    		        	<th>Flag Count</th>
+	    		           	<th>Id</th>
+	    		           	<th>Title</th>
+	    		           	<th>Location</th>
+	    		           	<th>Email</th>
+	    		           	<th>Image</th>
+	    		           	<th>Reward</th>
+	    		           	<th>Date Created</th>
+							<th>Date Updated</th>
+	    		        </tr>
+	    		    </thead>
+	  		
+					<tbody>
+					@foreach ($lostItems as $lostItem) 
+	    		   	    <tr>
+	    		   	    	@if ($lostItem->flag_count > 0)
+	  	    		   			<td class="flag" style="color:#F00"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
+							@else
+								<td class="flag"><span class="glyphicon glyphicon-flag"></span>  {{{ $lostItem->flag_count }}}</td>
+							@endif
+							<td>{{{ $lostItem->id }}}</td>
+							<td>{{{ $lostItem->title }}}</td>
+							<td>{{{ $lostItem->location }}}</td>
+							<td>{{{ $lostItem->email }}}</td>
+							<td>{{{ $lostItem->image_path }}}</td>
+							<td>{{{ $lostItem->reward }}}</td>
+							<td>{{{ $lostItem->created_at->format('l, F jS Y @ h:i:s A') }}}</td>
+							<td>{{{ $lostItem->updated_at->format('l, F jS Y @ h:i:s A') }}}</td>
+							<td><a href="{{{ action('LostItemsController@edit', $lostItem->id) }}}"><span class="glyphicon glyphicon-pencil"></span></a>
+							<td>
+								{{ Form::open(array('action' => array('LostItemsController@destroy', $lostItem->id), 'method' => 'delete')) }}
+								{{ Form::button('<span class="glyphicon glyphicon-trash"></span>', array('class' => 'btnDelete')) }}
+								{{ Form::close() }}
+							</td>
+						</tr>
+					@endforeach
+					</tbody>
+				</table>
+			</div>
 			{{ $lostItems->links() }}
 		</div>
 	</div><!-- row -->
