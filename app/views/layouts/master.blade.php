@@ -11,8 +11,8 @@
 		<link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
 		<link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x11png">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href='css/master.css' rel='stylesheet'>
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href='/css/master.css' rel='stylesheet'>
 		
 		@yield('topscript')
 	</head>	
