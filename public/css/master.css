@@ -1,7 +1,6 @@
 /* start Styling from Main Sectionalize Template*/
 html,body {
 	height:100%;
-    background:center no-repeat fixed url('/assets/example/bg_suburb.jpg');
 }
 
 .img-circle {
