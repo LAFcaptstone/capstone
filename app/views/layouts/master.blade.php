@@ -11,8 +11,8 @@
 		<link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
 		<link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x11png">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href='css/master.css' rel='stylesheet'>
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href='/css/master.css' rel='stylesheet'>
 		
 		@yield('topscript')
 	</head>	
@@ -41,7 +41,7 @@
 						@endif
 						<li><a href="{{{ action('HomeController@showContact') }}}">Contact Us</a></li>
 						<li><a href="{{{ action('LostItemsController@create') }}}" style='color:#F06161;'>I Lost...</a></li>
-						<li><a href="{{{ action('FoundItemsController@create') }}}" style='color:#95FC87;'>I Found...</a></li>
+						<li><a href="{{{ action('FoundItemsController@create') }}}" style='color:#3d983d;'>I Found...</a></li>
 					    <li>&nbsp;</li>
 				    </ul>
    
@@ -64,7 +64,7 @@
  	 		</div>
 		</nav>
 
-		<div class="container">
+		<div style="width:700px;" class="center-block">
 		@if (Session::has('successMessage'))
 			<div class="alert alert-success" style='margin-top:50px;'>{{{ Session::get('successMessage') }}}<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div>
 		@endif
@@ -76,8 +76,8 @@
 	   	<!-- yeilding content from blades -->
 		@yield('content')
 			
-		<script src="js/jquery.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+		<script src="/js/jquery.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
 		
 		@yield('bottomscript')
 

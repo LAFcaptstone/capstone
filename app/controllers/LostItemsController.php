@@ -20,7 +20,7 @@ class LostItemsController extends BaseController {
 		
 		$query = LostItem::orderBy('created_at', 'desc');
 		
-		$lostItems = $query->paginate(8);
+		$lostItems = $query->paginate(9);
 		
 		return View::make('lostItems.index')->with(array('lostItems' => $lostItems));
 	}

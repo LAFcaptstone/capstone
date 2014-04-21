@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 .v-center1 {
     padding-top:1%;
     font-size:30px;
@@ -13,14 +16,14 @@
 .page .work {
     margin: 40px;
     padding-bottom: 20px;
-    background: #f8f8f8;
-    border-bottom: 3px solid #279ddd;
+    background: #FFF;
+    border: 1px solid #000;
 }
 
-.container {
-    margin-left: 40px;
+.container1 {
+    margin-left: 125px;
     margin-right: 40px;
-    width: 1500px;
+    width: 1400px;
 }
 
 .work {

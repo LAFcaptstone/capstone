@@ -99,7 +99,7 @@
             @if(!is_null($foundItem->image_path))
               <img class="img-responsive center-block space" src="{{{ $foundItem->image_path }}}">
             @else
-              <img src="/img/vind.jpeg" alt="" class="img-responsive center-block space">
+              <img src="/img/default.png" alt="" class="img-responsive center-block space">
             @endif
       </div>
         <div class="col-sm-4 text-center">
