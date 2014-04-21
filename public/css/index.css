@@ -45,6 +45,7 @@
 
 .label-default {
     background-color: #279ddd;
+    margin-bottom: 5px;
 }
 
 .numberCircle {
@@ -70,3 +71,4 @@
 .glyphicon-home .glyphicon-pencil .glyphicon-envelope {
   color: #279ddd;
 }
+
