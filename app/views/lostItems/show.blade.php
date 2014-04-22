@@ -131,6 +131,7 @@
       </div>
     </div>
   </div>
+  </section>
         <div class="container col-md-4 col-md-offset-4">
           <div class="btn-group">
             <div class="btn-group">
@@ -151,7 +152,7 @@
             @endif   
           </div>
         </div>
-
+</div>
 
 @stop
 

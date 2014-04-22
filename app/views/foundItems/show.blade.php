@@ -125,7 +125,7 @@
 </div>
 </section>
 
-        <div class="container col-sm-4 text-center">
+        <div class="container col-sm-4 col-md-offset-4">
           <div class="btn-group">
             <div class="btn-group">
               {{ Form::open(array('action' => array('FoundItemsController@flag', $foundItem->id))) }}
@@ -145,7 +145,7 @@
             @endif   
           </div>
         </div>
-</div>
+
 
 
 @stop
